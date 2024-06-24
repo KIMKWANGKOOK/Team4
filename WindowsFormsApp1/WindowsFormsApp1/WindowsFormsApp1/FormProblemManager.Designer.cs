@@ -137,7 +137,7 @@ namespace WorkManagementSystem
             this.btnDeleteProblem.TabIndex = 6;
             this.btnDeleteProblem.Text = "삭제";
             this.btnDeleteProblem.UseVisualStyleBackColor = false;
-            this.btnDeleteProblem.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.btnDeleteProblem.Click += new System.EventHandler(this.btnDelete_Click);
             this.btnDeleteProblem.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
             this.btnDeleteProblem.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
             // 
