@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -7,12 +9,12 @@ namespace WorkManagementSystem
 {
     public partial class FormProblemManager : Form
     {
-        private List<Problem> problems;
+        private BindingList<Problem> problems; // dataGrid View 사용 시 BindingList를 사용해야 한다. 신기하네
 
         public FormProblemManager()
         {
             InitializeComponent();
-            problems = new List<Problem>();
+            problems = new BindingList<Problem>();
             LoadProblems();
         }
 
@@ -20,7 +22,13 @@ namespace WorkManagementSystem
         {
             // 초기 데이터를 로드하거나 빈 리스트로 시작할 수 있습니다.
             // 여기에 필요한 경우 초기 데이터를 추가할 수 있습니다.
+            dataGridProblems.DefaultCellStyle.ForeColor = Color.Black;
             UpdateDataGrid();
+        }
+
+        private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -152,6 +160,7 @@ namespace WorkManagementSystem
                 txtDescription.Text = problem.Description;
                 datePickerReported.Value = problem.ReportedDate;
                 comboBoxStatus.SelectedItem = problem.Status;
+
             }
         }
     }

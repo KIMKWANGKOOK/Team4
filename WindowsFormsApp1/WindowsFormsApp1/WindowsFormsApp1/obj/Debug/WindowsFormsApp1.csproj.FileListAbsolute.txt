@@ -22,3 +22,16 @@ C:\Users\eodus\Desktop\project\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp
 C:\Users\eodus\Desktop\project\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 C:\Users\eodus\Desktop\project\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\eodus\Desktop\project\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\hanm2\Desktop\충남인력개발원\C#\Team4\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\hanm2\Desktop\충남인력개발원\C#\Team4\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\hanm2\Desktop\충남인력개발원\C#\Team4\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\hanm2\Desktop\충남인력개발원\C#\Team4\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+C:\Users\hanm2\Desktop\충남인력개발원\C#\Team4\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WorkManagementSystem.FormMonthAttend.resources
+C:\Users\hanm2\Desktop\충남인력개발원\C#\Team4\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WorkManagementSystem.FormWorkInstruction.resources
+C:\Users\hanm2\Desktop\충남인력개발원\C#\Team4\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WorkManagementSystem.FormWorkPerformance.resources
+C:\Users\hanm2\Desktop\충남인력개발원\C#\Team4\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\hanm2\Desktop\충남인력개발원\C#\Team4\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\hanm2\Desktop\충남인력개발원\C#\Team4\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\hanm2\Desktop\충남인력개발원\C#\Team4\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\hanm2\Desktop\충남인력개발원\C#\Team4\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\hanm2\Desktop\충남인력개발원\C#\Team4\WindowsFormsApp1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WorkManagementSystem.FormProblemManager.resources

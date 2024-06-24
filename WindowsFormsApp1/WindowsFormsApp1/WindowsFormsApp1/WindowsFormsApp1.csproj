@@ -91,6 +91,9 @@
     <EmbeddedResource Include="FormMonthAttend.resx">
       <DependentUpon>FormMonthAttend.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormProblemManager.resx">
+      <DependentUpon>FormProblemManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormWorkInstruction.resx">
       <DependentUpon>FormWorkInstruction.cs</DependentUpon>
     </EmbeddedResource>
