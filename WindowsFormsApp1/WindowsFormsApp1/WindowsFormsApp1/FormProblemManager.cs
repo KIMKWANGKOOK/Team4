@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace WorkManagementSystem
 {
@@ -22,6 +24,18 @@ namespace WorkManagementSystem
         {
             // 초기 데이터를 로드하거나 빈 리스트로 시작할 수 있습니다.
             // 여기에 필요한 경우 초기 데이터를 추가할 수 있습니다.
+            MySqlConnection conn = new MySqlConnection("Server=localhost;Port=3306;Database=test_db;Uid=test_user;Pwd=java");
+            try
+            {
+                conn.Open();
+                String queryString = "INSERT INTO PROBLEM_MANAGER (Name, Description) VALUES('하이',  '안녕')";
+                MySqlCommand command = new MySqlCommand(queryString, conn);
+                int result = command.ExecuteNonQuery();
+                Console.WriteLine(result);
+            } catch(Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+
             dataGridProblems.DefaultCellStyle.ForeColor = Color.Black;
             UpdateDataGrid();
         }
