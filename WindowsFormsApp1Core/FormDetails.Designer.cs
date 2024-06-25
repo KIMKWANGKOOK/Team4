@@ -16,28 +16,28 @@
 
         private void InitializeComponent()
         {
-            this.txtDetails = new System.Windows.Forms.TextBox();
-            this.SuspendLayout();
+            txtDetails = new System.Windows.Forms.TextBox();
+            SuspendLayout();
             // 
             // txtDetails
             // 
-            this.txtDetails.Location = new System.Drawing.Point(12, 12);
-            this.txtDetails.Multiline = true;
-            this.txtDetails.Name = "txtDetails";
-            this.txtDetails.ReadOnly = true;
-            this.txtDetails.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDetails.Size = new System.Drawing.Size(360, 237);
-            this.txtDetails.TabIndex = 0;
+            txtDetails.Location = new System.Drawing.Point(12, 12);
+            txtDetails.Multiline = true;
+            txtDetails.Name = "txtDetails";
+            txtDetails.ReadOnly = true;
+            txtDetails.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            txtDetails.Size = new System.Drawing.Size(360, 237);
+            txtDetails.TabIndex = 0;
             // 
             // FormDetails
             // 
-            this.ClientSize = new System.Drawing.Size(384, 261);
-            this.Controls.Add(this.txtDetails);
-            this.Name = "FormDetails";
-            this.Text = "상세 정보";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            ClientSize = new System.Drawing.Size(384, 261);
+            Controls.Add(txtDetails);
+            Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 129);
+            Name = "FormDetails";
+            Text = "상세 정보";
+            ResumeLayout(false);
+            PerformLayout();
         }
     }
 }

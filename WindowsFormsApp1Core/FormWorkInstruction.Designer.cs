@@ -1,7 +1,7 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using System;
 
 namespace WorkManagementSystem
 {
@@ -12,20 +12,30 @@ namespace WorkManagementSystem
         private TextBox txtContent;
         private DateTimePicker datePicker;
         private TextBox txtWriter;
-        private TextBox txtWorker; // Worker 텍스트 박스 추가
+        private TextBox txtWorker;
         private ComboBox comboBoxPriority;
+        private ComboBox comboBoxSupply;
         private Button btnSave;
         private Button btnUpdate;
         private Button btnDelete;
         private Button btnExportToExcel;
         private Button btnViewDetails;
+        private Button btnStartWork;
+        private Button btnStopWork;
+        private Button btnUpdateTodayWorkList; // Update 버튼 추가
         private DataGridView dataGridWorkInstructions;
+        private DataGridView dataGridTodayWorkList;
+        private DataGridView dataGridWorkForToday; // 오늘 작업 DataGridView 추가
         private Label lblTaskName;
         private Label lblContent;
         private Label lblDate;
         private Label lblWriter;
-        private Label lblWorker; // Worker 라벨 추가
+        private Label lblWorker;
         private Label lblPriority;
+        private Label lblSupply;
+        private Label lblTodayWorkList;
+        private Label lblWorkTable;
+        private Label lblWorkForToday; // 오늘 작업 라벨 추가
 
         protected override void Dispose(bool disposing)
         {
@@ -38,272 +48,451 @@ namespace WorkManagementSystem
 
         private void InitializeComponent()
         {
-            this.comboBoxTaskName = new System.Windows.Forms.ComboBox();
-            this.txtContent = new System.Windows.Forms.TextBox();
-            this.datePicker = new System.Windows.Forms.DateTimePicker();
-            this.txtWriter = new System.Windows.Forms.TextBox();
-            this.txtWorker = new System.Windows.Forms.TextBox(); // Worker 텍스트 박스 초기화
-            this.comboBoxPriority = new System.Windows.Forms.ComboBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnExportToExcel = new System.Windows.Forms.Button();
-            this.btnViewDetails = new System.Windows.Forms.Button();
-            this.dataGridWorkInstructions = new System.Windows.Forms.DataGridView();
-            this.lblTaskName = new System.Windows.Forms.Label();
-            this.lblContent = new System.Windows.Forms.Label();
-            this.lblDate = new System.Windows.Forms.Label();
-            this.lblWriter = new System.Windows.Forms.Label();
-            this.lblWorker = new System.Windows.Forms.Label(); // Worker 라벨 초기화
-            this.lblPriority = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridWorkInstructions)).BeginInit();
-            this.SuspendLayout();
+            comboBoxTaskName = new ComboBox();
+            txtContent = new TextBox();
+            datePicker = new DateTimePicker();
+            txtWriter = new TextBox();
+            txtWorker = new TextBox();
+            comboBoxPriority = new ComboBox();
+            comboBoxSupply = new ComboBox();
+            btnSave = new Button();
+            btnUpdate = new Button();
+            btnDelete = new Button();
+            btnExportToExcel = new Button();
+            btnViewDetails = new Button();
+            btnStartWork = new Button();
+            btnStopWork = new Button();
+            btnUpdateTodayWorkList = new Button();
+            dataGridWorkInstructions = new DataGridView();
+            dataGridTodayWorkList = new DataGridView();
+            dataGridWorkForToday = new DataGridView();
+            lblTaskName = new Label();
+            lblContent = new Label();
+            lblDate = new Label();
+            lblWriter = new Label();
+            lblWorker = new Label();
+            lblPriority = new Label();
+            lblSupply = new Label();
+            lblTodayWorkList = new Label();
+            lblWorkTable = new Label();
+            lblWorkForToday = new Label();
+            ((ISupportInitialize)dataGridWorkInstructions).BeginInit();
+            ((ISupportInitialize)dataGridTodayWorkList).BeginInit();
+            ((ISupportInitialize)dataGridWorkForToday).BeginInit();
+            SuspendLayout();
             // 
             // comboBoxTaskName
             // 
-            this.comboBoxTaskName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxTaskName.FormattingEnabled = true;
-            this.comboBoxTaskName.Location = new System.Drawing.Point(140, 28);
-            this.comboBoxTaskName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.comboBoxTaskName.Name = "comboBoxTaskName";
-            this.comboBoxTaskName.Size = new System.Drawing.Size(233, 20);
-            this.comboBoxTaskName.TabIndex = 0;
+            comboBoxTaskName.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxTaskName.Font = new Font("맑은 고딕", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            comboBoxTaskName.FormattingEnabled = true;
+            comboBoxTaskName.Location = new Point(239, 22);
+            comboBoxTaskName.Margin = new Padding(4);
+            comboBoxTaskName.Name = "comboBoxTaskName";
+            comboBoxTaskName.Size = new Size(235, 38);
+            comboBoxTaskName.TabIndex = 0;
             // 
             // txtContent
             // 
-            this.txtContent.Location = new System.Drawing.Point(140, 65);
-            this.txtContent.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtContent.Name = "txtContent";
-            this.txtContent.Size = new System.Drawing.Size(233, 21);
-            this.txtContent.TabIndex = 1;
+            txtContent.Font = new Font("맑은 고딕", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            txtContent.Location = new Point(239, 115);
+            txtContent.Margin = new Padding(4);
+            txtContent.Name = "txtContent";
+            txtContent.Size = new Size(235, 35);
+            txtContent.TabIndex = 1;
             // 
             // datePicker
             // 
-            this.datePicker.Location = new System.Drawing.Point(140, 102);
-            this.datePicker.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.datePicker.Name = "datePicker";
-            this.datePicker.Size = new System.Drawing.Size(233, 21);
-            this.datePicker.TabIndex = 2;
+            datePicker.CalendarFont = new Font("맑은 고딕", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            datePicker.Location = new Point(239, 209);
+            datePicker.Margin = new Padding(4);
+            datePicker.Name = "datePicker";
+            datePicker.Size = new Size(235, 23);
+            datePicker.TabIndex = 2;
             // 
             // txtWriter
             // 
-            this.txtWriter.Location = new System.Drawing.Point(140, 138);
-            this.txtWriter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtWriter.Name = "txtWriter";
-            this.txtWriter.Size = new System.Drawing.Size(233, 21);
-            this.txtWriter.TabIndex = 3;
+            txtWriter.Font = new Font("맑은 고딕", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            txtWriter.Location = new Point(239, 286);
+            txtWriter.Margin = new Padding(4);
+            txtWriter.Name = "txtWriter";
+            txtWriter.Size = new Size(235, 35);
+            txtWriter.TabIndex = 3;
             // 
             // txtWorker
             // 
-            this.txtWorker.Location = new System.Drawing.Point(140, 174); // Worker 텍스트 박스 위치 설정
-            this.txtWorker.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtWorker.Name = "txtWorker";
-            this.txtWorker.Size = new System.Drawing.Size(233, 21);
-            this.txtWorker.TabIndex = 8;
+            txtWorker.Font = new Font("맑은 고딕", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            txtWorker.Location = new Point(815, 26);
+            txtWorker.Margin = new Padding(4);
+            txtWorker.Name = "txtWorker";
+            txtWorker.Size = new Size(235, 35);
+            txtWorker.TabIndex = 8;
             // 
             // comboBoxPriority
             // 
-            this.comboBoxPriority.Location = new System.Drawing.Point(140, 212);
-            this.comboBoxPriority.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.comboBoxPriority.Name = "comboBoxPriority";
-            this.comboBoxPriority.Size = new System.Drawing.Size(233, 20);
-            this.comboBoxPriority.TabIndex = 4;
+            comboBoxPriority.Font = new Font("맑은 고딕", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            comboBoxPriority.Location = new Point(815, 112);
+            comboBoxPriority.Margin = new Padding(4);
+            comboBoxPriority.Name = "comboBoxPriority";
+            comboBoxPriority.Size = new Size(235, 38);
+            comboBoxPriority.TabIndex = 4;
+            // 
+            // comboBoxSupply
+            // 
+            comboBoxSupply.Font = new Font("맑은 고딕", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            comboBoxSupply.Location = new Point(815, 205);
+            comboBoxSupply.Margin = new Padding(4);
+            comboBoxSupply.Name = "comboBoxSupply";
+            comboBoxSupply.Size = new Size(235, 38);
+            comboBoxSupply.TabIndex = 20;
             // 
             // btnSave
             // 
-            this.btnSave.BackColor = System.Drawing.Color.White;
-            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(397, 28);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(117, 21);
-            this.btnSave.TabIndex = 5;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            this.btnSave.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
-            this.btnSave.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
+            btnSave.BackColor = Color.White;
+            btnSave.FlatAppearance.BorderColor = Color.White;
+            btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.Font = new Font("맑은 고딕", 12F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            btnSave.ForeColor = Color.Black;
+            btnSave.Location = new Point(514, 16);
+            btnSave.Margin = new Padding(4);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(110, 45);
+            btnSave.TabIndex = 5;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
+            btnSave.MouseEnter += Button_MouseEnter;
+            btnSave.MouseLeave += Button_MouseLeave;
             // 
             // btnUpdate
             // 
-            this.btnUpdate.BackColor = System.Drawing.Color.White;
-            this.btnUpdate.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.ForeColor = System.Drawing.Color.Black;
-            this.btnUpdate.Location = new System.Drawing.Point(397, 65);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(117, 21);
-            this.btnUpdate.TabIndex = 6;
-            this.btnUpdate.Text = "Revise";
-            this.btnUpdate.UseVisualStyleBackColor = false;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            this.btnUpdate.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
-            this.btnUpdate.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
+            btnUpdate.BackColor = Color.White;
+            btnUpdate.FlatAppearance.BorderColor = Color.White;
+            btnUpdate.FlatStyle = FlatStyle.Flat;
+            btnUpdate.Font = new Font("맑은 고딕", 12F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            btnUpdate.ForeColor = Color.Black;
+            btnUpdate.Location = new Point(514, 105);
+            btnUpdate.Margin = new Padding(4);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(110, 45);
+            btnUpdate.TabIndex = 6;
+            btnUpdate.Text = "Revise";
+            btnUpdate.UseVisualStyleBackColor = false;
+            btnUpdate.Click += btnUpdate_Click;
+            btnUpdate.MouseEnter += Button_MouseEnter;
+            btnUpdate.MouseLeave += Button_MouseLeave;
             // 
             // btnDelete
             // 
-            this.btnDelete.BackColor = System.Drawing.Color.White;
-            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.ForeColor = System.Drawing.Color.Black;
-            this.btnDelete.Location = new System.Drawing.Point(397, 102);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(117, 21);
-            this.btnDelete.TabIndex = 7;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            this.btnDelete.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
-            this.btnDelete.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
+            btnDelete.BackColor = Color.White;
+            btnDelete.FlatAppearance.BorderColor = Color.White;
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.Font = new Font("맑은 고딕", 12F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            btnDelete.ForeColor = Color.Black;
+            btnDelete.Location = new Point(514, 198);
+            btnDelete.Margin = new Padding(4);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(110, 45);
+            btnDelete.TabIndex = 7;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
+            btnDelete.MouseEnter += Button_MouseEnter;
+            btnDelete.MouseLeave += Button_MouseLeave;
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.BackColor = System.Drawing.Color.White;
-            this.btnExportToExcel.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnExportToExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExportToExcel.ForeColor = System.Drawing.Color.Black;
-            this.btnExportToExcel.Location = new System.Drawing.Point(397, 174);
-            this.btnExportToExcel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnExportToExcel.Name = "btnExportToExcel";
-            this.btnExportToExcel.Size = new System.Drawing.Size(117, 21);
-            this.btnExportToExcel.TabIndex = 10;
-            this.btnExportToExcel.Text = "Send in Excel";
-            this.btnExportToExcel.UseVisualStyleBackColor = false;
-            this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
-            this.btnExportToExcel.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
-            this.btnExportToExcel.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
+            btnExportToExcel.BackColor = Color.White;
+            btnExportToExcel.FlatAppearance.BorderColor = Color.White;
+            btnExportToExcel.FlatStyle = FlatStyle.Flat;
+            btnExportToExcel.Font = new Font("맑은 고딕", 12F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            btnExportToExcel.ForeColor = Color.Black;
+            btnExportToExcel.Location = new Point(1087, 16);
+            btnExportToExcel.Margin = new Padding(4);
+            btnExportToExcel.Name = "btnExportToExcel";
+            btnExportToExcel.Size = new Size(120, 45);
+            btnExportToExcel.TabIndex = 10;
+            btnExportToExcel.Text = "Send in Excel";
+            btnExportToExcel.UseVisualStyleBackColor = false;
+            btnExportToExcel.Click += btnExportToExcel_Click;
+            btnExportToExcel.MouseEnter += Button_MouseEnter;
+            btnExportToExcel.MouseLeave += Button_MouseLeave;
             // 
             // btnViewDetails
             // 
-            this.btnViewDetails.BackColor = System.Drawing.Color.White;
-            this.btnViewDetails.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnViewDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewDetails.ForeColor = System.Drawing.Color.Black;
-            this.btnViewDetails.Location = new System.Drawing.Point(397, 138);
-            this.btnViewDetails.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnViewDetails.Name = "btnViewDetails";
-            this.btnViewDetails.Size = new System.Drawing.Size(117, 21);
-            this.btnViewDetails.TabIndex = 11;
-            this.btnViewDetails.Text = "View Details";
-            this.btnViewDetails.UseVisualStyleBackColor = false;
-            this.btnViewDetails.Click += new System.EventHandler(this.btnViewDetails_Click);
-            this.btnViewDetails.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
-            this.btnViewDetails.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
+            btnViewDetails.BackColor = Color.White;
+            btnViewDetails.FlatAppearance.BorderColor = Color.White;
+            btnViewDetails.FlatStyle = FlatStyle.Flat;
+            btnViewDetails.Font = new Font("맑은 고딕", 12F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            btnViewDetails.ForeColor = Color.Black;
+            btnViewDetails.Location = new Point(514, 276);
+            btnViewDetails.Margin = new Padding(4);
+            btnViewDetails.Name = "btnViewDetails";
+            btnViewDetails.Size = new Size(120, 45);
+            btnViewDetails.TabIndex = 11;
+            btnViewDetails.Text = "View Details";
+            btnViewDetails.UseVisualStyleBackColor = false;
+            btnViewDetails.Click += btnViewDetails_Click;
+            btnViewDetails.MouseEnter += Button_MouseEnter;
+            btnViewDetails.MouseLeave += Button_MouseLeave;
+            // 
+            // btnStartWork
+            // 
+            btnStartWork.BackColor = Color.White;
+            btnStartWork.FlatAppearance.BorderColor = Color.White;
+            btnStartWork.FlatStyle = FlatStyle.Flat;
+            btnStartWork.Font = new Font("맑은 고딕", 12F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            btnStartWork.ForeColor = Color.Black;
+            btnStartWork.Location = new Point(1087, 105);
+            btnStartWork.Margin = new Padding(4);
+            btnStartWork.Name = "btnStartWork";
+            btnStartWork.Size = new Size(120, 45);
+            btnStartWork.TabIndex = 21;
+            btnStartWork.Text = "Work Start";
+            btnStartWork.UseVisualStyleBackColor = false;
+            btnStartWork.Click += btnStartWork_Click;
+            btnStartWork.MouseEnter += Button_MouseEnter;
+            btnStartWork.MouseLeave += Button_MouseLeave;
+            // 
+            // btnStopWork
+            // 
+            btnStopWork.BackColor = Color.White;
+            btnStopWork.FlatAppearance.BorderColor = Color.White;
+            btnStopWork.FlatStyle = FlatStyle.Flat;
+            btnStopWork.Font = new Font("맑은 고딕", 12F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            btnStopWork.ForeColor = Color.Black;
+            btnStopWork.Location = new Point(1087, 201);
+            btnStopWork.Margin = new Padding(4);
+            btnStopWork.Name = "btnStopWork";
+            btnStopWork.Size = new Size(120, 45);
+            btnStopWork.TabIndex = 22;
+            btnStopWork.Text = "Work Stop";
+            btnStopWork.UseVisualStyleBackColor = false;
+            btnStopWork.Click += btnStopWork_Click;
+            btnStopWork.MouseEnter += Button_MouseEnter;
+            btnStopWork.MouseLeave += Button_MouseLeave;
+            // 
+            // btnUpdateTodayWorkList
+            // 
+            btnUpdateTodayWorkList.BackColor = Color.White;
+            btnUpdateTodayWorkList.FlatAppearance.BorderColor = Color.White;
+            btnUpdateTodayWorkList.FlatStyle = FlatStyle.Flat;
+            btnUpdateTodayWorkList.Font = new Font("맑은 고딕", 12F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            btnUpdateTodayWorkList.ForeColor = Color.Black;
+            btnUpdateTodayWorkList.Location = new Point(1774, 21);
+            btnUpdateTodayWorkList.Margin = new Padding(4);
+            btnUpdateTodayWorkList.Name = "btnUpdateTodayWorkList";
+            btnUpdateTodayWorkList.Size = new Size(120, 45);
+            btnUpdateTodayWorkList.TabIndex = 23;
+            btnUpdateTodayWorkList.Text = "Update";
+            btnUpdateTodayWorkList.UseVisualStyleBackColor = false;
+            btnUpdateTodayWorkList.Click += btnUpdateTodayWorkList_Click;
+            btnUpdateTodayWorkList.MouseEnter += Button_MouseEnter;
+            btnUpdateTodayWorkList.MouseLeave += Button_MouseLeave;
             // 
             // dataGridWorkInstructions
             // 
-            this.dataGridWorkInstructions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridWorkInstructions.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(59)))), ((int)(((byte)(78)))));
-            this.dataGridWorkInstructions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridWorkInstructions.GridColor = System.Drawing.Color.White;
-            this.dataGridWorkInstructions.Location = new System.Drawing.Point(25, 288);
-            this.dataGridWorkInstructions.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.dataGridWorkInstructions.Name = "dataGridWorkInstructions";
-            this.dataGridWorkInstructions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridWorkInstructions.Size = new System.Drawing.Size(992, 323);
-            this.dataGridWorkInstructions.TabIndex = 12;
+            dataGridWorkInstructions.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridWorkInstructions.BackgroundColor = Color.FromArgb(46, 59, 78);
+            dataGridWorkInstructions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridWorkInstructions.GridColor = Color.White;
+            dataGridWorkInstructions.Location = new Point(23, 390);
+            dataGridWorkInstructions.Margin = new Padding(4);
+            dataGridWorkInstructions.Name = "dataGridWorkInstructions";
+            dataGridWorkInstructions.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridWorkInstructions.Size = new Size(992, 200);
+            dataGridWorkInstructions.TabIndex = 12;
+            // 
+            // dataGridTodayWorkList
+            // 
+            dataGridTodayWorkList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridTodayWorkList.BackgroundColor = Color.FromArgb(46, 59, 78);
+            dataGridTodayWorkList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridTodayWorkList.GridColor = Color.White;
+            dataGridTodayWorkList.Location = new Point(23, 637);
+            dataGridTodayWorkList.Margin = new Padding(4);
+            dataGridTodayWorkList.Name = "dataGridTodayWorkList";
+            dataGridTodayWorkList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridTodayWorkList.Size = new Size(992, 200);
+            dataGridTodayWorkList.TabIndex = 23;
+            // 
+            // dataGridWorkForToday
+            // 
+            dataGridWorkForToday.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridWorkForToday.BackgroundColor = Color.FromArgb(46, 59, 78);
+            dataGridWorkForToday.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridWorkForToday.GridColor = Color.White;
+            dataGridWorkForToday.Location = new Point(1294, 91);
+            dataGridWorkForToday.Margin = new Padding(4);
+            dataGridWorkForToday.Name = "dataGridWorkForToday";
+            dataGridWorkForToday.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridWorkForToday.Size = new Size(600, 254);
+            dataGridWorkForToday.TabIndex = 26;
             // 
             // lblTaskName
             // 
-            this.lblTaskName.AutoSize = true;
-            this.lblTaskName.ForeColor = System.Drawing.Color.White;
-            this.lblTaskName.Location = new System.Drawing.Point(23, 32);
-            this.lblTaskName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTaskName.Name = "lblTaskName";
-            this.lblTaskName.Size = new System.Drawing.Size(73, 12);
-            this.lblTaskName.TabIndex = 13;
-            this.lblTaskName.Text = "Code Name";
+            lblTaskName.AutoSize = true;
+            lblTaskName.Font = new Font("맑은 고딕", 24F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblTaskName.ForeColor = Color.White;
+            lblTaskName.Location = new Point(25, 16);
+            lblTaskName.Margin = new Padding(4, 0, 4, 0);
+            lblTaskName.Name = "lblTaskName";
+            lblTaskName.Size = new Size(192, 45);
+            lblTaskName.TabIndex = 13;
+            lblTaskName.Text = "Code Name";
             // 
             // lblContent
             // 
-            this.lblContent.AutoSize = true;
-            this.lblContent.ForeColor = System.Drawing.Color.White;
-            this.lblContent.Location = new System.Drawing.Point(23, 69);
-            this.lblContent.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblContent.Name = "lblContent";
-            this.lblContent.Size = new System.Drawing.Size(74, 12);
-            this.lblContent.TabIndex = 14;
-            this.lblContent.Text = "Work Details";
+            lblContent.AutoSize = true;
+            lblContent.Font = new Font("맑은 고딕", 24F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblContent.ForeColor = Color.White;
+            lblContent.Location = new Point(23, 105);
+            lblContent.Margin = new Padding(4, 0, 4, 0);
+            lblContent.Name = "lblContent";
+            lblContent.Size = new Size(206, 45);
+            lblContent.TabIndex = 14;
+            lblContent.Text = "Work Details";
             // 
             // lblDate
             // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.ForeColor = System.Drawing.Color.White;
-            this.lblDate.Location = new System.Drawing.Point(23, 106);
-            this.lblDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(30, 12);
-            this.lblDate.TabIndex = 15;
-            this.lblDate.Text = "Date";
+            lblDate.AutoSize = true;
+            lblDate.Font = new Font("맑은 고딕", 24F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblDate.ForeColor = Color.White;
+            lblDate.Location = new Point(25, 193);
+            lblDate.Margin = new Padding(4, 0, 4, 0);
+            lblDate.Name = "lblDate";
+            lblDate.Size = new Size(88, 45);
+            lblDate.TabIndex = 15;
+            lblDate.Text = "Date";
             // 
             // lblWriter
             // 
-            this.lblWriter.AutoSize = true;
-            this.lblWriter.ForeColor = System.Drawing.Color.White;
-            this.lblWriter.Location = new System.Drawing.Point(23, 142);
-            this.lblWriter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblWriter.Name = "lblWriter";
-            this.lblWriter.Size = new System.Drawing.Size(36, 12);
-            this.lblWriter.TabIndex = 16;
-            this.lblWriter.Text = "Writer";
+            lblWriter.AutoSize = true;
+            lblWriter.Font = new Font("맑은 고딕", 24F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblWriter.ForeColor = Color.White;
+            lblWriter.Location = new Point(23, 276);
+            lblWriter.Margin = new Padding(4, 0, 4, 0);
+            lblWriter.Name = "lblWriter";
+            lblWriter.Size = new Size(109, 45);
+            lblWriter.TabIndex = 16;
+            lblWriter.Text = "Writer";
             // 
             // lblWorker
             // 
-            this.lblWorker.AutoSize = true;
-            this.lblWorker.ForeColor = System.Drawing.Color.White;
-            this.lblWorker.Location = new System.Drawing.Point(23, 178); // Worker 라벨 위치 설정
-            this.lblWorker.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblWorker.Name = "lblWorker";
-            this.lblWorker.Size = new System.Drawing.Size(43, 12);
-            this.lblWorker.TabIndex = 18;
-            this.lblWorker.Text = "Worker";
+            lblWorker.AutoSize = true;
+            lblWorker.Font = new Font("맑은 고딕", 24F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblWorker.ForeColor = Color.White;
+            lblWorker.Location = new Point(671, 16);
+            lblWorker.Margin = new Padding(4, 0, 4, 0);
+            lblWorker.Name = "lblWorker";
+            lblWorker.Size = new Size(125, 45);
+            lblWorker.TabIndex = 18;
+            lblWorker.Text = "Worker";
             // 
             // lblPriority
             // 
-            this.lblPriority.AutoSize = true;
-            this.lblPriority.ForeColor = System.Drawing.Color.White;
-            this.lblPriority.Location = new System.Drawing.Point(23, 215);
-            this.lblPriority.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblPriority.Name = "lblPriority";
-            this.lblPriority.Size = new System.Drawing.Size(93, 12);
-            this.lblPriority.TabIndex = 17;
-            this.lblPriority.Text = "Order of Priority";
+            lblPriority.AutoSize = true;
+            lblPriority.Font = new Font("맑은 고딕", 24F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblPriority.ForeColor = Color.White;
+            lblPriority.Location = new Point(671, 105);
+            lblPriority.Margin = new Padding(4, 0, 4, 0);
+            lblPriority.Name = "lblPriority";
+            lblPriority.Size = new Size(122, 45);
+            lblPriority.TabIndex = 17;
+            lblPriority.Text = "Priority";
+            // 
+            // lblSupply
+            // 
+            lblSupply.AutoSize = true;
+            lblSupply.Font = new Font("맑은 고딕", 24F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblSupply.ForeColor = Color.White;
+            lblSupply.Location = new Point(671, 193);
+            lblSupply.Margin = new Padding(4, 0, 4, 0);
+            lblSupply.Name = "lblSupply";
+            lblSupply.Size = new Size(118, 45);
+            lblSupply.TabIndex = 19;
+            lblSupply.Text = "Supply";
+            // 
+            // lblTodayWorkList
+            // 
+            lblTodayWorkList.AutoSize = true;
+            lblTodayWorkList.Font = new Font("맑은 고딕", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblTodayWorkList.ForeColor = Color.White;
+            lblTodayWorkList.Location = new Point(23, 603);
+            lblTodayWorkList.Margin = new Padding(4, 0, 4, 0);
+            lblTodayWorkList.Name = "lblTodayWorkList";
+            lblTodayWorkList.Size = new Size(328, 30);
+            lblTodayWorkList.TabIndex = 24;
+            lblTodayWorkList.Text = "List of tasks completed for today";
+            // 
+            // lblWorkTable
+            // 
+            lblWorkTable.AutoSize = true;
+            lblWorkTable.Font = new Font("맑은 고딕", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblWorkTable.ForeColor = Color.White;
+            lblWorkTable.Location = new Point(23, 356);
+            lblWorkTable.Margin = new Padding(4, 0, 4, 0);
+            lblWorkTable.Name = "lblWorkTable";
+            lblWorkTable.Size = new Size(122, 30);
+            lblWorkTable.TabIndex = 25;
+            lblWorkTable.Text = "Work Table";
+            // 
+            // lblWorkForToday
+            // 
+            lblWorkForToday.AutoSize = true;
+            lblWorkForToday.Font = new Font("맑은 고딕", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblWorkForToday.ForeColor = Color.White;
+            lblWorkForToday.Location = new Point(1504, 25);
+            lblWorkForToday.Margin = new Padding(4, 0, 4, 0);
+            lblWorkForToday.Name = "lblWorkForToday";
+            lblWorkForToday.Size = new Size(181, 30);
+            lblWorkForToday.TabIndex = 27;
+            lblWorkForToday.Text = "Today's Work List";
             // 
             // FormWorkInstruction
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(59)))), ((int)(((byte)(78)))));
-            this.ClientSize = new System.Drawing.Size(1050, 646);
-            this.Controls.Add(this.comboBoxTaskName);
-            this.Controls.Add(this.txtContent);
-            this.Controls.Add(this.datePicker);
-            this.Controls.Add(this.txtWriter);
-            this.Controls.Add(this.txtWorker); // Worker 텍스트 박스를 추가
-            this.Controls.Add(this.comboBoxPriority);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnExportToExcel);
-            this.Controls.Add(this.btnViewDetails);
-            this.Controls.Add(this.lblTaskName);
-            this.Controls.Add(this.lblContent);
-            this.Controls.Add(this.lblDate);
-            this.Controls.Add(this.lblWriter);
-            this.Controls.Add(this.lblWorker); // Worker 라벨을 추가
-            this.Controls.Add(this.lblPriority);
-            this.Controls.Add(this.dataGridWorkInstructions);
-            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "FormWorkInstruction";
-            this.Text = "작업 지시";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridWorkInstructions)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(46, 59, 78);
+            ClientSize = new Size(1920, 1057);
+            Controls.Add(lblWorkForToday);
+            Controls.Add(dataGridWorkForToday);
+            Controls.Add(lblWorkTable);
+            Controls.Add(dataGridTodayWorkList);
+            Controls.Add(lblTodayWorkList);
+            Controls.Add(btnUpdateTodayWorkList);
+            Controls.Add(btnStopWork);
+            Controls.Add(btnStartWork);
+            Controls.Add(comboBoxSupply);
+            Controls.Add(lblSupply);
+            Controls.Add(comboBoxTaskName);
+            Controls.Add(txtContent);
+            Controls.Add(datePicker);
+            Controls.Add(txtWriter);
+            Controls.Add(txtWorker);
+            Controls.Add(comboBoxPriority);
+            Controls.Add(btnSave);
+            Controls.Add(btnUpdate);
+            Controls.Add(btnDelete);
+            Controls.Add(btnExportToExcel);
+            Controls.Add(btnViewDetails);
+            Controls.Add(lblTaskName);
+            Controls.Add(lblContent);
+            Controls.Add(lblDate);
+            Controls.Add(lblWriter);
+            Controls.Add(lblWorker);
+            Controls.Add(lblPriority);
+            Controls.Add(dataGridWorkInstructions);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
+            Margin = new Padding(4);
+            Name = "FormWorkInstruction";
+            Text = "작업 지시";
+            WindowState = FormWindowState.Maximized;
+            ((ISupportInitialize)dataGridWorkInstructions).EndInit();
+            ((ISupportInitialize)dataGridTodayWorkList).EndInit();
+            ((ISupportInitialize)dataGridWorkForToday).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         private void Button_MouseEnter(object sender, EventArgs e)

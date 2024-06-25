@@ -16,11 +16,14 @@ namespace WorkManagementSystem
 
         private void DisplayWorkInstructionDetails()
         {
-            txtDetails.Text = $"작업 이름: {workInstruction.TaskName}\n" +
-                              $"작업 내용: {workInstruction.Content}\n" +
-                              $"날짜: {workInstruction.Date}\n" +
-                              $"작성자: {workInstruction.Writer}\n" +
-                              $"우선순위: {workInstruction.Priority}";
+            txtDetails.Text = $"작업 이름: {workInstruction.CodeName}\r\n" +
+                              $"작업 내용: {workInstruction.WorkDetails}\r\n" +
+                              $"날짜: {workInstruction.Date}\r\n" +
+                              $"작성자: {workInstruction.Writer}\r\n" +
+                              $"우선순위: {workInstruction.Priority}\r\n" +
+                              $"작업자:{workInstruction.Worker}\r\n" +
+                              $"물량:{workInstruction.Supply}\r\n" +
+                              $"현재상태:{workInstruction.Work_Status}\r\n";
         }
     }
 }
