@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Runtime.Versioning;
 using System.Windows.Forms;
 
 namespace WorkManagementSystem
 {
+    [SupportedOSPlatform("windows10.0.177630")]
     public partial class FormMain : Form
     {
         private FormWorkInstruction formWorkInstruction;

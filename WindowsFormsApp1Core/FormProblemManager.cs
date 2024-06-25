@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
+using System.Runtime.Versioning;
 using System.Windows.Forms;
 
 namespace WorkManagementSystem
 {
+    [SupportedOSPlatform("windows10.0.177630")]
     public partial class FormProblemManager : Form
     {
-        private List<Problem> problems;
+        private BindingList<Problem> problems;
 
         public FormProblemManager()
         {
             InitializeComponent();
-            problems = new List<Problem>();
+            problems = new BindingList<Problem>();
             LoadProblems();
             // asdf
         }
@@ -21,6 +25,7 @@ namespace WorkManagementSystem
         {
             // 초기 데이터를 로드하거나 빈 리스트로 시작할 수 있습니다.
             // 여기에 필요한 경우 초기 데이터를 추가할 수 있습니다.
+            dataGridProblems.DefaultCellStyle.ForeColor = Color.Black;
             UpdateDataGrid();
         }
 
@@ -155,6 +160,7 @@ namespace WorkManagementSystem
                 comboBoxStatus.SelectedItem = problem.Status;
             }
         }
+
     }
 
     public class Problem
