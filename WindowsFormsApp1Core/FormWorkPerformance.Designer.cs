@@ -36,219 +36,252 @@ namespace WorkManagementSystem
 
         private void InitializeComponent()
         {
-            this.txtTaskName = new TextBox();
-            this.datePicker = new DateTimePicker();
-            this.txtWorker = new TextBox();
-            this.comboBoxStatus = new ComboBox();
-            this.btnSave = new Button();
-            this.btnUpdate = new Button();
-            this.btnDelete = new Button();
-            this.txtSearch = new TextBox();
-            this.btnSearch = new Button();
-            this.btnExportToExcel = new Button();
-            this.dataGridWorkPerformances = new DataGridView();
-            this.lblTaskName = new Label();
-            this.lblDate = new Label();
-            this.lblWorker = new Label();
-            this.lblStatus = new Label();
-            this.lblSearch = new Label();
-            ((ISupportInitialize)(this.dataGridWorkPerformances)).BeginInit();
-            this.SuspendLayout();
-
+            txtTaskName = new TextBox();
+            datePicker = new DateTimePicker();
+            txtWorker = new TextBox();
+            comboBoxStatus = new ComboBox();
+            btnSave = new Button();
+            btnUpdate = new Button();
+            btnDelete = new Button();
+            txtSearch = new TextBox();
+            btnSearch = new Button();
+            btnExportToExcel = new Button();
+            dataGridWorkPerformances = new DataGridView();
+            lblTaskName = new Label();
+            lblDate = new Label();
+            lblWorker = new Label();
+            lblStatus = new Label();
+            lblSearch = new Label();
+            ((ISupportInitialize)dataGridWorkPerformances).BeginInit();
+            SuspendLayout();
+            // 
             // txtTaskName
-            this.txtTaskName.Location = new Point(120, 30);
-            this.txtTaskName.Name = "txtTaskName";
-            this.txtTaskName.Size = new Size(200, 25);
-            this.txtTaskName.TabIndex = 0;
-
+            // 
+            txtTaskName.Location = new Point(180, 46);
+            txtTaskName.Margin = new Padding(4, 5, 4, 5);
+            txtTaskName.Name = "txtTaskName";
+            txtTaskName.Size = new Size(298, 27);
+            txtTaskName.TabIndex = 0;
+            // 
             // datePicker
-            this.datePicker.Location = new Point(120, 70);
-            this.datePicker.Name = "datePicker";
-            this.datePicker.Size = new Size(200, 25);
-            this.datePicker.TabIndex = 1;
-
+            // 
+            datePicker.Location = new Point(180, 108);
+            datePicker.Margin = new Padding(4, 5, 4, 5);
+            datePicker.Name = "datePicker";
+            datePicker.Size = new Size(298, 27);
+            datePicker.TabIndex = 1;
+            datePicker.Value = new DateTime(2024, 6, 25, 0, 0, 0, 0);
+            datePicker.ValueChanged += datePicker_ValueChanged;
+            // 
             // txtWorker
-            this.txtWorker.Location = new Point(120, 110);
-            this.txtWorker.Name = "txtWorker";
-            this.txtWorker.Size = new Size(200, 25);
-            this.txtWorker.TabIndex = 2;
-
+            // 
+            txtWorker.Location = new Point(180, 169);
+            txtWorker.Margin = new Padding(4, 5, 4, 5);
+            txtWorker.Name = "txtWorker";
+            txtWorker.Size = new Size(298, 27);
+            txtWorker.TabIndex = 2;
+            // 
             // comboBoxStatus
-            this.comboBoxStatus.Items.AddRange(new object[] { "완료", "진행 중", "대기" });
-            this.comboBoxStatus.Location = new Point(120, 150);
-            this.comboBoxStatus.Name = "comboBoxStatus";
-            this.comboBoxStatus.Size = new Size(200, 23);
-            this.comboBoxStatus.TabIndex = 3;
-
+            // 
+            comboBoxStatus.Items.AddRange(new object[] { "완료", "진행 중", "대기" });
+            comboBoxStatus.Location = new Point(180, 231);
+            comboBoxStatus.Margin = new Padding(4, 5, 4, 5);
+            comboBoxStatus.Name = "comboBoxStatus";
+            comboBoxStatus.Size = new Size(298, 28);
+            comboBoxStatus.TabIndex = 3;
+            // 
             // btnSave
-            this.btnSave.Location = new Point(340, 30);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new Size(100, 23);
-            this.btnSave.TabIndex = 4;
-            this.btnSave.Text = "저장";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.ForeColor = Color.Black;
-            this.btnSave.BackColor = Color.White;
-            this.btnSave.FlatStyle = FlatStyle.Flat;
-            this.btnSave.FlatAppearance.BorderColor = Color.White;
-            this.btnSave.FlatAppearance.BorderSize = 1;
-            this.btnSave.MouseEnter += new EventHandler(this.Button_MouseEnter);
-            this.btnSave.MouseLeave += new EventHandler(this.Button_MouseLeave);
-            this.btnSave.Click += new EventHandler(this.btnSave_Click);
-
+            // 
+            btnSave.BackColor = Color.White;
+            btnSave.FlatAppearance.BorderColor = Color.White;
+            btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.ForeColor = Color.Black;
+            btnSave.Location = new Point(510, 46);
+            btnSave.Margin = new Padding(4, 5, 4, 5);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(150, 35);
+            btnSave.TabIndex = 4;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
+            btnSave.MouseEnter += Button_MouseEnter;
+            btnSave.MouseLeave += Button_MouseLeave;
+            // 
             // btnUpdate
-            this.btnUpdate.Location = new Point(450, 70);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new Size(100, 23);
-            this.btnUpdate.TabIndex = 5;
-            this.btnUpdate.Text = "수정";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.ForeColor = Color.Black;
-            this.btnUpdate.BackColor = Color.White;
-            this.btnUpdate.FlatStyle = FlatStyle.Flat;
-            this.btnUpdate.FlatAppearance.BorderColor = Color.White;
-            this.btnUpdate.FlatAppearance.BorderSize = 1;
-            this.btnUpdate.MouseEnter += new EventHandler(this.Button_MouseEnter);
-            this.btnUpdate.MouseLeave += new EventHandler(this.Button_MouseLeave);
-            this.btnUpdate.Click += new EventHandler(this.btnUpdate_Click);
-
+            // 
+            btnUpdate.BackColor = Color.White;
+            btnUpdate.FlatAppearance.BorderColor = Color.White;
+            btnUpdate.FlatStyle = FlatStyle.Flat;
+            btnUpdate.ForeColor = Color.Black;
+            btnUpdate.Location = new Point(510, 106);
+            btnUpdate.Margin = new Padding(4, 5, 4, 5);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(150, 35);
+            btnUpdate.TabIndex = 5;
+            btnUpdate.Text = "Update";
+            btnUpdate.UseVisualStyleBackColor = false;
+            btnUpdate.Click += btnUpdate_Click;
+            btnUpdate.MouseEnter += Button_MouseEnter;
+            btnUpdate.MouseLeave += Button_MouseLeave;
+            // 
             // btnDelete
-            this.btnDelete.Location = new Point(450, 110);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new Size(100, 23);
-            this.btnDelete.TabIndex = 6;
-            this.btnDelete.Text = "삭제";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.ForeColor = Color.Black;
-            this.btnDelete.BackColor = Color.White;
-            this.btnDelete.FlatStyle = FlatStyle.Flat;
-            this.btnDelete.FlatAppearance.BorderColor = Color.White;
-            this.btnDelete.FlatAppearance.BorderSize = 1;
-            this.btnDelete.MouseEnter += new EventHandler(this.Button_MouseEnter);
-            this.btnDelete.MouseLeave += new EventHandler(this.Button_MouseLeave);
-            this.btnDelete.Click += new EventHandler(this.btnDelete_Click);
-
+            // 
+            btnDelete.BackColor = Color.White;
+            btnDelete.FlatAppearance.BorderColor = Color.White;
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.ForeColor = Color.Black;
+            btnDelete.Location = new Point(510, 170);
+            btnDelete.Margin = new Padding(4, 5, 4, 5);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(150, 35);
+            btnDelete.TabIndex = 6;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
+            btnDelete.MouseEnter += Button_MouseEnter;
+            btnDelete.MouseLeave += Button_MouseLeave;
+            // 
             // txtSearch
-            this.txtSearch.Location = new Point(120, 230);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new Size(200, 25);
-            this.txtSearch.TabIndex = 7;
-
+            // 
+            txtSearch.Location = new Point(180, 354);
+            txtSearch.Margin = new Padding(4, 5, 4, 5);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(298, 27);
+            txtSearch.TabIndex = 7;
+            // 
             // btnSearch
-            this.btnSearch.Location = new Point(340, 230);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new Size(100, 23);
-            this.btnSearch.TabIndex = 8;
-            this.btnSearch.Text = "검색";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.ForeColor = Color.Black;
-            this.btnSearch.BackColor = Color.White;
-            this.btnSearch.FlatStyle = FlatStyle.Flat;
-            this.btnSearch.FlatAppearance.BorderColor = Color.White;
-            this.btnSearch.FlatAppearance.BorderSize = 1;
-            this.btnSearch.MouseEnter += new EventHandler(this.Button_MouseEnter);
-            this.btnSearch.MouseLeave += new EventHandler(this.Button_MouseLeave);
-            this.btnSearch.Click += new EventHandler(this.btnSearch_Click);
-
+            // 
+            btnSearch.BackColor = Color.White;
+            btnSearch.FlatAppearance.BorderColor = Color.White;
+            btnSearch.FlatStyle = FlatStyle.Flat;
+            btnSearch.ForeColor = Color.Black;
+            btnSearch.Location = new Point(510, 354);
+            btnSearch.Margin = new Padding(4, 5, 4, 5);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(150, 35);
+            btnSearch.TabIndex = 8;
+            btnSearch.Text = "Search";
+            btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += btnSearch_Click;
+            btnSearch.MouseEnter += Button_MouseEnter;
+            btnSearch.MouseLeave += Button_MouseLeave;
+            // 
             // btnExportToExcel
-            this.btnExportToExcel.Location = new Point(120, 270);
-            this.btnExportToExcel.Name = "btnExportToExcel";
-            this.btnExportToExcel.Size = new Size(100, 23);
-            this.btnExportToExcel.TabIndex = 9;
-            this.btnExportToExcel.Text = "엑셀로 내보내기";
-            this.btnExportToExcel.UseVisualStyleBackColor = true;
-            this.btnExportToExcel.ForeColor = Color.Black;
-            this.btnExportToExcel.BackColor = Color.White;
-            this.btnExportToExcel.FlatStyle = FlatStyle.Flat;
-            this.btnExportToExcel.FlatAppearance.BorderColor = Color.White;
-            this.btnExportToExcel.FlatAppearance.BorderSize = 1;
-            this.btnExportToExcel.MouseEnter += new EventHandler(this.Button_MouseEnter);
-            this.btnExportToExcel.MouseLeave += new EventHandler(this.Button_MouseLeave);
-            this.btnExportToExcel.Click += new EventHandler(this.btnExportToExcel_Click);
-
+            // 
+            btnExportToExcel.BackColor = Color.White;
+            btnExportToExcel.FlatAppearance.BorderColor = Color.White;
+            btnExportToExcel.FlatStyle = FlatStyle.Flat;
+            btnExportToExcel.ForeColor = Color.Black;
+            btnExportToExcel.Location = new Point(180, 415);
+            btnExportToExcel.Margin = new Padding(4, 5, 4, 5);
+            btnExportToExcel.Name = "btnExportToExcel";
+            btnExportToExcel.Size = new Size(150, 35);
+            btnExportToExcel.TabIndex = 9;
+            btnExportToExcel.Text = "Export to Excel";
+            btnExportToExcel.UseVisualStyleBackColor = false;
+            btnExportToExcel.Click += btnExportToExcel_Click;
+            btnExportToExcel.MouseEnter += Button_MouseEnter;
+            btnExportToExcel.MouseLeave += Button_MouseLeave;
+            // 
             // dataGridWorkPerformances
-            this.dataGridWorkPerformances.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridWorkPerformances.Location = new Point(20, 310);
-            this.dataGridWorkPerformances.Name = "dataGridWorkPerformances";
-            this.dataGridWorkPerformances.Size = new Size(850, 350);
-            this.dataGridWorkPerformances.TabIndex = 10;
-            this.dataGridWorkPerformances.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridWorkPerformances.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridWorkPerformances.BackgroundColor = Color.FromArgb(46, 59, 78);
-            this.dataGridWorkPerformances.ForeColor = Color.White;
-            this.dataGridWorkPerformances.GridColor = Color.White;
-
+            // 
+            dataGridWorkPerformances.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridWorkPerformances.BackgroundColor = Color.FromArgb(46, 59, 78);
+            dataGridWorkPerformances.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridWorkPerformances.GridColor = Color.White;
+            dataGridWorkPerformances.Location = new Point(30, 477);
+            dataGridWorkPerformances.Margin = new Padding(4, 5, 4, 5);
+            dataGridWorkPerformances.Name = "dataGridWorkPerformances";
+            dataGridWorkPerformances.RowHeadersWidth = 51;
+            dataGridWorkPerformances.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridWorkPerformances.Size = new Size(1275, 538);
+            dataGridWorkPerformances.TabIndex = 10;
+            // 
             // lblTaskName
-            this.lblTaskName.AutoSize = true;
-            this.lblTaskName.ForeColor = Color.White;
-            this.lblTaskName.Location = new Point(20, 35);
-            this.lblTaskName.Name = "lblTaskName";
-            this.lblTaskName.Size = new Size(55, 13);
-            this.lblTaskName.TabIndex = 11;
-            this.lblTaskName.Text = "작업명";
-
+            // 
+            lblTaskName.AutoSize = true;
+            lblTaskName.ForeColor = Color.White;
+            lblTaskName.Location = new Point(30, 54);
+            lblTaskName.Margin = new Padding(4, 0, 4, 0);
+            lblTaskName.Name = "lblTaskName";
+            lblTaskName.Size = new Size(82, 20);
+            lblTaskName.TabIndex = 11;
+            lblTaskName.Text = "Task name";
+            lblTaskName.Click += lblTaskName_Click;
+            // 
             // lblDate
-            this.lblDate.AutoSize = true;
-            this.lblDate.ForeColor = Color.White;
-            this.lblDate.Location = new Point(20, 75);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new Size(31, 13);
-            this.lblDate.TabIndex = 12;
-            this.lblDate.Text = "날짜";
-
+            // 
+            lblDate.AutoSize = true;
+            lblDate.ForeColor = Color.White;
+            lblDate.Location = new Point(30, 115);
+            lblDate.Margin = new Padding(4, 0, 4, 0);
+            lblDate.Name = "lblDate";
+            lblDate.Size = new Size(86, 20);
+            lblDate.TabIndex = 12;
+            lblDate.Text = "Description";
+            // 
             // lblWorker
-            this.lblWorker.AutoSize = true;
-            this.lblWorker.ForeColor = Color.White;
-            this.lblWorker.Location = new Point(20, 115);
-            this.lblWorker.Name = "lblWorker";
-            this.lblWorker.Size = new Size(43, 13);
-            this.lblWorker.TabIndex = 13;
-            this.lblWorker.Text = "작업자";
-
+            // 
+            lblWorker.AutoSize = true;
+            lblWorker.ForeColor = Color.White;
+            lblWorker.Location = new Point(30, 177);
+            lblWorker.Margin = new Padding(4, 0, 4, 0);
+            lblWorker.Name = "lblWorker";
+            lblWorker.Size = new Size(55, 20);
+            lblWorker.TabIndex = 13;
+            lblWorker.Text = "worker";
+            // 
             // lblStatus
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.ForeColor = Color.White;
-            this.lblStatus.Location = new Point(20, 155);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new Size(31, 13);
-            this.lblStatus.TabIndex = 14;
-            this.lblStatus.Text = "상태";
-
+            // 
+            lblStatus.AutoSize = true;
+            lblStatus.ForeColor = Color.White;
+            lblStatus.Location = new Point(30, 238);
+            lblStatus.Margin = new Padding(4, 0, 4, 0);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new Size(50, 20);
+            lblStatus.TabIndex = 14;
+            lblStatus.Text = "Status";
+            lblStatus.Click += lblStatus_Click;
+            // 
             // lblSearch
-            this.lblSearch.AutoSize = true;
-            this.lblSearch.ForeColor = Color.White;
-            this.lblSearch.Location = new Point(20, 235);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new Size(31, 13);
-            this.lblSearch.TabIndex = 15;
-            this.lblSearch.Text = "검색";
-
+            // 
+            lblSearch.AutoSize = true;
+            lblSearch.ForeColor = Color.White;
+            lblSearch.Location = new Point(30, 362);
+            lblSearch.Margin = new Padding(4, 0, 4, 0);
+            lblSearch.Name = "lblSearch";
+            lblSearch.Size = new Size(54, 20);
+            lblSearch.TabIndex = 15;
+            lblSearch.Text = "Search";
+            // 
             // FormWorkPerformance
-            this.AutoScaleDimensions = new SizeF(6F, 13F);
-            this.AutoScaleMode = AutoScaleMode.Font;
-            this.ClientSize = new Size(900, 700);
-            this.Controls.Add(this.txtTaskName);
-            this.Controls.Add(this.datePicker);
-            this.Controls.Add(this.txtWorker);
-            this.Controls.Add(this.comboBoxStatus);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.btnExportToExcel);
-            this.Controls.Add(this.dataGridWorkPerformances);
-            this.Controls.Add(this.lblTaskName);
-            this.Controls.Add(this.lblDate);
-            this.Controls.Add(this.lblWorker);
-            this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.lblSearch);
-            this.Name = "FormWorkPerformance";
-            this.Text = "작업 실적";
-            this.BackColor = Color.FromArgb(46, 59, 78); // Tech Blue
-            ((ISupportInitialize)(this.dataGridWorkPerformances)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            // 
+            AutoScaleDimensions = new SizeF(9F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(46, 59, 78);
+            ClientSize = new Size(1350, 1055);
+            Controls.Add(txtTaskName);
+            Controls.Add(datePicker);
+            Controls.Add(txtWorker);
+            Controls.Add(comboBoxStatus);
+            Controls.Add(btnSave);
+            Controls.Add(btnUpdate);
+            Controls.Add(btnDelete);
+            Controls.Add(txtSearch);
+            Controls.Add(btnSearch);
+            Controls.Add(btnExportToExcel);
+            Controls.Add(dataGridWorkPerformances);
+            Controls.Add(lblTaskName);
+            Controls.Add(lblDate);
+            Controls.Add(lblWorker);
+            Controls.Add(lblStatus);
+            Controls.Add(lblSearch);
+            Margin = new Padding(4, 5, 4, 5);
+            Name = "FormWorkPerformance";
+            Text = "작업 실적";
+            ((ISupportInitialize)dataGridWorkPerformances).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         private void Button_MouseEnter(object sender, EventArgs e)

@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -7,17 +10,18 @@ namespace WorkManagementSystem
 {
     public partial class FormMonthAttend : Form
     {
-        private List<MonthlyAttendance> monthlyAttendances;
+        private BindingList<MonthlyAttendance> monthlyAttendances;
 
         public FormMonthAttend()
         {
             InitializeComponent();
-            monthlyAttendances = new List<MonthlyAttendance>();
+            monthlyAttendances = new BindingList<MonthlyAttendance>();
             LoadMonthlyAttendances();
         }
 
         private void LoadMonthlyAttendances()
         {
+            dataGridMonthAttend.DefaultCellStyle.ForeColor = Color.Black;
             dataGridMonthAttend.DataSource = null;
             dataGridMonthAttend.DataSource = monthlyAttendances;
         }
@@ -126,7 +130,7 @@ namespace WorkManagementSystem
         {
 
         }
-
+        
         private void lblDate_Click(object sender, EventArgs e)
         {
 
@@ -143,5 +147,6 @@ namespace WorkManagementSystem
         {
             return $"{EmployeeName} - {Date.ToShortDateString()} - {Status}";
         }
+
     }
 }
