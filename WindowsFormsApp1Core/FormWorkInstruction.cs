@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -11,19 +13,38 @@ namespace WorkManagementSystem
         private BindingList<WorkInstruction> workInstructions;
         private BindingList<WorkInstruction> todayWorkList;
         private BindingList<WorkInstruction> workForToday;
+        private int imageIndex = 0;
+        private string basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "사진자료");
+        private string[] imagePaths;
+        private string progressGifPath;
+        int pp = 1;
+        int pp_max = 3;
 
         public FormWorkInstruction()
         {
             InitializeComponent();
             workInstructions = new BindingList<WorkInstruction>();
             todayWorkList = new BindingList<WorkInstruction>();
-            workForToday = new BindingList<WorkInstruction>(); // 초기화
+            workForToday = new BindingList<WorkInstruction>();
             LoadWorkInstructions();
             InitializeComboBoxTaskName();
             InitializeComboBoxPriority();
             InitializeComboBoxSupply();
             LoadTodayWorkList();
-            LoadWorkForToday(); // 오늘 작업 목록 로드
+            LoadWorkForToday();
+
+            imagePaths = new string[]
+            {
+                Path.Combine(basePath, "작업중1.png"),
+                Path.Combine(basePath, "작업중2.png"),
+                Path.Combine(basePath, "작업중3.png")
+            };
+
+            progressGifPath = Path.Combine(basePath, "진행중.gif");
+
+            timer = new Timer();
+            timer.Interval = 1000; // 1초마다 이미지 변경
+            timer.Tick += Timer_Tick;
         }
 
         private void LoadWorkInstructions()
@@ -92,7 +113,7 @@ namespace WorkManagementSystem
             }
             if (dataGridWorkForToday.Columns["Supply"] != null)
             {
-                dataGridWorkForToday.Columns["Supply"].HeaderText = "SupplyAmount";
+                dataGridWorkForToday.Columns["Supply"].HeaderText = "Supply";
             }
             if (dataGridWorkForToday.Columns["Date"] != null)
             {
@@ -351,6 +372,11 @@ namespace WorkManagementSystem
                     selectedWorkInstruction.Work_Status = "진행중";
                     LoadWorkInstructions();
                     MessageBox.Show("작업이 시작되었습니다.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    timer.Start();
+
+                    pictureBoxProgress.Image = Image.FromFile(progressGifPath);
+                    pictureBoxProgress.Visible = true;
+                    lblWorkStatus.Text = "현재 작업이 진행중입니다\r\n\r\n      ※확인해주세요※";
                 }
             }
             else
@@ -375,6 +401,10 @@ namespace WorkManagementSystem
                     LoadWorkInstructions();
                     LoadTodayWorkList();
                     MessageBox.Show("작업이 완료되었습니다.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    timer.Stop();
+                    pictureBoxWorkStatus.Image = null;
+                    pictureBoxProgress.Visible = false; // 작업 완료 시 진행 중 아이콘 숨기기
+                    lblWorkStatus.Text = "현재 작업이 대기중입니다 확인해주세요";
                 }
             }
             else
@@ -385,26 +415,65 @@ namespace WorkManagementSystem
 
         private void btnUpdateTodayWorkList_Click(object sender, EventArgs e)
         {
-            var random = new Random();
-            var tasks = new List<string> { "금속작업", "비금속작업", "금속+비금속작업" };
-            var task = tasks[random.Next(tasks.Count)];
-            int SupplyAmount = 20;
+            int supplyAmount = 20;
 
-            if (workForToday.Count >= 3)
+            if (workForToday.Count < 3)
             {
-                SupplyAmount = workForToday.Last().SupplyAmount + 20;
+                string codeName = $"FR02-A{workForToday.Count}";
+                string workDetails = string.Empty;
+
+                switch (codeName)
+                {
+                    case "FR02-A0":
+                        workDetails = "금속작업";
+                        break;
+                    case "FR02-A1":
+                        workDetails = "비금속작업";
+                        break;
+                    case "FR02-A2":
+                        workDetails = "금속+비금속작업";
+                        break;
+                }
+
+                var newWork = new WorkInstruction
+                {
+                    CodeName = codeName,
+                    WorkDetails = workDetails,
+                    Worker = "김대연",
+                    Supply = $"{supplyAmount}EA"
+                };
+
+                workForToday.Add(newWork);
+            }
+            else
+            {
+                var firstWork = workForToday.First();
+                supplyAmount = int.Parse(firstWork.Supply.Replace("EA", "")) + 20;
+                firstWork.Supply = $"{supplyAmount}EA";
             }
 
-            var newWork = new WorkInstruction
-            {
-                CodeName = $"FR02-A{workForToday.Count}",
-                WorkDetails = task,
-                Worker = "김대연",
-                Supply = $"{SupplyAmount}EA"
-            };
-
-            workForToday.Add(newWork);
             LoadWorkForToday();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+
+            try
+            {
+                imageIndex = (imageIndex + 1) % imagePaths.Length;
+                string imagePath = imagePaths[imageIndex];
+                pictureBoxWorkStatus.Image = Image.FromFile(imagePath);
+            }
+            catch (FileNotFoundException ex)
+            {
+                MessageBox.Show($"이미지를 찾을 수 없습니다: {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                timer.Stop();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"이미지를 로드하는 중 오류가 발생했습니다: {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                timer.Stop();
+            }
         }
     }
 }

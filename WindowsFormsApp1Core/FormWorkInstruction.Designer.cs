@@ -22,10 +22,10 @@ namespace WorkManagementSystem
         private Button btnViewDetails;
         private Button btnStartWork;
         private Button btnStopWork;
-        private Button btnUpdateTodayWorkList; // Update 버튼 추가
+        private Button btnUpdateTodayWorkList;
         private DataGridView dataGridWorkInstructions;
         private DataGridView dataGridTodayWorkList;
-        private DataGridView dataGridWorkForToday; // 오늘 작업 DataGridView 추가
+        private DataGridView dataGridWorkForToday;
         private Label lblTaskName;
         private Label lblContent;
         private Label lblDate;
@@ -35,7 +35,11 @@ namespace WorkManagementSystem
         private Label lblSupply;
         private Label lblTodayWorkList;
         private Label lblWorkTable;
-        private Label lblWorkForToday; // 오늘 작업 라벨 추가
+        private Label lblWorkForToday;
+        private PictureBox pictureBoxWorkStatus;
+        private PictureBox pictureBoxProgress; // 작업 진행 중을 나타내는 PictureBox
+        private Label lblWorkStatus; // 작업 상태를 나타내는 레이블
+        private Timer timer;
 
         protected override void Dispose(bool disposing)
         {
@@ -48,6 +52,7 @@ namespace WorkManagementSystem
 
         private void InitializeComponent()
         {
+            components = new Container();
             comboBoxTaskName = new ComboBox();
             txtContent = new TextBox();
             datePicker = new DateTimePicker();
@@ -76,9 +81,15 @@ namespace WorkManagementSystem
             lblTodayWorkList = new Label();
             lblWorkTable = new Label();
             lblWorkForToday = new Label();
+            pictureBoxWorkStatus = new PictureBox();
+            pictureBoxProgress = new PictureBox();
+            lblWorkStatus = new Label();
+            timer = new Timer(components);
             ((ISupportInitialize)dataGridWorkInstructions).BeginInit();
             ((ISupportInitialize)dataGridTodayWorkList).BeginInit();
             ((ISupportInitialize)dataGridWorkForToday).BeginInit();
+            ((ISupportInitialize)pictureBoxWorkStatus).BeginInit();
+            ((ISupportInitialize)pictureBoxProgress).BeginInit();
             SuspendLayout();
             // 
             // comboBoxTaskName
@@ -91,6 +102,7 @@ namespace WorkManagementSystem
             comboBoxTaskName.Name = "comboBoxTaskName";
             comboBoxTaskName.Size = new Size(235, 38);
             comboBoxTaskName.TabIndex = 0;
+            comboBoxTaskName.SelectedIndexChanged += ComboBoxTaskName_SelectedIndexChanged;
             // 
             // txtContent
             // 
@@ -302,6 +314,7 @@ namespace WorkManagementSystem
             dataGridWorkInstructions.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridWorkInstructions.Size = new Size(992, 200);
             dataGridWorkInstructions.TabIndex = 12;
+            dataGridWorkInstructions.SelectionChanged += dataGridWorkInstructions_SelectionChanged;
             // 
             // dataGridTodayWorkList
             // 
@@ -449,12 +462,48 @@ namespace WorkManagementSystem
             lblWorkForToday.TabIndex = 27;
             lblWorkForToday.Text = "Today's Work List";
             // 
+            // pictureBoxWorkStatus
+            // 
+            pictureBoxWorkStatus.Location = new Point(1087, 637);
+            pictureBoxWorkStatus.Name = "pictureBoxWorkStatus";
+            pictureBoxWorkStatus.Size = new Size(807, 200);
+            pictureBoxWorkStatus.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBoxWorkStatus.TabIndex = 28;
+            pictureBoxWorkStatus.TabStop = false;
+            // 
+            // pictureBoxProgress
+            // 
+            pictureBoxProgress.Location = new Point(1694, 390);
+            pictureBoxProgress.Name = "pictureBoxProgress";
+            pictureBoxProgress.Size = new Size(200, 200);
+            pictureBoxProgress.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBoxProgress.TabIndex = 29;
+            pictureBoxProgress.TabStop = false;
+            pictureBoxProgress.Visible = false;
+            // 
+            // lblWorkStatus
+            // 
+            lblWorkStatus.Font = new Font("맑은 고딕", 36F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblWorkStatus.ForeColor = Color.White;
+            lblWorkStatus.Location = new Point(1060, 390);
+            lblWorkStatus.Margin = new Padding(4, 0, 4, 0);
+            lblWorkStatus.Name = "lblWorkStatus";
+            lblWorkStatus.Size = new Size(615, 200);
+            lblWorkStatus.TabIndex = 30;
+            lblWorkStatus.Text = "현재 작업이 대기중입니다\r\n\r\n      ※확인해주세요※";
+            // 
+            // timer
+            // 
+            timer.Interval = 500;
+            timer.Tick += Timer_Tick;
+            // 
             // FormWorkInstruction
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(46, 59, 78);
             ClientSize = new Size(1920, 1057);
+            Controls.Add(lblWorkStatus);
             Controls.Add(lblWorkForToday);
             Controls.Add(dataGridWorkForToday);
             Controls.Add(lblWorkTable);
@@ -483,6 +532,8 @@ namespace WorkManagementSystem
             Controls.Add(lblWorker);
             Controls.Add(lblPriority);
             Controls.Add(dataGridWorkInstructions);
+            Controls.Add(pictureBoxWorkStatus);
+            Controls.Add(pictureBoxProgress);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Margin = new Padding(4);
             Name = "FormWorkInstruction";
@@ -491,6 +542,8 @@ namespace WorkManagementSystem
             ((ISupportInitialize)dataGridWorkInstructions).EndInit();
             ((ISupportInitialize)dataGridTodayWorkList).EndInit();
             ((ISupportInitialize)dataGridWorkForToday).EndInit();
+            ((ISupportInitialize)pictureBoxWorkStatus).EndInit();
+            ((ISupportInitialize)pictureBoxProgress).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
