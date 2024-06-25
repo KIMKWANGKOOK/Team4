@@ -13,7 +13,7 @@ namespace WorkManagementSystem
         {
             InitializeComponent();
             workInstructions = new List<WorkInstruction>();
-            LoadWorkInstructions();
+            LoadWorkInstructions();//
         }
 
         private void LoadWorkInstructions()
