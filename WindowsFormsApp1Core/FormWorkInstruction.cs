@@ -404,7 +404,7 @@ namespace WorkManagementSystem
                     timer.Stop();
                     pictureBoxWorkStatus.Image = null;
                     pictureBoxProgress.Visible = false; // 작업 완료 시 진행 중 아이콘 숨기기
-                    lblWorkStatus.Text = "현재 작업이 대기중입니다 확인해주세요";
+                    lblWorkStatus.Text = "현재 작업이 대기중입니다\r\n\r\n      ※확인해주세요※";
                 }
             }
             else
