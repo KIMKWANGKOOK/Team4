@@ -8,6 +8,7 @@ namespace WorkManagementSystem
         public string Content { get; set; }
         public DateTime Date { get; set; }
         public string Writer { get; set; }
+        public string Worker { get; set; }
         public string Priority { get; set; }
     }
 }
