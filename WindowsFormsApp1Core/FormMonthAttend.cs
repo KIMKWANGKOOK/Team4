@@ -36,7 +36,7 @@ namespace WorkManagementSystem
                 monthlyAttendances.Add(attendance);
                 LoadMonthlyAttendances();
                 ClearInputs();
-                MessageBox.Show("근태 정보가 저장되었습니다.","정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("근태 정보가 저장되었습니다.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -68,7 +68,7 @@ namespace WorkManagementSystem
                 monthlyAttendances.Remove(selectedAttendance);
                 LoadMonthlyAttendances();
                 ClearInputs();
-                MessageBox.Show("근태 정보가 삭제되었습니다.","정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("근태 정보가 삭제되었습니다.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -115,6 +115,21 @@ namespace WorkManagementSystem
         {
             // 엑셀로 내보내기 구현
             // 필요한 패키지 참조 추가 필요 (예: EPPlus)
+        }
+
+        private void lblEmployeeName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDate_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
