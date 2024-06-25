@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -7,17 +9,18 @@ namespace WorkManagementSystem
 {
     public partial class FormWorkPerformance : Form
     {
-        private List<WorkPerformance> workPerformances;
+        private BindingList <WorkPerformance> workPerformances;
 
         public FormWorkPerformance()
         {
             InitializeComponent();
-            workPerformances = new List<WorkPerformance>();
+            workPerformances = new BindingList<WorkPerformance>();
             LoadWorkPerformances();
         }
 
         private void LoadWorkPerformances()
         {
+            dataGridWorkPerformances.DefaultCellStyle.ForeColor = Color.Black;
             dataGridWorkPerformances.DataSource = null;
             dataGridWorkPerformances.DataSource = workPerformances;
         }
@@ -125,6 +128,21 @@ namespace WorkManagementSystem
         {
             // 엑셀로 내보내기 구현
             // 필요한 패키지 참조 추가 필요 (예: EPPlus)
+        }
+
+        private void lblStatus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void datePicker_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTaskName_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
