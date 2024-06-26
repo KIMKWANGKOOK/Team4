@@ -260,6 +260,7 @@ namespace WorkManagementSystem
             ((ISupportInitialize)dataGridProblems).EndInit();
             ResumeLayout(false);
             PerformLayout();
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void Button_MouseEnter(object sender, EventArgs e)
