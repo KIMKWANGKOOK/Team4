@@ -138,7 +138,12 @@ namespace WorkManagementSystem
 
         private void FormMonthAttend_Load(object sender, EventArgs e)
         {
+            
+        }
 
+        private void dataGridMonthAttend_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
     }
 

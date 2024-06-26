@@ -180,6 +180,7 @@ namespace WorkManagementSystem
             dataGridMonthAttend.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridMonthAttend.Size = new Size(933, 334);
             dataGridMonthAttend.TabIndex = 13;
+            dataGridMonthAttend.CellContentClick += dataGridMonthAttend_CellContentClick;
             // 
             // lblEmployeeName
             // 
@@ -287,6 +288,7 @@ namespace WorkManagementSystem
             ((ISupportInitialize)dataGridMonthAttend).EndInit();
             ResumeLayout(false);
             PerformLayout();
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void Button_MouseEnter(object sender, EventArgs e)
