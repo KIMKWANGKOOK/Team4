@@ -130,8 +130,13 @@ namespace WorkManagementSystem
         {
 
         }
-        
+
         private void lblDate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormMonthAttend_Load(object sender, EventArgs e)
         {
 
         }
@@ -147,6 +152,5 @@ namespace WorkManagementSystem
         {
             return $"{EmployeeName} - {Date.ToShortDateString()} - {Status}";
         }
-
     }
 }
