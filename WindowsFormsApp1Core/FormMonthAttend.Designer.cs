@@ -170,12 +170,14 @@ namespace WorkManagementSystem
             // 
             // dataGridMonthAttend
             // 
+            dataGridMonthAttend.AllowUserToAddRows = false;
             dataGridMonthAttend.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridMonthAttend.BackgroundColor = Color.FromArgb(46, 59, 78);
             dataGridMonthAttend.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridMonthAttend.GridColor = Color.White;
             dataGridMonthAttend.Location = new Point(64, 209);
             dataGridMonthAttend.Name = "dataGridMonthAttend";
+            dataGridMonthAttend.ReadOnly = true;
             dataGridMonthAttend.RowHeadersWidth = 51;
             dataGridMonthAttend.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridMonthAttend.Size = new Size(933, 334);
@@ -284,11 +286,11 @@ namespace WorkManagementSystem
             ForeColor = Color.FromArgb(224, 224, 224);
             Name = "FormMonthAttend";
             Text = "월별 근태";
+            WindowState = FormWindowState.Maximized;
             Load += FormMonthAttend_Load;
             ((ISupportInitialize)dataGridMonthAttend).EndInit();
             ResumeLayout(false);
             PerformLayout();
-            this.WindowState = FormWindowState.Maximized;
         }
 
         private void Button_MouseEnter(object sender, EventArgs e)
