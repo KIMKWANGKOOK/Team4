@@ -65,7 +65,7 @@ namespace WorkManagementSystem
             // 
             // datePicker
             // 
-            datePicker.Location = new Point(154, 104);
+            datePicker.Location = new Point(154, 144);
             datePicker.Name = "datePicker";
             datePicker.Size = new Size(200, 24);
             datePicker.TabIndex = 3;
@@ -73,7 +73,7 @@ namespace WorkManagementSystem
             // comboBoxStatus
             // 
             comboBoxStatus.Items.AddRange(new object[] { "출근", "결근", "지각", "조퇴" });
-            comboBoxStatus.Location = new Point(154, 181);
+            comboBoxStatus.Location = new Point(154, 255);
             comboBoxStatus.Name = "comboBoxStatus";
             comboBoxStatus.Size = new Size(200, 26);
             comboBoxStatus.TabIndex = 5;
@@ -85,7 +85,7 @@ namespace WorkManagementSystem
             btnSave.FlatAppearance.BorderColor = Color.White;
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.ForeColor = Color.FromArgb(17, 17, 17);
-            btnSave.Location = new Point(374, 17);
+            btnSave.Location = new Point(378, 17);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(80, 32);
             btnSave.TabIndex = 6;
@@ -101,7 +101,7 @@ namespace WorkManagementSystem
             btnUpdate.FlatAppearance.BorderColor = Color.White;
             btnUpdate.FlatStyle = FlatStyle.Flat;
             btnUpdate.ForeColor = Color.FromArgb(17, 17, 17);
-            btnUpdate.Location = new Point(374, 59);
+            btnUpdate.Location = new Point(378, 82);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(80, 32);
             btnUpdate.TabIndex = 7;
@@ -118,7 +118,7 @@ namespace WorkManagementSystem
             btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.Font = new Font("Microsoft Sans Serif", 7.8F);
             btnDelete.ForeColor = Color.FromArgb(17, 17, 17);
-            btnDelete.Location = new Point(374, 104);
+            btnDelete.Location = new Point(378, 145);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(80, 32);
             btnDelete.TabIndex = 8;
@@ -130,7 +130,7 @@ namespace WorkManagementSystem
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(154, 220);
+            txtSearch.Location = new Point(154, 314);
             txtSearch.Multiline = true;
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(200, 32);
@@ -142,7 +142,7 @@ namespace WorkManagementSystem
             btnSearch.FlatAppearance.BorderColor = Color.White;
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.ForeColor = Color.FromArgb(17, 17, 17);
-            btnSearch.Location = new Point(374, 220);
+            btnSearch.Location = new Point(378, 314);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(80, 32);
             btnSearch.TabIndex = 11;
@@ -158,7 +158,7 @@ namespace WorkManagementSystem
             btnExportToExcel.FlatAppearance.BorderColor = Color.White;
             btnExportToExcel.FlatStyle = FlatStyle.Flat;
             btnExportToExcel.ForeColor = Color.FromArgb(17, 17, 17);
-            btnExportToExcel.Location = new Point(361, 634);
+            btnExportToExcel.Location = new Point(360, 751);
             btnExportToExcel.Name = "btnExportToExcel";
             btnExportToExcel.Size = new Size(235, 51);
             btnExportToExcel.TabIndex = 12;
@@ -175,7 +175,7 @@ namespace WorkManagementSystem
             dataGridMonthAttend.BackgroundColor = Color.FromArgb(46, 59, 78);
             dataGridMonthAttend.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridMonthAttend.GridColor = Color.White;
-            dataGridMonthAttend.Location = new Point(20, 281);
+            dataGridMonthAttend.Location = new Point(20, 374);
             dataGridMonthAttend.Name = "dataGridMonthAttend";
             dataGridMonthAttend.ReadOnly = true;
             dataGridMonthAttend.RowHeadersWidth = 51;
@@ -188,7 +188,7 @@ namespace WorkManagementSystem
             // 
             lblEmployeeName.Font = new Font("Microsoft Sans Serif", 9F);
             lblEmployeeName.ForeColor = Color.White;
-            lblEmployeeName.Location = new Point(20, 36);
+            lblEmployeeName.Location = new Point(20, 30);
             lblEmployeeName.Name = "lblEmployeeName";
             lblEmployeeName.Size = new Size(128, 27);
             lblEmployeeName.TabIndex = 0;
@@ -199,7 +199,7 @@ namespace WorkManagementSystem
             // 
             lblDate.Font = new Font("Microsoft Sans Serif", 9F);
             lblDate.ForeColor = Color.White;
-            lblDate.Location = new Point(20, 110);
+            lblDate.Location = new Point(20, 151);
             lblDate.Name = "lblDate";
             lblDate.Size = new Size(128, 34);
             lblDate.TabIndex = 2;
@@ -210,7 +210,7 @@ namespace WorkManagementSystem
             // 
             lblStatus.Font = new Font("Microsoft Sans Serif", 9F);
             lblStatus.ForeColor = Color.White;
-            lblStatus.Location = new Point(20, 184);
+            lblStatus.Location = new Point(20, 261);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(100, 23);
             lblStatus.TabIndex = 4;
@@ -220,7 +220,7 @@ namespace WorkManagementSystem
             // 
             lblSearch.Font = new Font("Microsoft Sans Serif", 9F);
             lblSearch.ForeColor = Color.White;
-            lblSearch.Location = new Point(20, 227);
+            lblSearch.Location = new Point(20, 325);
             lblSearch.Name = "lblSearch";
             lblSearch.Size = new Size(94, 31);
             lblSearch.TabIndex = 9;
@@ -228,14 +228,14 @@ namespace WorkManagementSystem
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(154, 141);
+            dateTimePicker1.Location = new Point(154, 198);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(200, 24);
             dateTimePicker1.TabIndex = 14;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(154, 59);
+            textBox1.Location = new Point(154, 82);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(200, 32);
@@ -245,7 +245,7 @@ namespace WorkManagementSystem
             // 
             label1.Font = new Font("Microsoft Sans Serif", 9F);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(20, 146);
+            label1.Location = new Point(20, 203);
             label1.Name = "label1";
             label1.Size = new Size(100, 23);
             label1.TabIndex = 16;
@@ -255,7 +255,7 @@ namespace WorkManagementSystem
             // 
             label2.Font = new Font("Microsoft Sans Serif", 9F);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(20, 68);
+            label2.Location = new Point(20, 92);
             label2.Name = "label2";
             label2.Size = new Size(100, 23);
             label2.TabIndex = 17;
