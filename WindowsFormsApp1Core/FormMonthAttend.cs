@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -117,6 +118,7 @@ namespace WorkManagementSystem
 
         private void btnExportToExcel_Click(object sender, EventArgs e)
         {
+            
             // 엑셀로 내보내기 구현
             // 필요한 패키지 참조 추가 필요 (예: EPPlus)
         }
@@ -138,7 +140,12 @@ namespace WorkManagementSystem
 
         private void FormMonthAttend_Load(object sender, EventArgs e)
         {
+            
+        }
 
+        private void dataGridMonthAttend_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
     }
 

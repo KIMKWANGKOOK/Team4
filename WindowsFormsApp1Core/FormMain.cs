@@ -45,6 +45,7 @@ namespace WorkManagementSystem
             this.menuToPerformance.Text = "계획 및 실적";
             this.menuProblemManager.Text = "문제 관리";
             this.menuDashboard.Text = "대시보드"; // 대시보드 텍스트 설정
+            
 
             this.menuWorkInstruction.Click += new EventHandler(this.MenuWorkInstruction_Click);
             this.menuWorkPerformance.Click += new EventHandler(this.MenuWorkPerformance_Click);
