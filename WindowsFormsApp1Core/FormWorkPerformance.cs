@@ -9,7 +9,7 @@ namespace WorkManagementSystem
 {
     public partial class FormWorkPerformance : Form
     {
-        private BindingList <WorkPerformance> workPerformances;
+        private BindingList<WorkPerformance> workPerformances;
 
         public FormWorkPerformance()
         {
@@ -141,6 +141,11 @@ namespace WorkManagementSystem
         }
 
         private void lblTaskName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblSearch_Click(object sender, EventArgs e)
         {
 
         }

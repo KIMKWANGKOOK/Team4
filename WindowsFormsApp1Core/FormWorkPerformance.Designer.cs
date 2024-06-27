@@ -92,14 +92,14 @@ namespace WorkManagementSystem
             // 
             // btnSave
             // 
-            btnSave.BackColor = Color.White;
+            btnSave.BackColor = Color.FromArgb(224, 224, 224);
             btnSave.FlatAppearance.BorderColor = Color.White;
             btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.ForeColor = Color.Black;
+            btnSave.ForeColor = Color.FromArgb(17, 17, 17);
             btnSave.Location = new Point(510, 46);
             btnSave.Margin = new Padding(4, 5, 4, 5);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(150, 35);
+            btnSave.Size = new Size(82, 32);
             btnSave.TabIndex = 4;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = false;
@@ -109,14 +109,15 @@ namespace WorkManagementSystem
             // 
             // btnUpdate
             // 
-            btnUpdate.BackColor = Color.White;
+            btnUpdate.BackColor = Color.FromArgb(224, 224, 224);
             btnUpdate.FlatAppearance.BorderColor = Color.White;
             btnUpdate.FlatStyle = FlatStyle.Flat;
-            btnUpdate.ForeColor = Color.Black;
+            btnUpdate.Font = new Font("맑은 고딕", 9F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            btnUpdate.ForeColor = Color.FromArgb(17, 17, 17);
             btnUpdate.Location = new Point(510, 106);
             btnUpdate.Margin = new Padding(4, 5, 4, 5);
             btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(150, 35);
+            btnUpdate.Size = new Size(80, 32);
             btnUpdate.TabIndex = 5;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = false;
@@ -126,14 +127,14 @@ namespace WorkManagementSystem
             // 
             // btnDelete
             // 
-            btnDelete.BackColor = Color.White;
+            btnDelete.BackColor = Color.FromArgb(224, 224, 224);
             btnDelete.FlatAppearance.BorderColor = Color.White;
             btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.ForeColor = Color.Black;
+            btnDelete.ForeColor = Color.FromArgb(17, 17, 17);
             btnDelete.Location = new Point(510, 170);
             btnDelete.Margin = new Padding(4, 5, 4, 5);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(150, 35);
+            btnDelete.Size = new Size(80, 32);
             btnDelete.TabIndex = 6;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = false;
@@ -143,7 +144,7 @@ namespace WorkManagementSystem
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(180, 354);
+            txtSearch.Location = new Point(180, 295);
             txtSearch.Margin = new Padding(4, 5, 4, 5);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(298, 27);
@@ -151,14 +152,14 @@ namespace WorkManagementSystem
             // 
             // btnSearch
             // 
-            btnSearch.BackColor = Color.White;
+            btnSearch.BackColor = Color.FromArgb(224, 224, 224);
             btnSearch.FlatAppearance.BorderColor = Color.White;
             btnSearch.FlatStyle = FlatStyle.Flat;
-            btnSearch.ForeColor = Color.Black;
-            btnSearch.Location = new Point(510, 354);
+            btnSearch.ForeColor = Color.FromArgb(17, 17, 17);
+            btnSearch.Location = new Point(510, 295);
             btnSearch.Margin = new Padding(4, 5, 4, 5);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(150, 35);
+            btnSearch.Size = new Size(80, 32);
             btnSearch.TabIndex = 8;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = false;
@@ -168,11 +169,11 @@ namespace WorkManagementSystem
             // 
             // btnExportToExcel
             // 
-            btnExportToExcel.BackColor = Color.White;
+            btnExportToExcel.BackColor = Color.FromArgb(224, 224, 224);
             btnExportToExcel.FlatAppearance.BorderColor = Color.White;
             btnExportToExcel.FlatStyle = FlatStyle.Flat;
-            btnExportToExcel.ForeColor = Color.Black;
-            btnExportToExcel.Location = new Point(180, 415);
+            btnExportToExcel.ForeColor = Color.FromArgb(17, 17, 17);
+            btnExportToExcel.Location = new Point(284, 753);
             btnExportToExcel.Margin = new Padding(4, 5, 4, 5);
             btnExportToExcel.Name = "btnExportToExcel";
             btnExportToExcel.Size = new Size(150, 35);
@@ -185,26 +186,30 @@ namespace WorkManagementSystem
             // 
             // dataGridWorkPerformances
             // 
+            dataGridWorkPerformances.AllowUserToAddRows = false;
+            dataGridWorkPerformances.AllowUserToDeleteRows = false;
             dataGridWorkPerformances.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridWorkPerformances.BackgroundColor = Color.FromArgb(46, 59, 78);
             dataGridWorkPerformances.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridWorkPerformances.GridColor = Color.White;
-            dataGridWorkPerformances.Location = new Point(30, 477);
+            dataGridWorkPerformances.Location = new Point(13, 349);
             dataGridWorkPerformances.Margin = new Padding(4, 5, 4, 5);
             dataGridWorkPerformances.Name = "dataGridWorkPerformances";
+            dataGridWorkPerformances.ReadOnly = true;
             dataGridWorkPerformances.RowHeadersWidth = 51;
             dataGridWorkPerformances.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridWorkPerformances.Size = new Size(1275, 538);
+            dataGridWorkPerformances.Size = new Size(736, 381);
             dataGridWorkPerformances.TabIndex = 10;
             // 
             // lblTaskName
             // 
             lblTaskName.AutoSize = true;
+            lblTaskName.Font = new Font("Microsoft Sans Serif", 12F);
             lblTaskName.ForeColor = Color.White;
             lblTaskName.Location = new Point(30, 54);
             lblTaskName.Margin = new Padding(4, 0, 4, 0);
             lblTaskName.Name = "lblTaskName";
-            lblTaskName.Size = new Size(82, 20);
+            lblTaskName.Size = new Size(110, 25);
             lblTaskName.TabIndex = 11;
             lblTaskName.Text = "Task name";
             lblTaskName.Click += lblTaskName_Click;
@@ -212,33 +217,36 @@ namespace WorkManagementSystem
             // lblDate
             // 
             lblDate.AutoSize = true;
+            lblDate.Font = new Font("Microsoft Sans Serif", 12F);
             lblDate.ForeColor = Color.White;
             lblDate.Location = new Point(30, 115);
             lblDate.Margin = new Padding(4, 0, 4, 0);
             lblDate.Name = "lblDate";
-            lblDate.Size = new Size(86, 20);
+            lblDate.Size = new Size(109, 25);
             lblDate.TabIndex = 12;
             lblDate.Text = "Description";
             // 
             // lblWorker
             // 
             lblWorker.AutoSize = true;
+            lblWorker.Font = new Font("Microsoft Sans Serif", 12F);
             lblWorker.ForeColor = Color.White;
             lblWorker.Location = new Point(30, 177);
             lblWorker.Margin = new Padding(4, 0, 4, 0);
             lblWorker.Name = "lblWorker";
-            lblWorker.Size = new Size(55, 20);
+            lblWorker.Size = new Size(70, 25);
             lblWorker.TabIndex = 13;
             lblWorker.Text = "worker";
             // 
             // lblStatus
             // 
             lblStatus.AutoSize = true;
+            lblStatus.Font = new Font("Microsoft Sans Serif", 12F);
             lblStatus.ForeColor = Color.White;
             lblStatus.Location = new Point(30, 238);
             lblStatus.Margin = new Padding(4, 0, 4, 0);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(50, 20);
+            lblStatus.Size = new Size(68, 25);
             lblStatus.TabIndex = 14;
             lblStatus.Text = "Status";
             lblStatus.Click += lblStatus_Click;
@@ -246,13 +254,15 @@ namespace WorkManagementSystem
             // lblSearch
             // 
             lblSearch.AutoSize = true;
+            lblSearch.Font = new Font("Microsoft Sans Serif", 12F);
             lblSearch.ForeColor = Color.White;
-            lblSearch.Location = new Point(30, 362);
+            lblSearch.Location = new Point(30, 294);
             lblSearch.Margin = new Padding(4, 0, 4, 0);
             lblSearch.Name = "lblSearch";
-            lblSearch.Size = new Size(54, 20);
+            lblSearch.Size = new Size(75, 25);
             lblSearch.TabIndex = 15;
             lblSearch.Text = "Search";
+            lblSearch.Click += lblSearch_Click;
             // 
             // FormWorkPerformance
             // 
