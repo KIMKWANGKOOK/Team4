@@ -60,34 +60,34 @@ namespace WorkManagementSystem
             txtEmployeeName.Location = new Point(154, 17);
             txtEmployeeName.Multiline = true;
             txtEmployeeName.Name = "txtEmployeeName";
-            txtEmployeeName.Size = new Size(200, 30);
+            txtEmployeeName.Size = new Size(200, 32);
             txtEmployeeName.TabIndex = 1;
             // 
             // datePicker
             // 
-            datePicker.Location = new Point(154, 96);
+            datePicker.Location = new Point(154, 104);
             datePicker.Name = "datePicker";
-            datePicker.Size = new Size(200, 27);
+            datePicker.Size = new Size(200, 24);
             datePicker.TabIndex = 3;
             // 
             // comboBoxStatus
             // 
             comboBoxStatus.Items.AddRange(new object[] { "출근", "결근", "지각", "조퇴" });
-            comboBoxStatus.Location = new Point(154, 171);
+            comboBoxStatus.Location = new Point(154, 181);
             comboBoxStatus.Name = "comboBoxStatus";
-            comboBoxStatus.Size = new Size(200, 28);
+            comboBoxStatus.Size = new Size(200, 26);
             comboBoxStatus.TabIndex = 5;
             comboBoxStatus.SelectedIndexChanged += comboBoxStatus_SelectedIndexChanged;
             // 
             // btnSave
             // 
-            btnSave.BackColor = Color.White;
+            btnSave.BackColor = Color.FromArgb(224, 224, 224);
             btnSave.FlatAppearance.BorderColor = Color.White;
             btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.ForeColor = Color.Black;
+            btnSave.ForeColor = Color.FromArgb(17, 17, 17);
             btnSave.Location = new Point(374, 17);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(114, 32);
+            btnSave.Size = new Size(80, 32);
             btnSave.TabIndex = 6;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = false;
@@ -97,13 +97,13 @@ namespace WorkManagementSystem
             // 
             // btnUpdate
             // 
-            btnUpdate.BackColor = Color.White;
+            btnUpdate.BackColor = Color.FromArgb(224, 224, 224);
             btnUpdate.FlatAppearance.BorderColor = Color.White;
             btnUpdate.FlatStyle = FlatStyle.Flat;
-            btnUpdate.ForeColor = Color.Black;
+            btnUpdate.ForeColor = Color.FromArgb(17, 17, 17);
             btnUpdate.Location = new Point(374, 59);
             btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(114, 29);
+            btnUpdate.Size = new Size(80, 32);
             btnUpdate.TabIndex = 7;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = false;
@@ -113,14 +113,14 @@ namespace WorkManagementSystem
             // 
             // btnDelete
             // 
-            btnDelete.BackColor = Color.White;
+            btnDelete.BackColor = Color.FromArgb(224, 224, 224);
             btnDelete.FlatAppearance.BorderColor = Color.White;
             btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Font = new Font("맑은 고딕", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            btnDelete.ForeColor = Color.Black;
-            btnDelete.Location = new Point(374, 96);
+            btnDelete.Font = new Font("Microsoft Sans Serif", 7.8F);
+            btnDelete.ForeColor = Color.FromArgb(17, 17, 17);
+            btnDelete.Location = new Point(374, 104);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(114, 34);
+            btnDelete.Size = new Size(80, 32);
             btnDelete.TabIndex = 8;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = false;
@@ -130,21 +130,21 @@ namespace WorkManagementSystem
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(154, 213);
+            txtSearch.Location = new Point(154, 220);
             txtSearch.Multiline = true;
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(200, 34);
+            txtSearch.Size = new Size(200, 32);
             txtSearch.TabIndex = 10;
             // 
             // btnSearch
             // 
-            btnSearch.BackColor = Color.White;
+            btnSearch.BackColor = Color.FromArgb(224, 224, 224);
             btnSearch.FlatAppearance.BorderColor = Color.White;
             btnSearch.FlatStyle = FlatStyle.Flat;
-            btnSearch.ForeColor = Color.Black;
-            btnSearch.Location = new Point(374, 213);
+            btnSearch.ForeColor = Color.FromArgb(17, 17, 17);
+            btnSearch.Location = new Point(374, 220);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(114, 34);
+            btnSearch.Size = new Size(80, 32);
             btnSearch.TabIndex = 11;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = false;
@@ -154,10 +154,10 @@ namespace WorkManagementSystem
             // 
             // btnExportToExcel
             // 
-            btnExportToExcel.BackColor = Color.White;
+            btnExportToExcel.BackColor = Color.FromArgb(224, 224, 224);
             btnExportToExcel.FlatAppearance.BorderColor = Color.White;
             btnExportToExcel.FlatStyle = FlatStyle.Flat;
-            btnExportToExcel.ForeColor = Color.Black;
+            btnExportToExcel.ForeColor = Color.FromArgb(17, 17, 17);
             btnExportToExcel.Location = new Point(361, 634);
             btnExportToExcel.Name = "btnExportToExcel";
             btnExportToExcel.Size = new Size(235, 51);
@@ -186,9 +186,9 @@ namespace WorkManagementSystem
             // 
             // lblEmployeeName
             // 
-            lblEmployeeName.Font = new Font("맑은 고딕", 9F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblEmployeeName.Font = new Font("Microsoft Sans Serif", 9F);
             lblEmployeeName.ForeColor = Color.White;
-            lblEmployeeName.Location = new Point(20, 30);
+            lblEmployeeName.Location = new Point(20, 36);
             lblEmployeeName.Name = "lblEmployeeName";
             lblEmployeeName.Size = new Size(128, 27);
             lblEmployeeName.TabIndex = 0;
@@ -197,9 +197,9 @@ namespace WorkManagementSystem
             // 
             // lblDate
             // 
-            lblDate.Font = new Font("맑은 고딕", 9F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblDate.Font = new Font("Microsoft Sans Serif", 9F);
             lblDate.ForeColor = Color.White;
-            lblDate.Location = new Point(20, 101);
+            lblDate.Location = new Point(20, 110);
             lblDate.Name = "lblDate";
             lblDate.Size = new Size(128, 34);
             lblDate.TabIndex = 2;
@@ -208,9 +208,9 @@ namespace WorkManagementSystem
             // 
             // lblStatus
             // 
-            lblStatus.Font = new Font("맑은 고딕", 9F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblStatus.Font = new Font("Microsoft Sans Serif", 9F);
             lblStatus.ForeColor = Color.White;
-            lblStatus.Location = new Point(20, 176);
+            lblStatus.Location = new Point(20, 184);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(100, 23);
             lblStatus.TabIndex = 4;
@@ -218,9 +218,9 @@ namespace WorkManagementSystem
             // 
             // lblSearch
             // 
-            lblSearch.Font = new Font("맑은 고딕", 9F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblSearch.Font = new Font("Microsoft Sans Serif", 9F);
             lblSearch.ForeColor = Color.White;
-            lblSearch.Location = new Point(20, 220);
+            lblSearch.Location = new Point(20, 227);
             lblSearch.Name = "lblSearch";
             lblSearch.Size = new Size(94, 31);
             lblSearch.TabIndex = 9;
@@ -228,24 +228,24 @@ namespace WorkManagementSystem
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(154, 134);
+            dateTimePicker1.Location = new Point(154, 141);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(200, 27);
+            dateTimePicker1.Size = new Size(200, 24);
             dateTimePicker1.TabIndex = 14;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(154, 53);
+            textBox1.Location = new Point(154, 59);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(200, 33);
+            textBox1.Size = new Size(200, 32);
             textBox1.TabIndex = 15;
             // 
             // label1
             // 
-            label1.Font = new Font("맑은 고딕", 9F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            label1.Font = new Font("Microsoft Sans Serif", 9F);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(20, 139);
+            label1.Location = new Point(20, 146);
             label1.Name = "label1";
             label1.Size = new Size(100, 23);
             label1.TabIndex = 16;
@@ -253,9 +253,9 @@ namespace WorkManagementSystem
             // 
             // label2
             // 
-            label2.Font = new Font("맑은 고딕", 9F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            label2.Font = new Font("Microsoft Sans Serif", 9F);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(20, 63);
+            label2.Location = new Point(20, 68);
             label2.Name = "label2";
             label2.Size = new Size(100, 23);
             label2.TabIndex = 17;
@@ -264,7 +264,7 @@ namespace WorkManagementSystem
             // FormMonthAttend
             // 
             BackColor = Color.FromArgb(46, 59, 78);
-            ClientSize = new Size(998, 697);
+            ClientSize = new Size(1902, 1033);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(textBox1);
@@ -283,7 +283,7 @@ namespace WorkManagementSystem
             Controls.Add(btnSearch);
             Controls.Add(btnExportToExcel);
             Controls.Add(dataGridMonthAttend);
-            Font = new Font("맑은 고딕", 9F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            Font = new Font("Microsoft Sans Serif", 9F);
             ForeColor = Color.FromArgb(224, 224, 224);
             Name = "FormMonthAttend";
             Text = "월별 근태";
