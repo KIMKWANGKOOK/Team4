@@ -22,7 +22,7 @@ namespace WorkManagementSystem
                               $"작성자: {workInstruction.Writer}\r\n" +
                               $"우선순위: {workInstruction.Priority}\r\n" +
                               $"작업자:{workInstruction.Worker}\r\n" +
-                              $"물량:{workInstruction.Supply}\r\n" +
+                              $"물량:{workInstruction.Quantity}\r\n" +
                               $"현재상태:{workInstruction.Work_Status}\r\n";
         }
     }

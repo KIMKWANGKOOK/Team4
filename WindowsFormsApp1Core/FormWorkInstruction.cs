@@ -19,8 +19,8 @@ namespace WorkManagementSystem
         private string basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "사진자료");
         private string[] imagePaths;
         private string progressGifPath;
-        int pp = 1;
-        int pp_max = 3;
+        private Timer processTimer;
+        private Timer checkCompletionTimer;
 
         public FormWorkInstruction()
         {
@@ -31,9 +31,10 @@ namespace WorkManagementSystem
             LoadWorkInstructions();
             InitializeComboBoxTaskName();
             InitializeComboBoxPriority();
-            InitializeComboBoxSupply();
+            InitializeComboBoxQuantity();
             LoadTodayWorkList();
             LoadWorkForToday();
+            InitializeDataGrids();
 
             imagePaths = new string[]
             {
@@ -44,9 +45,40 @@ namespace WorkManagementSystem
 
             progressGifPath = Path.Combine(basePath, "진행중.gif");
 
-            timer = new Timer();
-            timer.Interval = 1000; // 1초마다 이미지 변경
-            timer.Tick += Timer_Tick;
+            processTimer = new Timer();
+            processTimer.Interval = 1000; // 1초마다 이미지 변경
+            processTimer.Tick += Timer_Tick;
+        }
+
+        private void InitializeDataGrids()
+        {
+            dataGridWorkInstructions.CellFormatting += DataGridWorkInstructions_CellFormatting;
+            dataGridTodayWorkList.CellFormatting += DataGridTodayWorkList_CellFormatting;
+            dataGridWorkForToday.CellFormatting += DataGridWorkForToday_CellFormatting;
+        }
+
+        private void DataGridWorkInstructions_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            FormatQuantityColumn(e, dataGridWorkInstructions);
+        }
+
+        private void DataGridTodayWorkList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            FormatQuantityColumn(e, dataGridTodayWorkList);
+        }
+
+        private void DataGridWorkForToday_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            FormatQuantityColumn(e, dataGridWorkForToday);
+        }
+
+        private void FormatQuantityColumn(DataGridViewCellFormattingEventArgs e, DataGridView grid)
+        {
+            if (e.ColumnIndex == grid.Columns["Quantity"].Index && e.Value != null)
+            {
+                e.Value = $"{e.Value} EA";
+                e.FormattingApplied = true;
+            }
         }
 
         private void LoadWorkInstructions()
@@ -57,9 +89,9 @@ namespace WorkManagementSystem
             {
                 dataGridWorkInstructions.Columns.Add("Worker", "Worker");
             }
-            if (!dataGridWorkInstructions.Columns.Contains("Supply"))
+            if (!dataGridWorkInstructions.Columns.Contains("Quantity"))
             {
-                dataGridWorkInstructions.Columns.Add("Supply", "Supply");
+                dataGridWorkInstructions.Columns.Add("Quantity", "Quantity");
             }
         }
 
@@ -87,9 +119,9 @@ namespace WorkManagementSystem
             {
                 dataGridTodayWorkList.Columns["Worker"].HeaderText = "Worker";
             }
-            if (dataGridTodayWorkList.Columns["Supply"] != null)
+            if (dataGridTodayWorkList.Columns["Quantity"] != null)
             {
-                dataGridTodayWorkList.Columns["Supply"].HeaderText = "Supply";
+                dataGridTodayWorkList.Columns["Quantity"].HeaderText = "Quantity";
             }
             if (dataGridTodayWorkList.Columns["Priority"] != null)
             {
@@ -113,9 +145,9 @@ namespace WorkManagementSystem
             {
                 dataGridWorkForToday.Columns["WorkDetails"].HeaderText = "Work Details";
             }
-            if (dataGridWorkForToday.Columns["Supply"] != null)
+            if (dataGridWorkForToday.Columns["Quantity"] != null)
             {
-                dataGridWorkForToday.Columns["Supply"].HeaderText = "Supply";
+                dataGridWorkForToday.Columns["Quantity"].HeaderText = "Quantity";
             }
             if (dataGridWorkForToday.Columns["Date"] != null)
             {
@@ -160,15 +192,15 @@ namespace WorkManagementSystem
             });
         }
 
-        private void InitializeComboBoxSupply()
+        private void InitializeComboBoxQuantity()
         {
-            comboBoxSupply.Items.AddRange(new object[]
+            comboBoxQuantity.Items.AddRange(new object[]
             {
-                "1EA",
-                "2EA",
-                "3EA",
-                "4EA",
-                "5EA"
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
             });
         }
 
@@ -211,7 +243,7 @@ namespace WorkManagementSystem
                     Writer = txtWriter.Text,
                     Priority = comboBoxPriority.SelectedItem.ToString(),
                     Worker = txtWorker.Text,
-                    Supply = comboBoxSupply.SelectedItem.ToString(),
+                    Quantity = int.Parse(comboBoxQuantity.SelectedItem.ToString()),
                     Work_Status = "대기중"
                 };
                 workInstructions.Add(workInstruction);
@@ -236,7 +268,7 @@ namespace WorkManagementSystem
                     selectedWorkInstruction.Writer = txtWriter.Text;
                     selectedWorkInstruction.Priority = comboBoxPriority.SelectedItem.ToString();
                     selectedWorkInstruction.Worker = txtWorker.Text;
-                    selectedWorkInstruction.Supply = comboBoxSupply.SelectedItem.ToString();
+                    selectedWorkInstruction.Quantity = int.Parse(comboBoxQuantity.SelectedItem.ToString());
                     selectedWorkInstruction.Work_Status = "대기중";
 
                     LoadWorkInstructions();
@@ -283,7 +315,7 @@ namespace WorkManagementSystem
                     txtWriter.Text = selectedWorkInstruction.Writer;
                     comboBoxPriority.SelectedItem = selectedWorkInstruction.Priority;
                     txtWorker.Text = selectedWorkInstruction.Worker;
-                    comboBoxSupply.SelectedItem = selectedWorkInstruction.Supply;
+                    comboBoxQuantity.SelectedItem = selectedWorkInstruction.Quantity.ToString();
                 }
             }
         }
@@ -320,9 +352,9 @@ namespace WorkManagementSystem
                 return false;
             }
 
-            if (comboBoxSupply.SelectedItem == null)
+            if (comboBoxQuantity.SelectedItem == null)
             {
-                MessageBox.Show("공급량을 선택하세요.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("수량을 선택하세요.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
@@ -337,7 +369,7 @@ namespace WorkManagementSystem
             txtWriter.Text = string.Empty;
             comboBoxPriority.SelectedItem = null;
             txtWorker.Text = string.Empty;
-            comboBoxSupply.SelectedItem = null;
+            comboBoxQuantity.SelectedItem = null;
         }
 
         private void btnExportToExcel_Click(object sender, EventArgs e)
@@ -366,7 +398,7 @@ namespace WorkManagementSystem
             {
                 var selectedRow = dataGridWorkInstructions.SelectedRows[0];
                 var selectedWorkInstruction = selectedRow.DataBoundItem as WorkInstruction;
-                string details = $"작업명: {selectedWorkInstruction.CodeName}\n내용: {selectedWorkInstruction.WorkDetails}\n날짜: {selectedWorkInstruction.Date}\n작성자: {selectedWorkInstruction.Writer}\n우선순위: {selectedWorkInstruction.Priority}\n작업자: {selectedWorkInstruction.Worker}\n공급량: {selectedWorkInstruction.Supply}";
+                string details = $"작업명: {selectedWorkInstruction.CodeName}\n내용: {selectedWorkInstruction.WorkDetails}\n날짜: {selectedWorkInstruction.Date}\n작성자: {selectedWorkInstruction.Writer}\n우선순위: {selectedWorkInstruction.Priority}\n작업자: {selectedWorkInstruction.Worker}\n수량: {selectedWorkInstruction.Quantity} EA";
 
                 DialogResult result = MessageBox.Show($"작업을 진행하시겠습니까?\n\n{details}", "작업 시작", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
@@ -374,11 +406,14 @@ namespace WorkManagementSystem
                     selectedWorkInstruction.Work_Status = "진행중";
                     LoadWorkInstructions();
                     MessageBox.Show("작업이 시작되었습니다.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    timer.Start();
+                    processTimer.Start();
 
                     pictureBoxProgress.Image = Image.FromFile(progressGifPath);
                     pictureBoxProgress.Visible = true;
                     lblWorkStatus.Text = "현재 작업이 진행중입니다\r\n\r\n      ※확인해주세요※";
+
+                    // PLC 공정 시작
+                    StartPLCProcess(selectedWorkInstruction);
                 }
             }
             else
@@ -403,7 +438,7 @@ namespace WorkManagementSystem
                     LoadWorkInstructions();
                     LoadTodayWorkList();
                     MessageBox.Show("작업이 완료되었습니다.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    timer.Stop();
+                    processTimer.Stop();
                     pictureBoxWorkStatus.Image = null;
                     pictureBoxProgress.Visible = false; // 작업 완료 시 진행 중 아이콘 숨기기
                     lblWorkStatus.Text = "현재 작업이 대기중입니다\r\n\r\n      ※확인해주세요※";
@@ -417,7 +452,7 @@ namespace WorkManagementSystem
 
         private void btnUpdateTodayWorkList_Click(object sender, EventArgs e)
         {
-            int supplyAmount = 20;
+            int quantity = 20;
 
             if (workForToday.Count < 3)
             {
@@ -442,7 +477,7 @@ namespace WorkManagementSystem
                     CodeName = codeName,
                     WorkDetails = workDetails,
                     Worker = "김대연",
-                    Supply = $"{supplyAmount}EA"
+                    Quantity = quantity
                 };
 
                 workForToday.Add(newWork);
@@ -450,8 +485,8 @@ namespace WorkManagementSystem
             else
             {
                 var firstWork = workForToday.First();
-                supplyAmount = int.Parse(firstWork.Supply.Replace("EA", "")) + 20;
-                firstWork.Supply = $"{supplyAmount}EA";
+                quantity = firstWork.Quantity + 20;
+                firstWork.Quantity = quantity;
             }
 
             LoadWorkForToday();
@@ -459,7 +494,6 @@ namespace WorkManagementSystem
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-
             try
             {
                 imageIndex = (imageIndex + 1) % imagePaths.Length;
@@ -469,12 +503,12 @@ namespace WorkManagementSystem
             catch (FileNotFoundException ex)
             {
                 MessageBox.Show($"이미지를 찾을 수 없습니다: {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                timer.Stop();
+                processTimer.Stop();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"이미지를 로드하는 중 오류가 발생했습니다: {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                timer.Stop();
+                processTimer.Stop();
             }
         }
 
@@ -506,6 +540,94 @@ namespace WorkManagementSystem
             lb_state.ForeColor = Color.Red;
             lb_state.Text = "연결닫힘";
             plc01.Close();
+        }
+
+        private void StartPLCProcess(WorkInstruction workInstruction)
+        {
+            try
+            {
+                int setResult = 0;
+                string device = string.Empty;
+
+                if (workInstruction.CodeName == "FR02-A0")
+                {
+                    device = "X00"; // 금속 작업
+                }
+                else if (workInstruction.CodeName == "FR02-A1")
+                {
+                    device = "X01"; // 비금속 작업
+                }
+
+                setResult = plc01.SetDevice(device, 1);
+                if (setResult == 0)
+                {
+                    MessageBox.Show($"{workInstruction.CodeName} 공정이 시작되었습니다.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    CheckProcessCompletion(workInstruction);
+                }
+                else
+                {
+                    MessageBox.Show($"PLC {workInstruction.CodeName} 공정 시작에 실패했습니다. 오류 코드: {setResult}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"PLC 공정 시작 중 예외가 발생했습니다: {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void StopPLCProcess(string device)
+        {
+            try
+            {
+                plc01.SetDevice(device, 0);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"PLC 공정 중지 중 예외가 발생했습니다: {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CheckProcessCompletion(WorkInstruction workInstruction)
+        {
+            checkCompletionTimer = new Timer();
+            checkCompletionTimer.Interval = 1000;
+            checkCompletionTimer.Tick += (s, e) =>
+            {
+                try
+                {
+                    int completionValue;
+                    string completionDevice = workInstruction.CodeName == "FR02-A0" ? "D0" : "D1";
+
+                    plc01.GetDevice(completionDevice, out completionValue);
+
+                    if (completionValue >= workInstruction.Quantity)
+                    {
+                        checkCompletionTimer.Stop();
+                        string device = workInstruction.CodeName == "FR02-A0" ? "X00" : "X01";
+                        StopPLCProcess(device);
+
+                        workInstruction.Work_Status = "완료";
+                        Invoke(new Action(() =>
+                        {
+                            workInstructions.Remove(workInstruction);
+                            todayWorkList.Add(workInstruction);
+                            LoadWorkInstructions();
+                            LoadTodayWorkList();
+                            pictureBoxWorkStatus.Image = null;
+                            pictureBoxProgress.Visible = false;
+                            lblWorkStatus.Text = "현재 작업이 완료되었습니다\r\n\r\n      ※확인해주세요※";
+                            MessageBox.Show("작업이 완료되었습니다.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    checkCompletionTimer.Stop();
+                    MessageBox.Show($"D 값을 읽는 중 예외가 발생했습니다: {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            };
+            checkCompletionTimer.Start();
         }
     }
 }

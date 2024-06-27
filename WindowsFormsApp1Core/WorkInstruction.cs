@@ -10,7 +10,8 @@ namespace WorkManagementSystem
         public string Writer { get; set; }
         public string Worker { get; set; }
         public string Priority { get; set; }
-        public string Supply { get; set; }
+        public int Quantity { get; set; }
         public string Work_Status { get; set; }
+
     }
 }
