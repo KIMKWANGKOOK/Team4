@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClosedXML.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -158,6 +159,41 @@ namespace WorkManagementSystem
                 txtDescription.Text = problem.Description;
                 datePickerReported.Value = problem.ReportedDate;
                 comboBoxStatus.SelectedItem = problem.Status;
+            }
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            // SaveFileDialog를 사용하여 파일 저장 경로와 이름을 설정
+            using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "Excel Workbook|*.xlsx" })
+            {
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    // ClosedXML을 사용하여 DataGridView의 데이터를 엑셀 파일로 저장
+                    using (var workbook = new XLWorkbook())
+                    {
+                        var worksheet = workbook.Worksheets.Add("Sheet1");
+
+                        // DataGridView 헤더를 추가
+                        for (int i = 0; i < dataGridProblems.Columns.Count; i++)
+                        {
+                            worksheet.Cell(1, i + 1).Value = dataGridProblems.Columns[i].HeaderText;
+                        }
+
+                        // DataGridView 데이터를 추가
+                        for (int i = 0; i < dataGridProblems.Rows.Count; i++)
+                        {
+                            for (int j = 0; j < dataGridProblems.Columns.Count; j++)
+                            {
+                                worksheet.Cell(i + 2, j + 1).Value = dataGridProblems.Rows[i].Cells[j].Value?.ToString();
+                            }
+                        }
+
+                        workbook.SaveAs(sfd.FileName);
+                    }
+
+                    MessageBox.Show("Export Successful", "Info");
+                }
             }
         }
 

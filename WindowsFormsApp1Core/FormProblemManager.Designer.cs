@@ -50,6 +50,7 @@ namespace WorkManagementSystem
             txtSearch = new TextBox();
             btnSearch = new Button();
             lblSearch = new Label();
+            bt_exportExel = new Button();
             ((ISupportInitialize)dataGridProblems).BeginInit();
             SuspendLayout();
             // 
@@ -148,9 +149,10 @@ namespace WorkManagementSystem
             dataGridProblems.Location = new Point(30, 354);
             dataGridProblems.Margin = new Padding(4, 5, 4, 5);
             dataGridProblems.Name = "dataGridProblems";
+            dataGridProblems.ReadOnly = true;
             dataGridProblems.RowHeadersWidth = 51;
             dataGridProblems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridProblems.Size = new Size(1275, 615);
+            dataGridProblems.Size = new Size(1275, 471);
             dataGridProblems.TabIndex = 14;
             // 
             // lblProblemName
@@ -233,12 +235,28 @@ namespace WorkManagementSystem
             lblSearch.TabIndex = 12;
             lblSearch.Text = "검색";
             // 
+            // bt_exportExel
+            // 
+            bt_exportExel.BackColor = Color.White;
+            bt_exportExel.FlatAppearance.BorderColor = Color.White;
+            bt_exportExel.FlatStyle = FlatStyle.Flat;
+            bt_exportExel.ForeColor = Color.Black;
+            bt_exportExel.Location = new Point(574, 854);
+            bt_exportExel.Margin = new Padding(4, 5, 4, 5);
+            bt_exportExel.Name = "bt_exportExel";
+            bt_exportExel.Size = new Size(150, 35);
+            bt_exportExel.TabIndex = 15;
+            bt_exportExel.Text = "엑셀로 다운";
+            bt_exportExel.UseVisualStyleBackColor = false;
+            bt_exportExel.Click += btnExport_Click;
+            // 
             // FormProblemManager
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(46, 59, 78);
             ClientSize = new Size(1350, 1055);
+            Controls.Add(bt_exportExel);
             Controls.Add(txtProblemName);
             Controls.Add(txtDescription);
             Controls.Add(datePickerReported);
@@ -257,10 +275,10 @@ namespace WorkManagementSystem
             Margin = new Padding(4, 5, 4, 5);
             Name = "FormProblemManager";
             Text = "문제 관리";
+            WindowState = FormWindowState.Maximized;
             ((ISupportInitialize)dataGridProblems).EndInit();
             ResumeLayout(false);
             PerformLayout();
-            this.WindowState = FormWindowState.Maximized;
         }
 
         private void Button_MouseEnter(object sender, EventArgs e)
@@ -280,5 +298,7 @@ namespace WorkManagementSystem
                 btn.BackColor = Color.White;
             }
         }
+
+        private Button bt_exportExel;
     }
 }

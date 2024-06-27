@@ -5,11 +5,13 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using ActUtlTypeLib;
 
 namespace WorkManagementSystem
 {
     public partial class FormWorkInstruction : Form
     {
+        private ActUtlType plc01 = new ActUtlType();
         private BindingList<WorkInstruction> workInstructions;
         private BindingList<WorkInstruction> todayWorkList;
         private BindingList<WorkInstruction> workForToday;
@@ -474,6 +476,36 @@ namespace WorkManagementSystem
                 MessageBox.Show($"이미지를 로드하는 중 오류가 발생했습니다: {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 timer.Stop();
             }
+        }
+
+        private void bt_OpenPLC_Click(object sender, EventArgs e) // PLC 연결
+        {
+            if (string.IsNullOrWhiteSpace(combo_plcNum.Text))
+            {
+                MessageBox.Show("연결할 PLC번호를 입력하세요");
+                return;
+            }
+
+            plc01.ActLogicalStationNumber = Convert.ToInt32(combo_plcNum.Text);
+
+            int open_state = plc01.Open();
+            if (open_state == 0)
+            {
+                lb_state.ForeColor = Color.Green;
+                lb_state.Text = "연결됨";
+            }
+            else
+            {
+                lb_state.ForeColor = Color.Red;
+                lb_state.Text = "0x" + Convert.ToString(open_state, 16);
+            }
+        }
+
+        private void bt_ClosePLC_Click(object sender, EventArgs e) // PLC 닫기
+        {
+            lb_state.ForeColor = Color.Red;
+            lb_state.Text = "연결닫힘";
+            plc01.Close();
         }
     }
 }
