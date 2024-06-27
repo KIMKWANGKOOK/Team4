@@ -84,6 +84,7 @@ namespace WorkManagementSystem
             btnSave.BackColor = Color.FromArgb(224, 224, 224);
             btnSave.FlatAppearance.BorderColor = Color.White;
             btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSave.ForeColor = Color.FromArgb(17, 17, 17);
             btnSave.Location = new Point(378, 17);
             btnSave.Name = "btnSave";
@@ -100,6 +101,7 @@ namespace WorkManagementSystem
             btnUpdate.BackColor = Color.FromArgb(224, 224, 224);
             btnUpdate.FlatAppearance.BorderColor = Color.White;
             btnUpdate.FlatStyle = FlatStyle.Flat;
+            btnUpdate.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnUpdate.ForeColor = Color.FromArgb(17, 17, 17);
             btnUpdate.Location = new Point(378, 82);
             btnUpdate.Name = "btnUpdate";
@@ -116,7 +118,7 @@ namespace WorkManagementSystem
             btnDelete.BackColor = Color.FromArgb(224, 224, 224);
             btnDelete.FlatAppearance.BorderColor = Color.White;
             btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Font = new Font("Microsoft Sans Serif", 7.8F);
+            btnDelete.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDelete.ForeColor = Color.FromArgb(17, 17, 17);
             btnDelete.Location = new Point(378, 145);
             btnDelete.Name = "btnDelete";
@@ -141,6 +143,7 @@ namespace WorkManagementSystem
             btnSearch.BackColor = Color.FromArgb(224, 224, 224);
             btnSearch.FlatAppearance.BorderColor = Color.White;
             btnSearch.FlatStyle = FlatStyle.Flat;
+            btnSearch.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSearch.ForeColor = Color.FromArgb(17, 17, 17);
             btnSearch.Location = new Point(378, 314);
             btnSearch.Name = "btnSearch";
@@ -157,6 +160,7 @@ namespace WorkManagementSystem
             btnExportToExcel.BackColor = Color.FromArgb(224, 224, 224);
             btnExportToExcel.FlatAppearance.BorderColor = Color.White;
             btnExportToExcel.FlatStyle = FlatStyle.Flat;
+            btnExportToExcel.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnExportToExcel.ForeColor = Color.FromArgb(17, 17, 17);
             btnExportToExcel.Location = new Point(360, 751);
             btnExportToExcel.Name = "btnExportToExcel";
@@ -186,7 +190,7 @@ namespace WorkManagementSystem
             // 
             // lblEmployeeName
             // 
-            lblEmployeeName.Font = new Font("Microsoft Sans Serif", 9F);
+            lblEmployeeName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblEmployeeName.ForeColor = Color.White;
             lblEmployeeName.Location = new Point(20, 30);
             lblEmployeeName.Name = "lblEmployeeName";
@@ -197,7 +201,7 @@ namespace WorkManagementSystem
             // 
             // lblDate
             // 
-            lblDate.Font = new Font("Microsoft Sans Serif", 9F);
+            lblDate.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblDate.ForeColor = Color.White;
             lblDate.Location = new Point(20, 151);
             lblDate.Name = "lblDate";
@@ -208,7 +212,7 @@ namespace WorkManagementSystem
             // 
             // lblStatus
             // 
-            lblStatus.Font = new Font("Microsoft Sans Serif", 9F);
+            lblStatus.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblStatus.ForeColor = Color.White;
             lblStatus.Location = new Point(20, 261);
             lblStatus.Name = "lblStatus";
@@ -218,7 +222,7 @@ namespace WorkManagementSystem
             // 
             // lblSearch
             // 
-            lblSearch.Font = new Font("Microsoft Sans Serif", 9F);
+            lblSearch.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblSearch.ForeColor = Color.White;
             lblSearch.Location = new Point(20, 325);
             lblSearch.Name = "lblSearch";
@@ -243,7 +247,7 @@ namespace WorkManagementSystem
             // 
             // label1
             // 
-            label1.Font = new Font("Microsoft Sans Serif", 9F);
+            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
             label1.Location = new Point(20, 203);
             label1.Name = "label1";
@@ -253,7 +257,7 @@ namespace WorkManagementSystem
             // 
             // label2
             // 
-            label2.Font = new Font("Microsoft Sans Serif", 9F);
+            label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
             label2.Location = new Point(20, 92);
             label2.Name = "label2";
