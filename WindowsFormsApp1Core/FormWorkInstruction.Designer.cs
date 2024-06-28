@@ -322,6 +322,7 @@ namespace WorkManagementSystem
             dataGridWorkInstructions.Size = new Size(992, 200);
             dataGridWorkInstructions.TabIndex = 12;
             dataGridWorkInstructions.SelectionChanged += dataGridWorkInstructions_SelectionChanged;
+            dataGridWorkInstructions.ForeColor = Color.Black;
             // 
             // dataGridTodayWorkList
             // 
@@ -336,6 +337,7 @@ namespace WorkManagementSystem
             dataGridTodayWorkList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridTodayWorkList.Size = new Size(992, 200);
             dataGridTodayWorkList.TabIndex = 23;
+            dataGridTodayWorkList.ForeColor = Color.Black;
             // 
             // dataGridWorkForToday
             // 
@@ -350,6 +352,7 @@ namespace WorkManagementSystem
             dataGridWorkForToday.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridWorkForToday.Size = new Size(600, 254);
             dataGridWorkForToday.TabIndex = 26;
+            dataGridWorkForToday.ForeColor =Color.Black;
             // 
             // lblTaskName
             // 

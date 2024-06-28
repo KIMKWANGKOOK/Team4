@@ -557,6 +557,10 @@ namespace WorkManagementSystem
                 {
                     device = "X01"; // 비금속 작업
                 }
+                else if (workInstruction.CodeName == "FR02-A2")
+                {
+                    device = "X02"; // 금속+비금속 작업
+                }
 
                 setResult = plc01.SetDevice(device, 1);
                 if (setResult == 0)
@@ -597,14 +601,41 @@ namespace WorkManagementSystem
                 try
                 {
                     int completionValue;
-                    string completionDevice = workInstruction.CodeName == "FR02-A0" ? "D0" : "D1";
+                    string completionDevice = string.Empty;
+
+                    if (workInstruction.CodeName == "FR02-A0")
+                    {
+                        completionDevice = "D0";
+                    }
+                    else if (workInstruction.CodeName == "FR02-A1")
+                    {
+                        completionDevice = "D10";
+                    }
+                    else if (workInstruction.CodeName == "FR02-A2")
+                    {
+                        completionDevice = "D20";
+                    }
 
                     plc01.GetDevice(completionDevice, out completionValue);
 
                     if (completionValue >= workInstruction.Quantity)
                     {
                         checkCompletionTimer.Stop();
-                        string device = workInstruction.CodeName == "FR02-A0" ? "X00" : "X01";
+                        string device = string.Empty;
+
+                        if (workInstruction.CodeName == "FR02-A0")
+                        {
+                            device = "X00";
+                        }
+                        else if (workInstruction.CodeName == "FR02-A1")
+                        {
+                            device = "X01";
+                        }
+                        else if (workInstruction.CodeName == "FR02-A2")
+                        {
+                            device = "X02";
+                        }
+
                         StopPLCProcess(device);
 
                         workInstruction.Work_Status = "완료";
@@ -616,7 +647,7 @@ namespace WorkManagementSystem
                             LoadTodayWorkList();
                             pictureBoxWorkStatus.Image = null;
                             pictureBoxProgress.Visible = false;
-                            lblWorkStatus.Text = "현재 작업이 완료되었습니다\r\n\r\n      ※확인해주세요※";
+                            lblWorkStatus.Text = "현재 작업이 대기중입니다\r\n\r\n      ※확인해주세요※";
                             MessageBox.Show("작업이 완료되었습니다.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }));
                     }
@@ -628,6 +659,13 @@ namespace WorkManagementSystem
                 }
             };
             checkCompletionTimer.Start();
+        }
+
+        private void ResetToInitialState()
+        {
+            pictureBoxWorkStatus.Image = null;
+            pictureBoxProgress.Visible = false;
+            lblWorkStatus.Text = "현재 작업이 대기중입니다\r\n\r\n      ※확인해주세요※";
         }
     }
 }
