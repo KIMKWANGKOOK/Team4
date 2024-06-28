@@ -6,26 +6,57 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.Versioning;
 using System.Windows.Forms;
+using MySql.Data;
+using MySql.Data.MySqlClient;
+using System.Data;
+using System.Globalization;
 
 namespace WorkManagementSystem
 {
-    [SupportedOSPlatform("windows10.0.177630")]
+    [SupportedOSPlatform("windows10.0.177630")] // 경고제거
     public partial class FormProblemManager : Form
     {
         private BindingList<Problem> problems;
 
+        private MySqlConnection conn;
+
         public FormProblemManager()
         {
             InitializeComponent();
+            conn = new MySqlConnection("Server=localhost;Port=3306;Database=test_db;Uid=test_user;Pwd=java");
             problems = new BindingList<Problem>();
             LoadProblems();
-            // asdf
+            dataGridProblems.Columns["ReportedDate"].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm:ss";
+            LoadData();
         }
+
+        private void LoadData()
+        {
+            try
+            {
+                conn.Open();
+                MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM problem_manager", conn);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+                dataGridProblems.DataSource = table;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
 
         private void LoadProblems()
         {
             // 초기 데이터를 로드하거나 빈 리스트로 시작할 수 있습니다.
             // 여기에 필요한 경우 초기 데이터를 추가할 수 있습니다.
+
             dataGridProblems.DefaultCellStyle.ForeColor = Color.Black;
             UpdateDataGrid();
         }
@@ -34,6 +65,30 @@ namespace WorkManagementSystem
         {
             if (!ValidateInputs())
                 return;
+
+            try
+            {
+                conn.Open();
+                string query = "INSERT INTO problem_manager (Name, Description, ReportedDate, Status) " +
+                    "VALUES (@value1, @value2, @value3, @value4)";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@value1", txtProblemName.Text);
+                cmd.Parameters.AddWithValue("@value2", txtDescription.Text);
+                cmd.Parameters.AddWithValue("@value3", datePickerReported.Value);
+                cmd.Parameters.AddWithValue("@value4", comboBoxStatus.SelectedItem);
+                cmd.ExecuteNonQuery();
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            
 
             var problem = new Problem
             {
@@ -44,7 +99,8 @@ namespace WorkManagementSystem
             };
 
             problems.Add(problem);
-            UpdateDataGrid();
+            LoadData(); // 데이터 다시 로드
+            // UpdateDataGrid();
             ClearForm();
             MessageBox.Show("문제가 저장되었습니다.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -53,18 +109,46 @@ namespace WorkManagementSystem
         {
             if (dataGridProblems.SelectedRows.Count > 0)
             {
-                var selectedRow = dataGridProblems.SelectedRows[0];
-                var problem = (Problem)selectedRow.DataBoundItem;
-
                 if (!ValidateInputs())
                     return;
 
-                problem.Name = txtProblemName.Text;
-                problem.Description = txtDescription.Text;
-                problem.ReportedDate = datePickerReported.Value;
-                problem.Status = comboBoxStatus.SelectedItem.ToString();
+                var selectedRow = dataGridProblems.SelectedRows[0];
+                String name = selectedRow.Cells["Name"].Value.ToString();
+                String description = selectedRow.Cells["Description"].Value.ToString();
+                String reportedDate = selectedRow.Cells["ReportedDate"].Value.ToString();
+                String status = selectedRow.Cells["Status"].Value.ToString();
 
-                UpdateDataGrid();
+
+
+                try
+                {
+                    conn.Open();
+                    string query = "UPDATE problem_manager SET Name = @value1, Description = @value2, ReportedDate = @value3, Status = @value4  " +
+                        "WHERE Name = @name AND Description = @description AND ReportedDate = @reportedDate AND Status = @status";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@value1", txtProblemName.Text);
+                    cmd.Parameters.AddWithValue("@value2", txtDescription.Text);
+                    cmd.Parameters.AddWithValue("@value3", datePickerReported.Value);
+                    cmd.Parameters.AddWithValue("@value4", comboBoxStatus.SelectedItem.ToString());
+
+                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.Parameters.AddWithValue("@description", description);
+                    cmd.Parameters.AddWithValue("@reportedDate", reportedDate);
+                    cmd.Parameters.AddWithValue("@status", status);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+
+
+                LoadData(); // 데이터 다시 로드
+                // UpdateDataGrid();
                 ClearForm();
                 MessageBox.Show("문제가 수정되었습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -103,12 +187,6 @@ namespace WorkManagementSystem
             dataGridProblems.DataSource = searchResult;
 
             MessageBox.Show($"{searchResult.Count}개의 문제가 검색되었습니다.", "검색 결과", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void btnExportToExcel_Click(object sender, EventArgs e)
-        {
-            // Export logic to be implemented
-            MessageBox.Show("엑셀로 내보내기 기능은 아직 구현되지 않았습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void UpdateDataGrid()
@@ -162,7 +240,7 @@ namespace WorkManagementSystem
             }
         }
 
-        private void btnExport_Click(object sender, EventArgs e)
+        private void btnExport_Click(object sender, EventArgs e) // 엑셀파일 저장
         {
             // SaveFileDialog를 사용하여 파일 저장 경로와 이름을 설정
             using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "Excel Workbook|*.xlsx" })
@@ -192,7 +270,7 @@ namespace WorkManagementSystem
                         workbook.SaveAs(sfd.FileName);
                     }
 
-                    MessageBox.Show("Export Successful", "Info");
+                    MessageBox.Show("다운로드 되었습니다.", "Info");
                 }
             }
         }
