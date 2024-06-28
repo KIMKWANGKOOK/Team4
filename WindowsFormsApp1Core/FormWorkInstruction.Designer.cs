@@ -101,80 +101,80 @@ namespace WorkManagementSystem
             // comboBoxTaskName
             // 
             comboBoxTaskName.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxTaskName.Font = new Font("맑은 고딕", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            comboBoxTaskName.Font = new Font("맑은 고딕", 9F, FontStyle.Regular, GraphicsUnit.Point, 129);
             comboBoxTaskName.FormattingEnabled = true;
-            comboBoxTaskName.Location = new Point(239, 22);
+            comboBoxTaskName.Location = new Point(154, 17);
             comboBoxTaskName.Margin = new Padding(4);
             comboBoxTaskName.Name = "comboBoxTaskName";
-            comboBoxTaskName.Size = new Size(235, 38);
+            comboBoxTaskName.Size = new Size(200, 23);
             comboBoxTaskName.TabIndex = 0;
             comboBoxTaskName.SelectedIndexChanged += ComboBoxTaskName_SelectedIndexChanged;
             // 
             // txtContent
             // 
-            txtContent.Font = new Font("맑은 고딕", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            txtContent.Location = new Point(239, 115);
+            txtContent.Font = new Font("맑은 고딕", 9F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            txtContent.Location = new Point(154, 82);
             txtContent.Margin = new Padding(4);
             txtContent.Name = "txtContent";
-            txtContent.Size = new Size(235, 35);
+            txtContent.Size = new Size(200, 23);
             txtContent.TabIndex = 1;
             // 
             // datePicker
             // 
             datePicker.CalendarFont = new Font("맑은 고딕", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            datePicker.Location = new Point(239, 209);
+            datePicker.Location = new Point(154, 144);
             datePicker.Margin = new Padding(4);
             datePicker.Name = "datePicker";
-            datePicker.Size = new Size(235, 23);
+            datePicker.Size = new Size(200, 23);
             datePicker.TabIndex = 2;
             // 
             // txtWriter
             // 
-            txtWriter.Font = new Font("맑은 고딕", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            txtWriter.Location = new Point(239, 286);
+            txtWriter.Font = new Font("맑은 고딕", 9F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            txtWriter.Location = new Point(154, 198);
             txtWriter.Margin = new Padding(4);
             txtWriter.Name = "txtWriter";
-            txtWriter.Size = new Size(235, 35);
+            txtWriter.Size = new Size(200, 23);
             txtWriter.TabIndex = 3;
             // 
             // txtWorker
             // 
-            txtWorker.Font = new Font("맑은 고딕", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            txtWorker.Location = new Point(815, 26);
+            txtWorker.Font = new Font("맑은 고딕", 9F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            txtWorker.Location = new Point(154, 255);
             txtWorker.Margin = new Padding(4);
             txtWorker.Name = "txtWorker";
-            txtWorker.Size = new Size(235, 35);
+            txtWorker.Size = new Size(200, 23);
             txtWorker.TabIndex = 8;
             // 
             // comboBoxPriority
             // 
-            comboBoxPriority.Font = new Font("맑은 고딕", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            comboBoxPriority.Location = new Point(815, 112);
+            comboBoxPriority.Font = new Font("맑은 고딕", 9F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            comboBoxPriority.Location = new Point(593, 92);
             comboBoxPriority.Margin = new Padding(4);
             comboBoxPriority.Name = "comboBoxPriority";
-            comboBoxPriority.Size = new Size(235, 38);
+            comboBoxPriority.Size = new Size(200, 23);
             comboBoxPriority.TabIndex = 4;
             // 
             // comboBoxQuantity
             // 
-            comboBoxQuantity.Font = new Font("맑은 고딕", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            comboBoxQuantity.Location = new Point(815, 205);
+            comboBoxQuantity.Font = new Font("맑은 고딕", 12F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            comboBoxQuantity.Location = new Point(593, 16);
             comboBoxQuantity.Margin = new Padding(4);
             comboBoxQuantity.Name = "comboBoxQuantity";
-            comboBoxQuantity.Size = new Size(235, 38);
+            comboBoxQuantity.Size = new Size(200, 29);
             comboBoxQuantity.TabIndex = 20;
             // 
             // btnSave
             // 
-            btnSave.BackColor = Color.White;
+            btnSave.BackColor = Color.FromArgb(224, 224, 224);
             btnSave.FlatAppearance.BorderColor = Color.White;
             btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.Font = new Font("맑은 고딕", 12F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            btnSave.ForeColor = Color.Black;
-            btnSave.Location = new Point(514, 16);
+            btnSave.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSave.ForeColor = Color.FromArgb(17, 17, 17);
+            btnSave.Location = new Point(378, 17);
             btnSave.Margin = new Padding(4);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(110, 45);
+            btnSave.Size = new Size(80, 32);
             btnSave.TabIndex = 5;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = false;
@@ -184,15 +184,15 @@ namespace WorkManagementSystem
             // 
             // btnUpdate
             // 
-            btnUpdate.BackColor = Color.White;
+            btnUpdate.BackColor = Color.FromArgb(224, 224, 224);
             btnUpdate.FlatAppearance.BorderColor = Color.White;
             btnUpdate.FlatStyle = FlatStyle.Flat;
-            btnUpdate.Font = new Font("맑은 고딕", 12F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            btnUpdate.ForeColor = Color.Black;
-            btnUpdate.Location = new Point(514, 105);
+            btnUpdate.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnUpdate.ForeColor = Color.FromArgb(17, 17, 17);
+            btnUpdate.Location = new Point(378, 82);
             btnUpdate.Margin = new Padding(4);
             btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(110, 45);
+            btnUpdate.Size = new Size(80, 32);
             btnUpdate.TabIndex = 6;
             btnUpdate.Text = "Revise";
             btnUpdate.UseVisualStyleBackColor = false;
@@ -202,15 +202,15 @@ namespace WorkManagementSystem
             // 
             // btnDelete
             // 
-            btnDelete.BackColor = Color.White;
+            btnDelete.BackColor = Color.FromArgb(224, 224, 224);
             btnDelete.FlatAppearance.BorderColor = Color.White;
             btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Font = new Font("맑은 고딕", 12F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            btnDelete.ForeColor = Color.Black;
-            btnDelete.Location = new Point(514, 198);
+            btnDelete.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDelete.ForeColor = Color.FromArgb(17, 17, 17);
+            btnDelete.Location = new Point(378, 145);
             btnDelete.Margin = new Padding(4);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(110, 45);
+            btnDelete.Size = new Size(80, 32);
             btnDelete.TabIndex = 7;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = false;
@@ -220,11 +220,11 @@ namespace WorkManagementSystem
             // 
             // btnExportToExcel
             // 
-            btnExportToExcel.BackColor = Color.White;
+            btnExportToExcel.BackColor = Color.FromArgb(224, 224, 224);
             btnExportToExcel.FlatAppearance.BorderColor = Color.White;
             btnExportToExcel.FlatStyle = FlatStyle.Flat;
-            btnExportToExcel.Font = new Font("맑은 고딕", 12F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            btnExportToExcel.ForeColor = Color.Black;
+            btnExportToExcel.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnExportToExcel.ForeColor = Color.FromArgb(17, 17, 17);
             btnExportToExcel.Location = new Point(1087, 16);
             btnExportToExcel.Margin = new Padding(4);
             btnExportToExcel.Name = "btnExportToExcel";
@@ -238,15 +238,15 @@ namespace WorkManagementSystem
             // 
             // btnViewDetails
             // 
-            btnViewDetails.BackColor = Color.White;
+            btnViewDetails.BackColor = Color.FromArgb(224, 224, 224);
             btnViewDetails.FlatAppearance.BorderColor = Color.White;
             btnViewDetails.FlatStyle = FlatStyle.Flat;
-            btnViewDetails.Font = new Font("맑은 고딕", 12F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            btnViewDetails.ForeColor = Color.Black;
-            btnViewDetails.Location = new Point(514, 276);
+            btnViewDetails.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnViewDetails.ForeColor = Color.FromArgb(17, 17, 17);
+            btnViewDetails.Location = new Point(816, 23);
             btnViewDetails.Margin = new Padding(4);
             btnViewDetails.Name = "btnViewDetails";
-            btnViewDetails.Size = new Size(120, 45);
+            btnViewDetails.Size = new Size(80, 32);
             btnViewDetails.TabIndex = 11;
             btnViewDetails.Text = "View Details";
             btnViewDetails.UseVisualStyleBackColor = false;
@@ -256,15 +256,15 @@ namespace WorkManagementSystem
             // 
             // btnStartWork
             // 
-            btnStartWork.BackColor = Color.White;
+            btnStartWork.BackColor = Color.FromArgb(224, 224, 224);
             btnStartWork.FlatAppearance.BorderColor = Color.White;
             btnStartWork.FlatStyle = FlatStyle.Flat;
-            btnStartWork.Font = new Font("맑은 고딕", 12F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            btnStartWork.ForeColor = Color.Black;
-            btnStartWork.Location = new Point(1087, 105);
+            btnStartWork.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnStartWork.ForeColor = Color.FromArgb(17, 17, 17);
+            btnStartWork.Location = new Point(378, 198);
             btnStartWork.Margin = new Padding(4);
             btnStartWork.Name = "btnStartWork";
-            btnStartWork.Size = new Size(120, 45);
+            btnStartWork.Size = new Size(100, 32);
             btnStartWork.TabIndex = 21;
             btnStartWork.Text = "Work Start";
             btnStartWork.UseVisualStyleBackColor = false;
@@ -274,15 +274,15 @@ namespace WorkManagementSystem
             // 
             // btnStopWork
             // 
-            btnStopWork.BackColor = Color.White;
+            btnStopWork.BackColor = Color.FromArgb(224, 224, 224);
             btnStopWork.FlatAppearance.BorderColor = Color.White;
             btnStopWork.FlatStyle = FlatStyle.Flat;
-            btnStopWork.Font = new Font("맑은 고딕", 12F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            btnStopWork.ForeColor = Color.Black;
-            btnStopWork.Location = new Point(1087, 201);
+            btnStopWork.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnStopWork.ForeColor = Color.FromArgb(17, 17, 17);
+            btnStopWork.Location = new Point(378, 256);
             btnStopWork.Margin = new Padding(4);
             btnStopWork.Name = "btnStopWork";
-            btnStopWork.Size = new Size(120, 45);
+            btnStopWork.Size = new Size(100, 32);
             btnStopWork.TabIndex = 22;
             btnStopWork.Text = "Work Stop";
             btnStopWork.UseVisualStyleBackColor = false;
@@ -322,7 +322,6 @@ namespace WorkManagementSystem
             dataGridWorkInstructions.Size = new Size(992, 200);
             dataGridWorkInstructions.TabIndex = 12;
             dataGridWorkInstructions.SelectionChanged += dataGridWorkInstructions_SelectionChanged;
-            dataGridWorkInstructions.ForeColor = Color.Black;
             // 
             // dataGridTodayWorkList
             // 
@@ -337,7 +336,6 @@ namespace WorkManagementSystem
             dataGridTodayWorkList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridTodayWorkList.Size = new Size(992, 200);
             dataGridTodayWorkList.TabIndex = 23;
-            dataGridTodayWorkList.ForeColor = Color.Black;
             // 
             // dataGridWorkForToday
             // 
@@ -352,113 +350,112 @@ namespace WorkManagementSystem
             dataGridWorkForToday.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridWorkForToday.Size = new Size(600, 254);
             dataGridWorkForToday.TabIndex = 26;
-            dataGridWorkForToday.ForeColor =Color.Black;
             // 
             // lblTaskName
             // 
             lblTaskName.AutoSize = true;
-            lblTaskName.Font = new Font("맑은 고딕", 24F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblTaskName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblTaskName.ForeColor = Color.White;
-            lblTaskName.Location = new Point(25, 16);
+            lblTaskName.Location = new Point(20, 30);
             lblTaskName.Margin = new Padding(4, 0, 4, 0);
             lblTaskName.Name = "lblTaskName";
-            lblTaskName.Size = new Size(192, 45);
+            lblTaskName.Size = new Size(93, 20);
             lblTaskName.TabIndex = 13;
             lblTaskName.Text = "Code Name";
             // 
             // lblContent
             // 
             lblContent.AutoSize = true;
-            lblContent.Font = new Font("맑은 고딕", 24F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblContent.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblContent.ForeColor = Color.White;
-            lblContent.Location = new Point(23, 105);
+            lblContent.Location = new Point(20, 92);
             lblContent.Margin = new Padding(4, 0, 4, 0);
             lblContent.Name = "lblContent";
-            lblContent.Size = new Size(206, 45);
+            lblContent.Size = new Size(99, 20);
             lblContent.TabIndex = 14;
             lblContent.Text = "Work Details";
             // 
             // lblDate
             // 
             lblDate.AutoSize = true;
-            lblDate.Font = new Font("맑은 고딕", 24F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblDate.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblDate.ForeColor = Color.White;
-            lblDate.Location = new Point(25, 193);
+            lblDate.Location = new Point(20, 151);
             lblDate.Margin = new Padding(4, 0, 4, 0);
             lblDate.Name = "lblDate";
-            lblDate.Size = new Size(88, 45);
+            lblDate.Size = new Size(44, 20);
             lblDate.TabIndex = 15;
             lblDate.Text = "Date";
             // 
             // lblWriter
             // 
             lblWriter.AutoSize = true;
-            lblWriter.Font = new Font("맑은 고딕", 24F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblWriter.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblWriter.ForeColor = Color.White;
-            lblWriter.Location = new Point(23, 276);
+            lblWriter.Location = new Point(20, 203);
             lblWriter.Margin = new Padding(4, 0, 4, 0);
             lblWriter.Name = "lblWriter";
-            lblWriter.Size = new Size(109, 45);
+            lblWriter.Size = new Size(51, 20);
             lblWriter.TabIndex = 16;
             lblWriter.Text = "Writer";
             // 
             // lblWorker
             // 
             lblWorker.AutoSize = true;
-            lblWorker.Font = new Font("맑은 고딕", 24F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblWorker.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblWorker.ForeColor = Color.White;
-            lblWorker.Location = new Point(671, 16);
+            lblWorker.Location = new Point(20, 261);
             lblWorker.Margin = new Padding(4, 0, 4, 0);
             lblWorker.Name = "lblWorker";
-            lblWorker.Size = new Size(125, 45);
+            lblWorker.Size = new Size(60, 20);
             lblWorker.TabIndex = 18;
             lblWorker.Text = "Worker";
             // 
             // lblPriority
             // 
             lblPriority.AutoSize = true;
-            lblPriority.Font = new Font("맑은 고딕", 24F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblPriority.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblPriority.ForeColor = Color.White;
-            lblPriority.Location = new Point(671, 105);
+            lblPriority.Location = new Point(513, 90);
             lblPriority.Margin = new Padding(4, 0, 4, 0);
             lblPriority.Name = "lblPriority";
-            lblPriority.Size = new Size(122, 45);
+            lblPriority.Size = new Size(56, 20);
             lblPriority.TabIndex = 17;
             lblPriority.Text = "Priority";
             // 
             // lblQuantity
             // 
             lblQuantity.AutoSize = true;
-            lblQuantity.Font = new Font("맑은 고딕", 24F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblQuantity.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblQuantity.ForeColor = Color.White;
-            lblQuantity.Location = new Point(671, 193);
+            lblQuantity.Location = new Point(513, 30);
             lblQuantity.Margin = new Padding(4, 0, 4, 0);
             lblQuantity.Name = "lblQuantity";
-            lblQuantity.Size = new Size(146, 45);
+            lblQuantity.Size = new Size(68, 20);
             lblQuantity.TabIndex = 19;
             lblQuantity.Text = "Quantity";
             // 
             // lblTodayWorkList
             // 
             lblTodayWorkList.AutoSize = true;
-            lblTodayWorkList.Font = new Font("맑은 고딕", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblTodayWorkList.Font = new Font("맑은 고딕", 12F, FontStyle.Regular, GraphicsUnit.Point, 129);
             lblTodayWorkList.ForeColor = Color.White;
             lblTodayWorkList.Location = new Point(23, 603);
             lblTodayWorkList.Margin = new Padding(4, 0, 4, 0);
             lblTodayWorkList.Name = "lblTodayWorkList";
-            lblTodayWorkList.Size = new Size(328, 30);
+            lblTodayWorkList.Size = new Size(259, 21);
             lblTodayWorkList.TabIndex = 24;
             lblTodayWorkList.Text = "List of tasks completed for today";
             // 
             // lblWorkTable
             // 
             lblWorkTable.AutoSize = true;
-            lblWorkTable.Font = new Font("맑은 고딕", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lblWorkTable.Font = new Font("맑은 고딕", 12F, FontStyle.Regular, GraphicsUnit.Point, 129);
             lblWorkTable.ForeColor = Color.White;
             lblWorkTable.Location = new Point(23, 356);
             lblWorkTable.Margin = new Padding(4, 0, 4, 0);
             lblWorkTable.Name = "lblWorkTable";
-            lblWorkTable.Size = new Size(122, 30);
+            lblWorkTable.Size = new Size(95, 21);
             lblWorkTable.TabIndex = 25;
             lblWorkTable.Text = "Work Table";
             // 
@@ -512,26 +509,26 @@ namespace WorkManagementSystem
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("맑은 고딕", 24F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(671, 276);
+            label1.Location = new Point(513, 150);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(143, 45);
+            label1.Size = new Size(67, 20);
             label1.TabIndex = 32;
             label1.Text = "Plc Num";
             // 
             // bt_OpenPLC
             // 
-            bt_OpenPLC.BackColor = Color.White;
+            bt_OpenPLC.BackColor = Color.FromArgb(224, 224, 224);
             bt_OpenPLC.FlatAppearance.BorderColor = Color.White;
             bt_OpenPLC.FlatStyle = FlatStyle.Flat;
-            bt_OpenPLC.Font = new Font("맑은 고딕", 12F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            bt_OpenPLC.ForeColor = Color.Black;
-            bt_OpenPLC.Location = new Point(1087, 285);
+            bt_OpenPLC.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            bt_OpenPLC.ForeColor = Color.FromArgb(17, 17, 17);
+            bt_OpenPLC.Location = new Point(816, 139);
             bt_OpenPLC.Margin = new Padding(4);
             bt_OpenPLC.Name = "bt_OpenPLC";
-            bt_OpenPLC.Size = new Size(120, 32);
+            bt_OpenPLC.Size = new Size(80, 32);
             bt_OpenPLC.TabIndex = 33;
             bt_OpenPLC.Text = "PLC연결";
             bt_OpenPLC.UseVisualStyleBackColor = false;
@@ -539,15 +536,15 @@ namespace WorkManagementSystem
             // 
             // bt_ClosePLC
             // 
-            bt_ClosePLC.BackColor = Color.White;
+            bt_ClosePLC.BackColor = Color.FromArgb(224, 224, 224);
             bt_ClosePLC.FlatAppearance.BorderColor = Color.White;
             bt_ClosePLC.FlatStyle = FlatStyle.Flat;
-            bt_ClosePLC.Font = new Font("맑은 고딕", 12F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            bt_ClosePLC.ForeColor = Color.Black;
-            bt_ClosePLC.Location = new Point(1087, 332);
+            bt_ClosePLC.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            bt_ClosePLC.ForeColor = Color.FromArgb(17, 17, 17);
+            bt_ClosePLC.Location = new Point(816, 208);
             bt_ClosePLC.Margin = new Padding(4);
             bt_ClosePLC.Name = "bt_ClosePLC";
-            bt_ClosePLC.Size = new Size(120, 32);
+            bt_ClosePLC.Size = new Size(80, 32);
             bt_ClosePLC.TabIndex = 33;
             bt_ClosePLC.Text = "PLC닫기";
             bt_ClosePLC.UseVisualStyleBackColor = false;
@@ -556,12 +553,12 @@ namespace WorkManagementSystem
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("맑은 고딕", 24F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(671, 332);
+            label2.Location = new Point(513, 207);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(242, 45);
+            label2.Size = new Size(120, 20);
             label2.TabIndex = 32;
             label2.Text = "Connect State :";
             // 
@@ -570,7 +567,7 @@ namespace WorkManagementSystem
             lb_state.AutoSize = true;
             lb_state.Font = new Font("맑은 고딕", 24F, FontStyle.Regular, GraphicsUnit.Point, 129);
             lb_state.ForeColor = Color.White;
-            lb_state.Location = new Point(903, 332);
+            lb_state.Location = new Point(649, 191);
             lb_state.Margin = new Padding(4, 0, 4, 0);
             lb_state.Name = "lb_state";
             lb_state.Size = new Size(33, 45);
@@ -579,11 +576,11 @@ namespace WorkManagementSystem
             // 
             // combo_plcNum
             // 
-            combo_plcNum.Font = new Font("맑은 고딕", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            combo_plcNum.Location = new Point(815, 285);
+            combo_plcNum.Font = new Font("맑은 고딕", 9F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            combo_plcNum.Location = new Point(593, 146);
             combo_plcNum.Margin = new Padding(4);
             combo_plcNum.Name = "combo_plcNum";
-            combo_plcNum.Size = new Size(235, 35);
+            combo_plcNum.Size = new Size(200, 23);
             combo_plcNum.TabIndex = 8;
             // 
             // FormWorkInstruction
@@ -591,7 +588,7 @@ namespace WorkManagementSystem
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(46, 59, 78);
-            ClientSize = new Size(1493, 788);
+            ClientSize = new Size(1900, 1037);
             Controls.Add(bt_ClosePLC);
             Controls.Add(bt_OpenPLC);
             Controls.Add(lb_state);

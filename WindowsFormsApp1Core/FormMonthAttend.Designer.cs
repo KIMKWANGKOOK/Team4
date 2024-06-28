@@ -67,7 +67,7 @@ namespace WorkManagementSystem
             // 
             datePicker.Location = new Point(154, 144);
             datePicker.Name = "datePicker";
-            datePicker.Size = new Size(200, 24);
+            datePicker.Size = new Size(200, 21);
             datePicker.TabIndex = 3;
             // 
             // comboBoxStatus
@@ -75,7 +75,7 @@ namespace WorkManagementSystem
             comboBoxStatus.Items.AddRange(new object[] { "출근", "결근", "지각", "조퇴" });
             comboBoxStatus.Location = new Point(154, 255);
             comboBoxStatus.Name = "comboBoxStatus";
-            comboBoxStatus.Size = new Size(200, 26);
+            comboBoxStatus.Size = new Size(200, 23);
             comboBoxStatus.TabIndex = 5;
             comboBoxStatus.SelectedIndexChanged += comboBoxStatus_SelectedIndexChanged;
             // 
@@ -234,7 +234,7 @@ namespace WorkManagementSystem
             // 
             dateTimePicker1.Location = new Point(154, 198);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(200, 24);
+            dateTimePicker1.Size = new Size(200, 21);
             dateTimePicker1.TabIndex = 14;
             // 
             // textBox1
