@@ -36,6 +36,9 @@ namespace WorkManagementSystem
 
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             txtTaskName = new TextBox();
             datePicker = new DateTimePicker();
             txtWorker = new TextBox();
@@ -57,37 +60,41 @@ namespace WorkManagementSystem
             // 
             // txtTaskName
             // 
-            txtTaskName.Location = new Point(180, 46);
-            txtTaskName.Margin = new Padding(4, 5, 4, 5);
+            txtTaskName.Font = new Font("Microsoft Sans Serif", 18F);
+            txtTaskName.Location = new Point(191, 27);
+            txtTaskName.Margin = new Padding(3, 4, 3, 4);
             txtTaskName.Name = "txtTaskName";
-            txtTaskName.Size = new Size(298, 27);
+            txtTaskName.Size = new Size(200, 35);
             txtTaskName.TabIndex = 0;
             // 
             // datePicker
             // 
-            datePicker.Location = new Point(180, 108);
-            datePicker.Margin = new Padding(4, 5, 4, 5);
+            datePicker.Font = new Font("Microsoft Sans Serif", 18F);
+            datePicker.Location = new Point(191, 95);
+            datePicker.Margin = new Padding(3, 4, 3, 4);
             datePicker.Name = "datePicker";
-            datePicker.Size = new Size(298, 27);
+            datePicker.Size = new Size(200, 35);
             datePicker.TabIndex = 1;
             datePicker.Value = new DateTime(2024, 6, 25, 0, 0, 0, 0);
             datePicker.ValueChanged += datePicker_ValueChanged;
             // 
             // txtWorker
             // 
-            txtWorker.Location = new Point(180, 169);
-            txtWorker.Margin = new Padding(4, 5, 4, 5);
+            txtWorker.Font = new Font("Microsoft Sans Serif", 18F);
+            txtWorker.Location = new Point(191, 167);
+            txtWorker.Margin = new Padding(3, 4, 3, 4);
             txtWorker.Name = "txtWorker";
-            txtWorker.Size = new Size(298, 27);
+            txtWorker.Size = new Size(200, 35);
             txtWorker.TabIndex = 2;
             // 
             // comboBoxStatus
             // 
+            comboBoxStatus.Font = new Font("Microsoft Sans Serif", 18F);
             comboBoxStatus.Items.AddRange(new object[] { "완료", "진행 중", "대기" });
-            comboBoxStatus.Location = new Point(180, 231);
-            comboBoxStatus.Margin = new Padding(4, 5, 4, 5);
+            comboBoxStatus.Location = new Point(191, 237);
+            comboBoxStatus.Margin = new Padding(3, 4, 3, 4);
             comboBoxStatus.Name = "comboBoxStatus";
-            comboBoxStatus.Size = new Size(298, 28);
+            comboBoxStatus.Size = new Size(200, 37);
             comboBoxStatus.TabIndex = 3;
             // 
             // btnSave
@@ -95,11 +102,12 @@ namespace WorkManagementSystem
             btnSave.BackColor = Color.FromArgb(224, 224, 224);
             btnSave.FlatAppearance.BorderColor = Color.White;
             btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.Font = new Font("Microsoft Sans Serif", 18F);
             btnSave.ForeColor = Color.FromArgb(17, 17, 17);
-            btnSave.Location = new Point(510, 46);
-            btnSave.Margin = new Padding(4, 5, 4, 5);
+            btnSave.Location = new Point(430, 24);
+            btnSave.Margin = new Padding(3, 4, 3, 4);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(82, 32);
+            btnSave.Size = new Size(120, 40);
             btnSave.TabIndex = 4;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = false;
@@ -112,12 +120,12 @@ namespace WorkManagementSystem
             btnUpdate.BackColor = Color.FromArgb(224, 224, 224);
             btnUpdate.FlatAppearance.BorderColor = Color.White;
             btnUpdate.FlatStyle = FlatStyle.Flat;
-            btnUpdate.Font = new Font("맑은 고딕", 9F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            btnUpdate.Font = new Font("Microsoft Sans Serif", 18F);
             btnUpdate.ForeColor = Color.FromArgb(17, 17, 17);
-            btnUpdate.Location = new Point(510, 106);
-            btnUpdate.Margin = new Padding(4, 5, 4, 5);
+            btnUpdate.Location = new Point(430, 94);
+            btnUpdate.Margin = new Padding(3, 4, 3, 4);
             btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(80, 32);
+            btnUpdate.Size = new Size(120, 40);
             btnUpdate.TabIndex = 5;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = false;
@@ -130,11 +138,12 @@ namespace WorkManagementSystem
             btnDelete.BackColor = Color.FromArgb(224, 224, 224);
             btnDelete.FlatAppearance.BorderColor = Color.White;
             btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.Font = new Font("Microsoft Sans Serif", 18F);
             btnDelete.ForeColor = Color.FromArgb(17, 17, 17);
-            btnDelete.Location = new Point(510, 170);
-            btnDelete.Margin = new Padding(4, 5, 4, 5);
+            btnDelete.Location = new Point(430, 164);
+            btnDelete.Margin = new Padding(3, 4, 3, 4);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(80, 32);
+            btnDelete.Size = new Size(120, 40);
             btnDelete.TabIndex = 6;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = false;
@@ -144,10 +153,11 @@ namespace WorkManagementSystem
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(180, 295);
-            txtSearch.Margin = new Padding(4, 5, 4, 5);
+            txtSearch.Font = new Font("Microsoft Sans Serif", 18F);
+            txtSearch.Location = new Point(191, 316);
+            txtSearch.Margin = new Padding(3, 4, 3, 4);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(298, 27);
+            txtSearch.Size = new Size(200, 35);
             txtSearch.TabIndex = 7;
             // 
             // btnSearch
@@ -155,11 +165,12 @@ namespace WorkManagementSystem
             btnSearch.BackColor = Color.FromArgb(224, 224, 224);
             btnSearch.FlatAppearance.BorderColor = Color.White;
             btnSearch.FlatStyle = FlatStyle.Flat;
+            btnSearch.Font = new Font("Microsoft Sans Serif", 18F);
             btnSearch.ForeColor = Color.FromArgb(17, 17, 17);
-            btnSearch.Location = new Point(510, 295);
-            btnSearch.Margin = new Padding(4, 5, 4, 5);
+            btnSearch.Location = new Point(430, 313);
+            btnSearch.Margin = new Padding(3, 4, 3, 4);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(80, 32);
+            btnSearch.Size = new Size(120, 40);
             btnSearch.TabIndex = 8;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = false;
@@ -172,13 +183,14 @@ namespace WorkManagementSystem
             btnExportToExcel.BackColor = Color.FromArgb(224, 224, 224);
             btnExportToExcel.FlatAppearance.BorderColor = Color.White;
             btnExportToExcel.FlatStyle = FlatStyle.Flat;
+            btnExportToExcel.Font = new Font("Microsoft Sans Serif", 18F);
             btnExportToExcel.ForeColor = Color.FromArgb(17, 17, 17);
-            btnExportToExcel.Location = new Point(284, 753);
-            btnExportToExcel.Margin = new Padding(4, 5, 4, 5);
+            btnExportToExcel.Location = new Point(430, 234);
+            btnExportToExcel.Margin = new Padding(3, 4, 3, 4);
             btnExportToExcel.Name = "btnExportToExcel";
-            btnExportToExcel.Size = new Size(150, 35);
+            btnExportToExcel.Size = new Size(120, 40);
             btnExportToExcel.TabIndex = 9;
-            btnExportToExcel.Text = "Export to Excel";
+            btnExportToExcel.Text = "Excel";
             btnExportToExcel.UseVisualStyleBackColor = false;
             btnExportToExcel.Click += btnExportToExcel_Click;
             btnExportToExcel.MouseEnter += Button_MouseEnter;
@@ -190,26 +202,49 @@ namespace WorkManagementSystem
             dataGridWorkPerformances.AllowUserToDeleteRows = false;
             dataGridWorkPerformances.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridWorkPerformances.BackgroundColor = Color.FromArgb(46, 59, 78);
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(46, 59, 78);
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridWorkPerformances.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridWorkPerformances.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Window;
+            dataGridViewCellStyle5.Font = new Font("Microsoft Sans Serif", 16F);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(46, 59, 78);
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            dataGridWorkPerformances.DefaultCellStyle = dataGridViewCellStyle5;
             dataGridWorkPerformances.GridColor = Color.White;
-            dataGridWorkPerformances.Location = new Point(13, 349);
-            dataGridWorkPerformances.Margin = new Padding(4, 5, 4, 5);
+            dataGridWorkPerformances.Location = new Point(30, 436);
+            dataGridWorkPerformances.Margin = new Padding(3, 4, 3, 4);
             dataGridWorkPerformances.Name = "dataGridWorkPerformances";
             dataGridWorkPerformances.ReadOnly = true;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.Control;
+            dataGridViewCellStyle6.Font = new Font("Microsoft Sans Serif", 18F);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(46, 59, 78);
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dataGridWorkPerformances.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dataGridWorkPerformances.RowHeadersWidth = 51;
             dataGridWorkPerformances.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridWorkPerformances.Size = new Size(736, 381);
+            dataGridWorkPerformances.Size = new Size(1840, 400);
             dataGridWorkPerformances.TabIndex = 10;
             // 
             // lblTaskName
             // 
             lblTaskName.AutoSize = true;
-            lblTaskName.Font = new Font("Microsoft Sans Serif", 12F);
+            lblTaskName.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblTaskName.ForeColor = Color.White;
-            lblTaskName.Location = new Point(30, 54);
-            lblTaskName.Margin = new Padding(4, 0, 4, 0);
+            lblTaskName.Location = new Point(30, 30);
             lblTaskName.Name = "lblTaskName";
-            lblTaskName.Size = new Size(110, 25);
+            lblTaskName.Size = new Size(132, 29);
             lblTaskName.TabIndex = 11;
             lblTaskName.Text = "Task name";
             lblTaskName.Click += lblTaskName_Click;
@@ -217,36 +252,33 @@ namespace WorkManagementSystem
             // lblDate
             // 
             lblDate.AutoSize = true;
-            lblDate.Font = new Font("Microsoft Sans Serif", 12F);
+            lblDate.Font = new Font("Microsoft Sans Serif", 18F);
             lblDate.ForeColor = Color.White;
-            lblDate.Location = new Point(30, 115);
-            lblDate.Margin = new Padding(4, 0, 4, 0);
+            lblDate.Location = new Point(30, 100);
             lblDate.Name = "lblDate";
-            lblDate.Size = new Size(109, 25);
+            lblDate.Size = new Size(135, 29);
             lblDate.TabIndex = 12;
             lblDate.Text = "Description";
             // 
             // lblWorker
             // 
             lblWorker.AutoSize = true;
-            lblWorker.Font = new Font("Microsoft Sans Serif", 12F);
+            lblWorker.Font = new Font("Microsoft Sans Serif", 18F);
             lblWorker.ForeColor = Color.White;
-            lblWorker.Location = new Point(30, 177);
-            lblWorker.Margin = new Padding(4, 0, 4, 0);
+            lblWorker.Location = new Point(30, 170);
             lblWorker.Name = "lblWorker";
-            lblWorker.Size = new Size(70, 25);
+            lblWorker.Size = new Size(91, 29);
             lblWorker.TabIndex = 13;
-            lblWorker.Text = "worker";
+            lblWorker.Text = "Worker";
             // 
             // lblStatus
             // 
             lblStatus.AutoSize = true;
-            lblStatus.Font = new Font("Microsoft Sans Serif", 12F);
+            lblStatus.Font = new Font("Microsoft Sans Serif", 18F);
             lblStatus.ForeColor = Color.White;
-            lblStatus.Location = new Point(30, 238);
-            lblStatus.Margin = new Padding(4, 0, 4, 0);
+            lblStatus.Location = new Point(30, 240);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(68, 25);
+            lblStatus.Size = new Size(79, 29);
             lblStatus.TabIndex = 14;
             lblStatus.Text = "Status";
             lblStatus.Click += lblStatus_Click;
@@ -254,22 +286,21 @@ namespace WorkManagementSystem
             // lblSearch
             // 
             lblSearch.AutoSize = true;
-            lblSearch.Font = new Font("Microsoft Sans Serif", 12F);
+            lblSearch.Font = new Font("Microsoft Sans Serif", 18F);
             lblSearch.ForeColor = Color.White;
-            lblSearch.Location = new Point(30, 294);
-            lblSearch.Margin = new Padding(4, 0, 4, 0);
+            lblSearch.Location = new Point(30, 310);
             lblSearch.Name = "lblSearch";
-            lblSearch.Size = new Size(75, 25);
+            lblSearch.Size = new Size(89, 29);
             lblSearch.TabIndex = 15;
             lblSearch.Text = "Search";
             lblSearch.Click += lblSearch_Click;
             // 
             // FormWorkPerformance
             // 
-            AutoScaleDimensions = new SizeF(9F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(46, 59, 78);
-            ClientSize = new Size(1350, 1055);
+            ClientSize = new Size(1904, 1041);
             Controls.Add(txtTaskName);
             Controls.Add(datePicker);
             Controls.Add(txtWorker);
@@ -286,7 +317,7 @@ namespace WorkManagementSystem
             Controls.Add(lblWorker);
             Controls.Add(lblStatus);
             Controls.Add(lblSearch);
-            Margin = new Padding(4, 5, 4, 5);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormWorkPerformance";
             Text = "작업 실적";
             ((ISupportInitialize)dataGridWorkPerformances).EndInit();

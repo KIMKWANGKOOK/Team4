@@ -476,6 +476,10 @@ namespace WorkManagementSystem
                 MessageBox.Show("연결할 PLC번호를 입력하세요");
                 return;
             }
+            else
+            {
+                MessageBox.Show("통신확인을 해주세요.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
             plc01.ActLogicalStationNumber = Convert.ToInt32(combo_plcNum.Text);
 
