@@ -56,36 +56,36 @@ namespace WorkManagementSystem
             // 
             // txtProblemName
             // 
-            txtProblemName.Location = new Point(180, 46);
-            txtProblemName.Margin = new Padding(4, 5, 4, 5);
+            txtProblemName.Location = new Point(140, 34);
+            txtProblemName.Margin = new Padding(3, 4, 3, 4);
             txtProblemName.Name = "txtProblemName";
-            txtProblemName.Size = new Size(298, 27);
+            txtProblemName.Size = new Size(233, 23);
             txtProblemName.TabIndex = 0;
             // 
             // txtDescription
             // 
-            txtDescription.Location = new Point(180, 108);
-            txtDescription.Margin = new Padding(4, 5, 4, 5);
+            txtDescription.Location = new Point(140, 81);
+            txtDescription.Margin = new Padding(3, 4, 3, 4);
             txtDescription.Name = "txtDescription";
-            txtDescription.Size = new Size(298, 27);
+            txtDescription.Size = new Size(233, 23);
             txtDescription.TabIndex = 1;
             // 
             // datePickerReported
             // 
-            datePickerReported.Location = new Point(180, 169);
-            datePickerReported.Margin = new Padding(4, 5, 4, 5);
+            datePickerReported.Location = new Point(140, 127);
+            datePickerReported.Margin = new Padding(3, 4, 3, 4);
             datePickerReported.Name = "datePickerReported";
-            datePickerReported.Size = new Size(298, 27);
+            datePickerReported.Size = new Size(233, 23);
             datePickerReported.TabIndex = 2;
             // 
             // comboBoxStatus
             // 
             comboBoxStatus.FormattingEnabled = true;
             comboBoxStatus.Items.AddRange(new object[] { "열림", "닫힘", "보류" });
-            comboBoxStatus.Location = new Point(180, 231);
-            comboBoxStatus.Margin = new Padding(4, 5, 4, 5);
+            comboBoxStatus.Location = new Point(140, 173);
+            comboBoxStatus.Margin = new Padding(3, 4, 3, 4);
             comboBoxStatus.Name = "comboBoxStatus";
-            comboBoxStatus.Size = new Size(298, 28);
+            comboBoxStatus.Size = new Size(233, 23);
             comboBoxStatus.TabIndex = 3;
             // 
             // btnSaveProblem
@@ -94,10 +94,10 @@ namespace WorkManagementSystem
             btnSaveProblem.FlatAppearance.BorderColor = Color.White;
             btnSaveProblem.FlatStyle = FlatStyle.Flat;
             btnSaveProblem.ForeColor = Color.Black;
-            btnSaveProblem.Location = new Point(510, 46);
-            btnSaveProblem.Margin = new Padding(4, 5, 4, 5);
+            btnSaveProblem.Location = new Point(397, 34);
+            btnSaveProblem.Margin = new Padding(3, 4, 3, 4);
             btnSaveProblem.Name = "btnSaveProblem";
-            btnSaveProblem.Size = new Size(150, 35);
+            btnSaveProblem.Size = new Size(117, 26);
             btnSaveProblem.TabIndex = 4;
             btnSaveProblem.Text = "저장";
             btnSaveProblem.UseVisualStyleBackColor = false;
@@ -111,10 +111,10 @@ namespace WorkManagementSystem
             btnUpdateProblem.FlatAppearance.BorderColor = Color.White;
             btnUpdateProblem.FlatStyle = FlatStyle.Flat;
             btnUpdateProblem.ForeColor = Color.Black;
-            btnUpdateProblem.Location = new Point(510, 108);
-            btnUpdateProblem.Margin = new Padding(4, 5, 4, 5);
+            btnUpdateProblem.Location = new Point(397, 81);
+            btnUpdateProblem.Margin = new Padding(3, 4, 3, 4);
             btnUpdateProblem.Name = "btnUpdateProblem";
-            btnUpdateProblem.Size = new Size(150, 35);
+            btnUpdateProblem.Size = new Size(117, 26);
             btnUpdateProblem.TabIndex = 5;
             btnUpdateProblem.Text = "수정";
             btnUpdateProblem.UseVisualStyleBackColor = false;
@@ -128,10 +128,10 @@ namespace WorkManagementSystem
             btnDeleteProblem.FlatAppearance.BorderColor = Color.White;
             btnDeleteProblem.FlatStyle = FlatStyle.Flat;
             btnDeleteProblem.ForeColor = Color.Black;
-            btnDeleteProblem.Location = new Point(510, 169);
-            btnDeleteProblem.Margin = new Padding(4, 5, 4, 5);
+            btnDeleteProblem.Location = new Point(397, 127);
+            btnDeleteProblem.Margin = new Padding(3, 4, 3, 4);
             btnDeleteProblem.Name = "btnDeleteProblem";
-            btnDeleteProblem.Size = new Size(150, 35);
+            btnDeleteProblem.Size = new Size(117, 26);
             btnDeleteProblem.TabIndex = 6;
             btnDeleteProblem.Text = "삭제";
             btnDeleteProblem.UseVisualStyleBackColor = false;
@@ -146,23 +146,22 @@ namespace WorkManagementSystem
             dataGridProblems.BackgroundColor = Color.FromArgb(46, 59, 78);
             dataGridProblems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridProblems.GridColor = Color.White;
-            dataGridProblems.Location = new Point(30, 354);
-            dataGridProblems.Margin = new Padding(4, 5, 4, 5);
+            dataGridProblems.Location = new Point(23, 266);
+            dataGridProblems.Margin = new Padding(3, 4, 3, 4);
             dataGridProblems.Name = "dataGridProblems";
             dataGridProblems.ReadOnly = true;
             dataGridProblems.RowHeadersWidth = 51;
             dataGridProblems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridProblems.Size = new Size(1275, 471);
+            dataGridProblems.Size = new Size(992, 353);
             dataGridProblems.TabIndex = 14;
             // 
             // lblProblemName
             // 
             lblProblemName.AutoSize = true;
             lblProblemName.ForeColor = Color.White;
-            lblProblemName.Location = new Point(30, 54);
-            lblProblemName.Margin = new Padding(4, 0, 4, 0);
+            lblProblemName.Location = new Point(23, 40);
             lblProblemName.Name = "lblProblemName";
-            lblProblemName.Size = new Size(54, 20);
+            lblProblemName.Size = new Size(43, 15);
             lblProblemName.TabIndex = 7;
             lblProblemName.Text = "문제명";
             // 
@@ -170,10 +169,9 @@ namespace WorkManagementSystem
             // 
             lblDescription.AutoSize = true;
             lblDescription.ForeColor = Color.White;
-            lblDescription.Location = new Point(30, 115);
-            lblDescription.Margin = new Padding(4, 0, 4, 0);
+            lblDescription.Location = new Point(23, 86);
             lblDescription.Name = "lblDescription";
-            lblDescription.Size = new Size(39, 20);
+            lblDescription.Size = new Size(31, 15);
             lblDescription.TabIndex = 8;
             lblDescription.Text = "설명";
             // 
@@ -181,10 +179,9 @@ namespace WorkManagementSystem
             // 
             lblReportedDate.AutoSize = true;
             lblReportedDate.ForeColor = Color.White;
-            lblReportedDate.Location = new Point(30, 177);
-            lblReportedDate.Margin = new Padding(4, 0, 4, 0);
+            lblReportedDate.Location = new Point(23, 133);
             lblReportedDate.Name = "lblReportedDate";
-            lblReportedDate.Size = new Size(54, 20);
+            lblReportedDate.Size = new Size(43, 15);
             lblReportedDate.TabIndex = 9;
             lblReportedDate.Text = "보고일";
             // 
@@ -192,19 +189,18 @@ namespace WorkManagementSystem
             // 
             lblStatus.AutoSize = true;
             lblStatus.ForeColor = Color.White;
-            lblStatus.Location = new Point(30, 238);
-            lblStatus.Margin = new Padding(4, 0, 4, 0);
+            lblStatus.Location = new Point(23, 178);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(39, 20);
+            lblStatus.Size = new Size(31, 15);
             lblStatus.TabIndex = 10;
             lblStatus.Text = "상태";
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(180, 292);
-            txtSearch.Margin = new Padding(4, 5, 4, 5);
+            txtSearch.Location = new Point(140, 219);
+            txtSearch.Margin = new Padding(3, 4, 3, 4);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(298, 27);
+            txtSearch.Size = new Size(233, 23);
             txtSearch.TabIndex = 11;
             // 
             // btnSearch
@@ -213,10 +209,10 @@ namespace WorkManagementSystem
             btnSearch.FlatAppearance.BorderColor = Color.White;
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.ForeColor = Color.Black;
-            btnSearch.Location = new Point(510, 292);
-            btnSearch.Margin = new Padding(4, 5, 4, 5);
+            btnSearch.Location = new Point(397, 219);
+            btnSearch.Margin = new Padding(3, 4, 3, 4);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(150, 35);
+            btnSearch.Size = new Size(117, 26);
             btnSearch.TabIndex = 13;
             btnSearch.Text = "검색";
             btnSearch.UseVisualStyleBackColor = false;
@@ -228,10 +224,9 @@ namespace WorkManagementSystem
             // 
             lblSearch.AutoSize = true;
             lblSearch.ForeColor = Color.White;
-            lblSearch.Location = new Point(30, 300);
-            lblSearch.Margin = new Padding(4, 0, 4, 0);
+            lblSearch.Location = new Point(23, 225);
             lblSearch.Name = "lblSearch";
-            lblSearch.Size = new Size(39, 20);
+            lblSearch.Size = new Size(31, 15);
             lblSearch.TabIndex = 12;
             lblSearch.Text = "검색";
             // 
@@ -241,10 +236,10 @@ namespace WorkManagementSystem
             bt_exportExel.FlatAppearance.BorderColor = Color.White;
             bt_exportExel.FlatStyle = FlatStyle.Flat;
             bt_exportExel.ForeColor = Color.Black;
-            bt_exportExel.Location = new Point(574, 854);
-            bt_exportExel.Margin = new Padding(4, 5, 4, 5);
+            bt_exportExel.Location = new Point(446, 640);
+            bt_exportExel.Margin = new Padding(3, 4, 3, 4);
             bt_exportExel.Name = "bt_exportExel";
-            bt_exportExel.Size = new Size(150, 35);
+            bt_exportExel.Size = new Size(117, 26);
             bt_exportExel.TabIndex = 15;
             bt_exportExel.Text = "엑셀로 다운";
             bt_exportExel.UseVisualStyleBackColor = false;
@@ -252,10 +247,10 @@ namespace WorkManagementSystem
             // 
             // FormProblemManager
             // 
-            AutoScaleDimensions = new SizeF(9F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(46, 59, 78);
-            ClientSize = new Size(1350, 1055);
+            ClientSize = new Size(1904, 1041);
             Controls.Add(bt_exportExel);
             Controls.Add(txtProblemName);
             Controls.Add(txtDescription);
@@ -272,7 +267,7 @@ namespace WorkManagementSystem
             Controls.Add(btnSearch);
             Controls.Add(lblSearch);
             Controls.Add(dataGridProblems);
-            Margin = new Padding(4, 5, 4, 5);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormProblemManager";
             Text = "문제 관리";
             WindowState = FormWindowState.Maximized;

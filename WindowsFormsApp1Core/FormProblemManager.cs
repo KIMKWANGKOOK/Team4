@@ -123,17 +123,15 @@ namespace WorkManagementSystem
                 try
                 {
                     conn.Open();
-                    string query = "UPDATE problem_manager SET Name = @value1, Description = @value2, ReportedDate = @value3, Status = @value4  " +
-                        "WHERE Name = @name AND Description = @description AND ReportedDate = @reportedDate AND Status = @status";
+                    string query = "UPDATE problem_manager SET Name = @value1, Description = @value2, Status = @value3  " +
+                        "WHERE Name = @name AND Description = @description AND Status = @status";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@value1", txtProblemName.Text);
                     cmd.Parameters.AddWithValue("@value2", txtDescription.Text);
-                    cmd.Parameters.AddWithValue("@value3", datePickerReported.Value);
-                    cmd.Parameters.AddWithValue("@value4", comboBoxStatus.SelectedItem.ToString());
+                    cmd.Parameters.AddWithValue("@value3", comboBoxStatus.SelectedItem.ToString());
 
                     cmd.Parameters.AddWithValue("@name", name);
                     cmd.Parameters.AddWithValue("@description", description);
-                    cmd.Parameters.AddWithValue("@reportedDate", reportedDate);
                     cmd.Parameters.AddWithValue("@status", status);
                     cmd.ExecuteNonQuery();
                 }
