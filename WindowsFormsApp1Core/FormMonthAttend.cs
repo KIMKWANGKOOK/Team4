@@ -6,7 +6,9 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-
+using ClosedXML.Excel;
+using System.IO;
+using DocumentFormat.OpenXml.Drawing.Charts;
 namespace WorkManagementSystem
 {
     public partial class FormMonthAttend : Form
@@ -118,7 +120,37 @@ namespace WorkManagementSystem
 
         private void btnExportToExcel_Click(object sender, EventArgs e)
         {
-            
+            //savefiledialog를 사용하여 파일저장 경로와 이름을 설정
+            using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "Excel workbook|*.xlsx" })
+            { if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    //closedXML을 사용하여 datagridviem의 데이터를 엑셀파일로 저장
+                    using (var workbook = new XLWorkbook())
+                    {
+                        var worksheet = workbook.Worksheets.Add("sheet1");
+                        //datagridviem 헤더를 추가
+                        for (int i = 0; i < dataGridMonthAttend.Columns.Count; i++) 
+                        {
+                            worksheet.Cell(1, i + 1).Value= dataGridMonthAttend.Columns[i].HeaderText;
+                        }
+                        //datagridview 데이터를 추가
+                       for(int i = 0;i< dataGridMonthAttend.Rows.Count;i++)
+                        {
+                            for (int j = 0; j < dataGridMonthAttend.Columns.Count; j++) 
+                            {
+                                {
+                                    worksheet.Cell(i + 2, j + 1).Value = dataGridMonthAttend.Rows[i].Cells[j].Value?.ToString();
+                                }
+                            }
+                            workbook.SaveAs(sfd.FileName);
+                        }
+                        MessageBox.Show("Export Successful", "info");
+                    }
+                }
+            }
+
+
+
             // 엑셀로 내보내기 구현
             // 필요한 패키지 참조 추가 필요 (예: EPPlus)
         }
