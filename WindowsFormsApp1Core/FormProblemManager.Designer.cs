@@ -172,7 +172,7 @@ namespace WorkManagementSystem
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridProblems.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridProblems.GridColor = Color.White;
-            dataGridProblems.Location = new Point(30, 439);
+            dataGridProblems.Location = new Point(30, 450);
             dataGridProblems.Margin = new Padding(3, 4, 3, 4);
             dataGridProblems.Name = "dataGridProblems";
             dataGridProblems.ReadOnly = true;
