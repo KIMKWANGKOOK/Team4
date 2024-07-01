@@ -73,7 +73,7 @@ namespace WorkManagementSystem
             // comboBoxStatus
             // 
             comboBoxStatus.Items.AddRange(new object[] { "출근", "결근", "지각", "조퇴" });
-            comboBoxStatus.Location = new Point(293, 246);
+            comboBoxStatus.Location = new Point(293, 261);
             comboBoxStatus.Name = "comboBoxStatus";
             comboBoxStatus.Size = new Size(224, 23);
             comboBoxStatus.TabIndex = 5;
@@ -84,7 +84,7 @@ namespace WorkManagementSystem
             btnSave.BackColor = Color.FromArgb(224, 224, 224);
             btnSave.FlatAppearance.BorderColor = Color.White;
             btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSave.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSave.ForeColor = Color.FromArgb(17, 17, 17);
             btnSave.Location = new Point(556, 25);
             btnSave.Name = "btnSave";
@@ -101,7 +101,7 @@ namespace WorkManagementSystem
             btnUpdate.BackColor = Color.FromArgb(224, 224, 224);
             btnUpdate.FlatAppearance.BorderColor = Color.White;
             btnUpdate.FlatStyle = FlatStyle.Flat;
-            btnUpdate.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnUpdate.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnUpdate.ForeColor = Color.FromArgb(17, 17, 17);
             btnUpdate.Location = new Point(556, 83);
             btnUpdate.Name = "btnUpdate";
@@ -118,7 +118,7 @@ namespace WorkManagementSystem
             btnDelete.BackColor = Color.FromArgb(224, 224, 224);
             btnDelete.FlatAppearance.BorderColor = Color.White;
             btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDelete.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDelete.ForeColor = Color.FromArgb(17, 17, 17);
             btnDelete.Location = new Point(556, 143);
             btnDelete.Name = "btnDelete";
@@ -143,7 +143,7 @@ namespace WorkManagementSystem
             btnSearch.BackColor = Color.FromArgb(224, 224, 224);
             btnSearch.FlatAppearance.BorderColor = Color.White;
             btnSearch.FlatStyle = FlatStyle.Flat;
-            btnSearch.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSearch.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSearch.ForeColor = Color.FromArgb(17, 17, 17);
             btnSearch.Location = new Point(556, 322);
             btnSearch.Name = "btnSearch";
@@ -232,7 +232,7 @@ namespace WorkManagementSystem
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(293, 201);
+            dateTimePicker1.Location = new Point(293, 203);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(224, 21);
             dateTimePicker1.TabIndex = 14;
