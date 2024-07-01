@@ -190,7 +190,7 @@ namespace WorkManagementSystem
             // 
             // lblEmployeeName
             // 
-            lblEmployeeName.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblEmployeeName.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblEmployeeName.ForeColor = Color.White;
             lblEmployeeName.Location = new Point(20, 25);
             lblEmployeeName.Name = "lblEmployeeName";
@@ -201,7 +201,7 @@ namespace WorkManagementSystem
             // 
             // lblDate
             // 
-            lblDate.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDate.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblDate.ForeColor = Color.White;
             lblDate.Location = new Point(17, 142);
             lblDate.Name = "lblDate";
@@ -212,7 +212,7 @@ namespace WorkManagementSystem
             // 
             // lblStatus
             // 
-            lblStatus.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblStatus.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblStatus.ForeColor = Color.White;
             lblStatus.Location = new Point(20, 261);
             lblStatus.Name = "lblStatus";
@@ -222,7 +222,7 @@ namespace WorkManagementSystem
             // 
             // lblSearch
             // 
-            lblSearch.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblSearch.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblSearch.ForeColor = Color.White;
             lblSearch.Location = new Point(20, 322);
             lblSearch.Name = "lblSearch";
@@ -247,7 +247,7 @@ namespace WorkManagementSystem
             // 
             // label1
             // 
-            label1.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
             label1.Location = new Point(20, 203);
             label1.Name = "label1";
@@ -257,7 +257,7 @@ namespace WorkManagementSystem
             // 
             // label2
             // 
-            label2.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
             label2.Location = new Point(20, 83);
             label2.Name = "label2";
