@@ -12,7 +12,7 @@ using DocumentFormat.OpenXml.Drawing.Charts;
 namespace WorkManagementSystem
 {
     public partial class FormMonthAttend : Form
-    {
+    {//
         private BindingList<MonthlyAttendance> monthlyAttendances;
 
         public FormMonthAttend()
