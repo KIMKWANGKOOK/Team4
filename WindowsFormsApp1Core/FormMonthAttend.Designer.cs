@@ -34,6 +34,9 @@ namespace WorkManagementSystem
 
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             txtEmployeeName = new TextBox();
             datePicker = new DateTimePicker();
             comboBoxStatus = new ComboBox();
@@ -57,25 +60,28 @@ namespace WorkManagementSystem
             // 
             // txtEmployeeName
             // 
-            txtEmployeeName.Location = new Point(154, 17);
+            txtEmployeeName.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtEmployeeName.Location = new Point(200, 20);
             txtEmployeeName.Multiline = true;
             txtEmployeeName.Name = "txtEmployeeName";
-            txtEmployeeName.Size = new Size(200, 32);
+            txtEmployeeName.Size = new Size(200, 40);
             txtEmployeeName.TabIndex = 1;
             // 
             // datePicker
             // 
-            datePicker.Location = new Point(154, 144);
+            datePicker.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            datePicker.Location = new Point(200, 165);
             datePicker.Name = "datePicker";
-            datePicker.Size = new Size(200, 21);
+            datePicker.Size = new Size(200, 35);
             datePicker.TabIndex = 3;
             // 
             // comboBoxStatus
             // 
+            comboBoxStatus.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             comboBoxStatus.Items.AddRange(new object[] { "출근", "결근", "지각", "조퇴" });
-            comboBoxStatus.Location = new Point(154, 255);
+            comboBoxStatus.Location = new Point(200, 307);
             comboBoxStatus.Name = "comboBoxStatus";
-            comboBoxStatus.Size = new Size(200, 23);
+            comboBoxStatus.Size = new Size(200, 37);
             comboBoxStatus.TabIndex = 5;
             comboBoxStatus.SelectedIndexChanged += comboBoxStatus_SelectedIndexChanged;
             // 
@@ -84,11 +90,11 @@ namespace WorkManagementSystem
             btnSave.BackColor = Color.FromArgb(224, 224, 224);
             btnSave.FlatAppearance.BorderColor = Color.White;
             btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSave.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSave.ForeColor = Color.FromArgb(17, 17, 17);
-            btnSave.Location = new Point(378, 17);
+            btnSave.Location = new Point(433, 24);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(80, 32);
+            btnSave.Size = new Size(120, 40);
             btnSave.TabIndex = 6;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = false;
@@ -101,11 +107,11 @@ namespace WorkManagementSystem
             btnUpdate.BackColor = Color.FromArgb(224, 224, 224);
             btnUpdate.FlatAppearance.BorderColor = Color.White;
             btnUpdate.FlatStyle = FlatStyle.Flat;
-            btnUpdate.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnUpdate.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnUpdate.ForeColor = Color.FromArgb(17, 17, 17);
-            btnUpdate.Location = new Point(378, 82);
+            btnUpdate.Location = new Point(433, 94);
             btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(80, 32);
+            btnUpdate.Size = new Size(120, 40);
             btnUpdate.TabIndex = 7;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = false;
@@ -118,11 +124,11 @@ namespace WorkManagementSystem
             btnDelete.BackColor = Color.FromArgb(224, 224, 224);
             btnDelete.FlatAppearance.BorderColor = Color.White;
             btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDelete.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDelete.ForeColor = Color.FromArgb(17, 17, 17);
-            btnDelete.Location = new Point(378, 145);
+            btnDelete.Location = new Point(433, 164);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(80, 32);
+            btnDelete.Size = new Size(120, 40);
             btnDelete.TabIndex = 8;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = false;
@@ -132,7 +138,8 @@ namespace WorkManagementSystem
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(154, 314);
+            txtSearch.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtSearch.Location = new Point(200, 377);
             txtSearch.Multiline = true;
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(200, 32);
@@ -143,11 +150,11 @@ namespace WorkManagementSystem
             btnSearch.BackColor = Color.FromArgb(224, 224, 224);
             btnSearch.FlatAppearance.BorderColor = Color.White;
             btnSearch.FlatStyle = FlatStyle.Flat;
-            btnSearch.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSearch.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSearch.ForeColor = Color.FromArgb(17, 17, 17);
-            btnSearch.Location = new Point(378, 314);
+            btnSearch.Location = new Point(433, 374);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(80, 32);
+            btnSearch.Size = new Size(120, 40);
             btnSearch.TabIndex = 11;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = false;
@@ -160,13 +167,13 @@ namespace WorkManagementSystem
             btnExportToExcel.BackColor = Color.FromArgb(224, 224, 224);
             btnExportToExcel.FlatAppearance.BorderColor = Color.White;
             btnExportToExcel.FlatStyle = FlatStyle.Flat;
-            btnExportToExcel.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnExportToExcel.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnExportToExcel.ForeColor = Color.FromArgb(17, 17, 17);
-            btnExportToExcel.Location = new Point(360, 751);
+            btnExportToExcel.Location = new Point(433, 234);
             btnExportToExcel.Name = "btnExportToExcel";
-            btnExportToExcel.Size = new Size(235, 51);
+            btnExportToExcel.Size = new Size(120, 40);
             btnExportToExcel.TabIndex = 12;
-            btnExportToExcel.Text = "Export to Excel";
+            btnExportToExcel.Text = "Excel";
             btnExportToExcel.UseVisualStyleBackColor = false;
             btnExportToExcel.Click += btnExportToExcel_Click;
             btnExportToExcel.MouseEnter += Button_MouseEnter;
@@ -177,33 +184,57 @@ namespace WorkManagementSystem
             dataGridMonthAttend.AllowUserToAddRows = false;
             dataGridMonthAttend.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridMonthAttend.BackgroundColor = Color.FromArgb(46, 59, 78);
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(46, 59, 78);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridMonthAttend.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridMonthAttend.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(224, 224, 224);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(46, 59, 78);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridMonthAttend.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridMonthAttend.GridColor = Color.White;
-            dataGridMonthAttend.Location = new Point(20, 374);
+            dataGridMonthAttend.Location = new Point(30, 450);
             dataGridMonthAttend.Name = "dataGridMonthAttend";
             dataGridMonthAttend.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(46, 59, 78);
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridMonthAttend.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridMonthAttend.RowHeadersWidth = 51;
             dataGridMonthAttend.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridMonthAttend.Size = new Size(910, 334);
+            dataGridMonthAttend.Size = new Size(1840, 400);
             dataGridMonthAttend.TabIndex = 13;
             dataGridMonthAttend.CellContentClick += dataGridMonthAttend_CellContentClick;
             // 
             // lblEmployeeName
             // 
-            lblEmployeeName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblEmployeeName.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblEmployeeName.ForeColor = Color.White;
-            lblEmployeeName.Location = new Point(20, 30);
+            lblEmployeeName.Location = new Point(30, 30);
             lblEmployeeName.Name = "lblEmployeeName";
-            lblEmployeeName.Size = new Size(128, 27);
+            lblEmployeeName.Size = new Size(137, 27);
             lblEmployeeName.TabIndex = 0;
             lblEmployeeName.Text = "Emp Name";
             lblEmployeeName.Click += lblEmployeeName_Click;
             // 
             // lblDate
             // 
-            lblDate.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDate.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblDate.ForeColor = Color.White;
-            lblDate.Location = new Point(20, 151);
+            lblDate.Location = new Point(30, 170);
             lblDate.Name = "lblDate";
             lblDate.Size = new Size(128, 34);
             lblDate.TabIndex = 2;
@@ -212,9 +243,9 @@ namespace WorkManagementSystem
             // 
             // lblStatus
             // 
-            lblStatus.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblStatus.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblStatus.ForeColor = Color.White;
-            lblStatus.Location = new Point(20, 261);
+            lblStatus.Location = new Point(30, 310);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(100, 23);
             lblStatus.TabIndex = 4;
@@ -222,9 +253,9 @@ namespace WorkManagementSystem
             // 
             // lblSearch
             // 
-            lblSearch.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblSearch.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblSearch.ForeColor = Color.White;
-            lblSearch.Location = new Point(20, 325);
+            lblSearch.Location = new Point(30, 380);
             lblSearch.Name = "lblSearch";
             lblSearch.Size = new Size(94, 31);
             lblSearch.TabIndex = 9;
@@ -232,24 +263,26 @@ namespace WorkManagementSystem
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(154, 198);
+            dateTimePicker1.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dateTimePicker1.Location = new Point(200, 242);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(200, 21);
+            dateTimePicker1.Size = new Size(200, 35);
             dateTimePicker1.TabIndex = 14;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(154, 82);
+            textBox1.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox1.Location = new Point(200, 90);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(200, 32);
+            textBox1.Size = new Size(200, 40);
             textBox1.TabIndex = 15;
             // 
             // label1
             // 
-            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(20, 203);
+            label1.Location = new Point(30, 240);
             label1.Name = "label1";
             label1.Size = new Size(100, 23);
             label1.TabIndex = 16;
@@ -257,11 +290,11 @@ namespace WorkManagementSystem
             // 
             // label2
             // 
-            label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(20, 92);
+            label2.Location = new Point(30, 100);
             label2.Name = "label2";
-            label2.Size = new Size(100, 23);
+            label2.Size = new Size(100, 29);
             label2.TabIndex = 17;
             label2.Text = "Description";
             // 

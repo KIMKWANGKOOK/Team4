@@ -37,228 +37,301 @@ namespace WorkManagementSystem
 
         private void InitializeComponent()
         {
-            this.txtPlanName = new TextBox();
-            this.txtDescription = new TextBox();
-            this.datePickerStart = new DateTimePicker();
-            this.datePickerEnd = new DateTimePicker();
-            this.comboBoxStatus = new ComboBox();
-            this.btnSave = new Button();
-            this.btnUpdate = new Button();
-            this.btnDelete = new Button();
-            this.btnSearch = new Button();
-            this.txtSearch = new TextBox();
-            this.dataGridPerformancePlans = new DataGridView();
-            this.btnExportToExcel = new Button();
-            this.lblPlanName = new Label();
-            this.lblDescription = new Label();
-            this.lblStartDate = new Label();
-            this.lblEndDate = new Label();
-            this.lblStatus = new Label();
-
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridPerformancePlans)).BeginInit();
-            this.SuspendLayout();
-
-            // lblPlanName
-            this.lblPlanName.AutoSize = true;
-            this.lblPlanName.Location = new System.Drawing.Point(20, 30);
-            this.lblPlanName.Name = "lblPlanName";
-            this.lblPlanName.Size = new System.Drawing.Size(55, 13);
-            this.lblPlanName.TabIndex = 0;
-            this.lblPlanName.Text = "계획 이름"; // Plan Name to 계획 이름
-            this.lblPlanName.ForeColor = System.Drawing.Color.White;
-
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            txtPlanName = new TextBox();
+            txtDescription = new TextBox();
+            datePickerStart = new DateTimePicker();
+            datePickerEnd = new DateTimePicker();
+            comboBoxStatus = new ComboBox();
+            btnSave = new Button();
+            btnUpdate = new Button();
+            btnDelete = new Button();
+            btnSearch = new Button();
+            txtSearch = new TextBox();
+            dataGridPerformancePlans = new DataGridView();
+            btnExportToExcel = new Button();
+            lblPlanName = new Label();
+            lblDescription = new Label();
+            lblStartDate = new Label();
+            lblEndDate = new Label();
+            lblStatus = new Label();
+            ((ISupportInitialize)dataGridPerformancePlans).BeginInit();
+            SuspendLayout();
+            // 
             // txtPlanName
-            this.txtPlanName.Location = new System.Drawing.Point(120, 30);
-            this.txtPlanName.Name = "txtPlanName";
-            this.txtPlanName.Size = new System.Drawing.Size(200, 20);
-            this.txtPlanName.TabIndex = 1;
-
-            // lblDescription
-            this.lblDescription.AutoSize = true;
-            this.lblDescription.Location = new System.Drawing.Point(20, 70);
-            this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(31, 13);
-            this.lblDescription.TabIndex = 2;
-            this.lblDescription.Text = "설명"; // Description to 설명
-            this.lblDescription.ForeColor = System.Drawing.Color.White;
-
+            // 
+            txtPlanName.Font = new Font("Microsoft Sans Serif", 18F);
+            txtPlanName.Location = new Point(189, 24);
+            txtPlanName.Margin = new Padding(4, 3, 4, 3);
+            txtPlanName.Name = "txtPlanName";
+            txtPlanName.Size = new Size(200, 35);
+            txtPlanName.TabIndex = 1;
+            // 
             // txtDescription
-            this.txtDescription.Location = new System.Drawing.Point(120, 70);
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(200, 20);
-            this.txtDescription.TabIndex = 3;
-
-            // lblStartDate
-            this.lblStartDate.AutoSize = true;
-            this.lblStartDate.Location = new System.Drawing.Point(20, 110);
-            this.lblStartDate.Name = "lblStartDate";
-            this.lblStartDate.Size = new System.Drawing.Size(55, 13);
-            this.lblStartDate.TabIndex = 4;
-            this.lblStartDate.Text = "시작 날짜"; // Start Date to 시작 날짜
-            this.lblStartDate.ForeColor = System.Drawing.Color.White;
-
+            // 
+            txtDescription.Font = new Font("Microsoft Sans Serif", 18F);
+            txtDescription.Location = new Point(189, 94);
+            txtDescription.Margin = new Padding(4, 3, 4, 3);
+            txtDescription.Name = "txtDescription";
+            txtDescription.Size = new Size(200, 35);
+            txtDescription.TabIndex = 3;
+            // 
             // datePickerStart
-            this.datePickerStart.Location = new System.Drawing.Point(120, 110);
-            this.datePickerStart.Name = "datePickerStart";
-            this.datePickerStart.Size = new System.Drawing.Size(200, 20);
-            this.datePickerStart.TabIndex = 5;
-
-            // lblEndDate
-            this.lblEndDate.AutoSize = true;
-            this.lblEndDate.Location = new System.Drawing.Point(20, 150);
-            this.lblEndDate.Name = "lblEndDate";
-            this.lblEndDate.Size = new System.Drawing.Size(55, 13);
-            this.lblEndDate.TabIndex = 6;
-            this.lblEndDate.Text = "종료 날짜"; // End Date to 종료 날짜
-            this.lblEndDate.ForeColor = System.Drawing.Color.White;
-
+            // 
+            datePickerStart.Font = new Font("Microsoft Sans Serif", 18F);
+            datePickerStart.Location = new Point(189, 165);
+            datePickerStart.Margin = new Padding(4, 3, 4, 3);
+            datePickerStart.Name = "datePickerStart";
+            datePickerStart.Size = new Size(200, 35);
+            datePickerStart.TabIndex = 5;
+            // 
             // datePickerEnd
-            this.datePickerEnd.Location = new System.Drawing.Point(120, 150);
-            this.datePickerEnd.Name = "datePickerEnd";
-            this.datePickerEnd.Size = new System.Drawing.Size(200, 20);
-            this.datePickerEnd.TabIndex = 7;
-
-            // lblStatus
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(20, 190);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(31, 13);
-            this.lblStatus.TabIndex = 8;
-            this.lblStatus.Text = "상태"; // Status to 상태
-            this.lblStatus.ForeColor = System.Drawing.Color.White;
-
+            // 
+            datePickerEnd.Font = new Font("Microsoft Sans Serif", 18F);
+            datePickerEnd.Location = new Point(189, 235);
+            datePickerEnd.Margin = new Padding(4, 3, 4, 3);
+            datePickerEnd.Name = "datePickerEnd";
+            datePickerEnd.Size = new Size(200, 35);
+            datePickerEnd.TabIndex = 7;
+            // 
             // comboBoxStatus
-            this.comboBoxStatus.FormattingEnabled = true;
-            this.comboBoxStatus.Items.AddRange(new object[] { "계획됨", "진행 중", "완료" }); // Planned, In Progress, Completed to 계획됨, 진행 중, 완료
-            this.comboBoxStatus.Location = new System.Drawing.Point(120, 190);
-            this.comboBoxStatus.Name = "comboBoxStatus";
-            this.comboBoxStatus.Size = new System.Drawing.Size(200, 21);
-            this.comboBoxStatus.TabIndex = 9;
-
+            // 
+            comboBoxStatus.Font = new Font("Microsoft Sans Serif", 18F);
+            comboBoxStatus.FormattingEnabled = true;
+            comboBoxStatus.Items.AddRange(new object[] { "계획됨", "진행 중", "완료" });
+            comboBoxStatus.Location = new Point(189, 307);
+            comboBoxStatus.Margin = new Padding(4, 3, 4, 3);
+            comboBoxStatus.Name = "comboBoxStatus";
+            comboBoxStatus.Size = new Size(200, 37);
+            comboBoxStatus.TabIndex = 9;
+            // 
             // btnSave
-            this.btnSave.Location = new System.Drawing.Point(340, 30);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(100, 23);
-            this.btnSave.TabIndex = 10;
-            this.btnSave.Text = "저장"; // Save to 저장
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.BackColor = System.Drawing.Color.White;
-            this.btnSave.FlatStyle = FlatStyle.Flat;
-            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnSave.FlatAppearance.BorderSize = 1;
-            this.btnSave.MouseEnter += new EventHandler(this.Button_MouseEnter);
-            this.btnSave.MouseLeave += new EventHandler(this.Button_MouseLeave);
-            this.btnSave.Click += new EventHandler(this.btnSave_Click);
-
+            // 
+            btnSave.BackColor = Color.FromArgb(244, 244, 244);
+            btnSave.FlatAppearance.BorderColor = Color.White;
+            btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.Font = new Font("Microsoft Sans Serif", 18F);
+            btnSave.ForeColor = Color.FromArgb(17, 17, 17);
+            btnSave.Location = new Point(419, 24);
+            btnSave.Margin = new Padding(4, 3, 4, 3);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(120, 40);
+            btnSave.TabIndex = 10;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
+            btnSave.MouseEnter += Button_MouseEnter;
+            btnSave.MouseLeave += Button_MouseLeave;
+            // 
             // btnUpdate
-            this.btnUpdate.Location = new System.Drawing.Point(340, 70);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(100, 23);
-            this.btnUpdate.TabIndex = 11;
-            this.btnUpdate.Text = "수정"; // Update to 수정
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.ForeColor = System.Drawing.Color.Black;
-            this.btnUpdate.BackColor = System.Drawing.Color.White;
-            this.btnUpdate.FlatStyle = FlatStyle.Flat;
-            this.btnUpdate.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnUpdate.FlatAppearance.BorderSize = 1;
-            this.btnUpdate.MouseEnter += new EventHandler(this.Button_MouseEnter);
-            this.btnUpdate.MouseLeave += new EventHandler(this.Button_MouseLeave);
-            this.btnUpdate.Click += new EventHandler(this.btnUpdate_Click);
-
+            // 
+            btnUpdate.BackColor = Color.FromArgb(244, 244, 244);
+            btnUpdate.FlatAppearance.BorderColor = Color.White;
+            btnUpdate.FlatStyle = FlatStyle.Flat;
+            btnUpdate.Font = new Font("Microsoft Sans Serif", 18F);
+            btnUpdate.ForeColor = Color.FromArgb(17, 17, 17);
+            btnUpdate.Location = new Point(419, 91);
+            btnUpdate.Margin = new Padding(4, 3, 4, 3);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(120, 40);
+            btnUpdate.TabIndex = 11;
+            btnUpdate.Text = "Revise";
+            btnUpdate.UseVisualStyleBackColor = false;
+            btnUpdate.Click += btnUpdate_Click;
+            btnUpdate.MouseEnter += Button_MouseEnter;
+            btnUpdate.MouseLeave += Button_MouseLeave;
+            // 
             // btnDelete
-            this.btnDelete.Location = new System.Drawing.Point(340, 110);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(100, 23);
-            this.btnDelete.TabIndex = 12;
-            this.btnDelete.Text = "삭제"; // Delete to 삭제
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.ForeColor = System.Drawing.Color.Black;
-            this.btnDelete.BackColor = System.Drawing.Color.White;
-            this.btnDelete.FlatStyle = FlatStyle.Flat;
-            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnDelete.FlatAppearance.BorderSize = 1;
-            this.btnDelete.MouseEnter += new EventHandler(this.Button_MouseEnter);
-            this.btnDelete.MouseLeave += new EventHandler(this.Button_MouseLeave);
-            this.btnDelete.Click += new EventHandler(this.btnDelete_Click);
-
-            // txtSearch
-            this.txtSearch.Location = new System.Drawing.Point(120, 230);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(200, 20);
-            this.txtSearch.TabIndex = 13;
-
+            // 
+            btnDelete.BackColor = Color.FromArgb(244, 244, 244);
+            btnDelete.FlatAppearance.BorderColor = Color.White;
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.Font = new Font("Microsoft Sans Serif", 18F);
+            btnDelete.ForeColor = Color.FromArgb(17, 17, 17);
+            btnDelete.Location = new Point(419, 164);
+            btnDelete.Margin = new Padding(4, 3, 4, 3);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(120, 40);
+            btnDelete.TabIndex = 12;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
+            btnDelete.MouseEnter += Button_MouseEnter;
+            btnDelete.MouseLeave += Button_MouseLeave;
+            // 
             // btnSearch
-            this.btnSearch.Location = new System.Drawing.Point(340, 230);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(100, 23);
-            this.btnSearch.TabIndex = 14;
-            this.btnSearch.Text = "검색"; // Search to 검색
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.ForeColor = System.Drawing.Color.Black;
-            this.btnSearch.BackColor = System.Drawing.Color.White;
-            this.btnSearch.FlatStyle = FlatStyle.Flat;
-            this.btnSearch.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnSearch.FlatAppearance.BorderSize = 1;
-            this.btnSearch.MouseEnter += new EventHandler(this.Button_MouseEnter);
-            this.btnSearch.MouseLeave += new EventHandler(this.Button_MouseLeave);
-            this.btnSearch.Click += new EventHandler(this.btnSearch_Click);
-
+            // 
+            btnSearch.BackColor = Color.FromArgb(244, 244, 244);
+            btnSearch.FlatAppearance.BorderColor = Color.White;
+            btnSearch.FlatStyle = FlatStyle.Flat;
+            btnSearch.Font = new Font("Microsoft Sans Serif", 18F);
+            btnSearch.ForeColor = Color.FromArgb(17, 17, 17);
+            btnSearch.Location = new Point(419, 372);
+            btnSearch.Margin = new Padding(4, 3, 4, 3);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(120, 40);
+            btnSearch.TabIndex = 14;
+            btnSearch.Text = "Serch";
+            btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += btnSearch_Click;
+            btnSearch.MouseEnter += Button_MouseEnter;
+            btnSearch.MouseLeave += Button_MouseLeave;
+            // 
+            // txtSearch
+            // 
+            txtSearch.Font = new Font("Microsoft Sans Serif", 18F);
+            txtSearch.Location = new Point(189, 377);
+            txtSearch.Margin = new Padding(4, 3, 4, 3);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(200, 35);
+            txtSearch.TabIndex = 13;
+            // 
             // dataGridPerformancePlans
-            this.dataGridPerformancePlans.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridPerformancePlans.Location = new System.Drawing.Point(20, 270);
-            this.dataGridPerformancePlans.Name = "dataGridPerformancePlans";
-            this.dataGridPerformancePlans.Size = new System.Drawing.Size(420, 150);
-            this.dataGridPerformancePlans.TabIndex = 15;
-            this.dataGridPerformancePlans.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridPerformancePlans.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridPerformancePlans.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(59)))), ((int)(((byte)(78)))));
-            this.dataGridPerformancePlans.GridColor = System.Drawing.Color.White;
-
+            // 
+            dataGridPerformancePlans.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridPerformancePlans.BackgroundColor = Color.FromArgb(46, 59, 78);
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(46, 59, 78);
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridPerformancePlans.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridPerformancePlans.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Window;
+            dataGridViewCellStyle5.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(46, 59, 78);
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            dataGridPerformancePlans.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridPerformancePlans.GridColor = Color.White;
+            dataGridPerformancePlans.Location = new Point(30, 476);
+            dataGridPerformancePlans.Margin = new Padding(4, 3, 4, 3);
+            dataGridPerformancePlans.Name = "dataGridPerformancePlans";
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.Control;
+            dataGridViewCellStyle6.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(46, 59, 78);
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dataGridPerformancePlans.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridPerformancePlans.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridPerformancePlans.Size = new Size(1840, 400);
+            dataGridPerformancePlans.TabIndex = 15;
+            // 
             // btnExportToExcel
-            this.btnExportToExcel.Location = new System.Drawing.Point(120, 430);
-            this.btnExportToExcel.Name = "btnExportToExcel";
-            this.btnExportToExcel.Size = new System.Drawing.Size(100, 23);
-            this.btnExportToExcel.TabIndex = 16;
-            this.btnExportToExcel.Text = "엑셀로 내보내기"; // Export to Excel to 엑셀로 내보내기
-            this.btnExportToExcel.UseVisualStyleBackColor = true;
-            this.btnExportToExcel.ForeColor = System.Drawing.Color.Black;
-            this.btnExportToExcel.BackColor = System.Drawing.Color.White;
-            this.btnExportToExcel.FlatStyle = FlatStyle.Flat;
-            this.btnExportToExcel.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnExportToExcel.FlatAppearance.BorderSize = 1;
-            this.btnExportToExcel.MouseEnter += new EventHandler(this.Button_MouseEnter);
-            this.btnExportToExcel.MouseLeave += new EventHandler(this.Button_MouseLeave);
-            this.btnExportToExcel.Click += new EventHandler(this.btnExportToExcel_Click);
-
+            // 
+            btnExportToExcel.BackColor = Color.FromArgb(244, 244, 244);
+            btnExportToExcel.FlatAppearance.BorderColor = Color.White;
+            btnExportToExcel.FlatStyle = FlatStyle.Flat;
+            btnExportToExcel.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnExportToExcel.ForeColor = Color.FromArgb(17, 17, 17);
+            btnExportToExcel.Location = new Point(419, 234);
+            btnExportToExcel.Margin = new Padding(4, 3, 4, 3);
+            btnExportToExcel.Name = "btnExportToExcel";
+            btnExportToExcel.Size = new Size(120, 40);
+            btnExportToExcel.TabIndex = 16;
+            btnExportToExcel.Text = "Excel";
+            btnExportToExcel.UseVisualStyleBackColor = false;
+            btnExportToExcel.Click += btnExportToExcel_Click;
+            btnExportToExcel.MouseEnter += Button_MouseEnter;
+            btnExportToExcel.MouseLeave += Button_MouseLeave;
+            // 
+            // lblPlanName
+            // 
+            lblPlanName.AutoSize = true;
+            lblPlanName.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblPlanName.ForeColor = Color.White;
+            lblPlanName.Location = new Point(30, 30);
+            lblPlanName.Margin = new Padding(4, 0, 4, 0);
+            lblPlanName.Name = "lblPlanName";
+            lblPlanName.Size = new Size(126, 29);
+            lblPlanName.TabIndex = 0;
+            lblPlanName.Text = "PlanName";
+            // 
+            // lblDescription
+            // 
+            lblDescription.AutoSize = true;
+            lblDescription.Font = new Font("Microsoft Sans Serif", 18F);
+            lblDescription.ForeColor = Color.White;
+            lblDescription.Location = new Point(30, 100);
+            lblDescription.Margin = new Padding(4, 0, 4, 0);
+            lblDescription.Name = "lblDescription";
+            lblDescription.Size = new Size(135, 29);
+            lblDescription.TabIndex = 2;
+            lblDescription.Text = "Description";
+            // 
+            // lblStartDate
+            // 
+            lblStartDate.AutoSize = true;
+            lblStartDate.Font = new Font("Microsoft Sans Serif", 18F);
+            lblStartDate.ForeColor = Color.White;
+            lblStartDate.Location = new Point(30, 170);
+            lblStartDate.Margin = new Padding(4, 0, 4, 0);
+            lblStartDate.Name = "lblStartDate";
+            lblStartDate.Size = new Size(112, 29);
+            lblStartDate.TabIndex = 4;
+            lblStartDate.Text = "StartDate";
+            // 
+            // lblEndDate
+            // 
+            lblEndDate.AutoSize = true;
+            lblEndDate.Font = new Font("Microsoft Sans Serif", 18F);
+            lblEndDate.ForeColor = Color.White;
+            lblEndDate.Location = new Point(30, 240);
+            lblEndDate.Margin = new Padding(4, 0, 4, 0);
+            lblEndDate.Name = "lblEndDate";
+            lblEndDate.Size = new Size(106, 29);
+            lblEndDate.TabIndex = 6;
+            lblEndDate.Text = "EndDate";
+            // 
+            // lblStatus
+            // 
+            lblStatus.AutoSize = true;
+            lblStatus.Font = new Font("Microsoft Sans Serif", 18F);
+            lblStatus.ForeColor = Color.White;
+            lblStatus.Location = new Point(30, 310);
+            lblStatus.Margin = new Padding(4, 0, 4, 0);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new Size(79, 29);
+            lblStatus.TabIndex = 8;
+            lblStatus.Text = "Status";
+            // 
             // FormToPerformance
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 461);
-            this.Controls.Add(this.lblPlanName);
-            this.Controls.Add(this.txtPlanName);
-            this.Controls.Add(this.lblDescription);
-            this.Controls.Add(this.txtDescription);
-            this.Controls.Add(this.lblStartDate);
-            this.Controls.Add(this.datePickerStart);
-            this.Controls.Add(this.lblEndDate);
-            this.Controls.Add(this.datePickerEnd);
-            this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.comboBoxStatus);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.dataGridPerformancePlans);
-            this.Controls.Add(this.btnExportToExcel);
-            this.Name = "FormToPerformance";
-            this.Text = "계획 및 실적"; // Plan and Performance to 계획 및 실적
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#2E3B4E");
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridPerformancePlans)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(46, 59, 78);
+            ClientSize = new Size(1904, 1041);
+            Controls.Add(lblPlanName);
+            Controls.Add(txtPlanName);
+            Controls.Add(lblDescription);
+            Controls.Add(txtDescription);
+            Controls.Add(lblStartDate);
+            Controls.Add(datePickerStart);
+            Controls.Add(lblEndDate);
+            Controls.Add(datePickerEnd);
+            Controls.Add(lblStatus);
+            Controls.Add(comboBoxStatus);
+            Controls.Add(btnSave);
+            Controls.Add(btnUpdate);
+            Controls.Add(btnDelete);
+            Controls.Add(txtSearch);
+            Controls.Add(btnSearch);
+            Controls.Add(dataGridPerformancePlans);
+            Controls.Add(btnExportToExcel);
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "FormToPerformance";
+            Text = "계획 및 실적";
+            ((ISupportInitialize)dataGridPerformancePlans).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         private void Button_MouseEnter(object sender, EventArgs e)

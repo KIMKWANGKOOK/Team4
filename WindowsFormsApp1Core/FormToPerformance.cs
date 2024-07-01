@@ -39,7 +39,7 @@ namespace WorkManagementSystem
                 performancePlans.Add(performancePlan);
                 LoadPerformancePlans();
                 ClearInputs();
-                MessageBox.Show("계획이 저장되었습니다.","알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("계획이 저장되었습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -79,7 +79,7 @@ namespace WorkManagementSystem
                 performancePlans.Remove(selectedPlan);
                 LoadPerformancePlans();
                 ClearInputs();
-                MessageBox.Show("계획이 삭제되었습니다.","정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("계획이 삭제되었습니다.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -146,7 +146,7 @@ namespace WorkManagementSystem
         private void btnExportToExcel_Click(object sender, EventArgs e)
         {
             // 엑셀 내보내기 구현
-            MessageBox.Show("엑셀로 내보내기 기능은 구현되지 않았습니다.","정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("엑셀로 내보내기 기능은 구현되지 않았습니다.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 
