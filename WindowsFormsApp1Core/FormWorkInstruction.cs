@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using ActUtlTypeLib;
@@ -30,7 +29,6 @@ namespace WorkManagementSystem
             LoadTodayWorkList();
             LoadWorkForToday();
             InitializeDataGrids();
-
         }
 
         private void InitializeDataGrids()
@@ -419,6 +417,20 @@ namespace WorkManagementSystem
                     LoadTodayWorkList();
                     MessageBox.Show("작업이 완료되었습니다.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     lblWorkStatus.Text = "현재 작업이 대기중입니다\r\n\r\n      ※확인해주세요※";
+
+                    // 작업 완료 후 차트 업데이트
+                    FormWorkPerformance formWorkPerformance = Application.OpenForms.OfType<FormWorkPerformance>().FirstOrDefault();
+                    if (formWorkPerformance != null)
+                    {
+                        formWorkPerformance.AddWorkPerformance(new WorkPerformance
+                        {
+                            TaskName = selectedWorkInstruction.CodeName,
+                            Date = selectedWorkInstruction.Date,
+                            Worker = selectedWorkInstruction.Worker,
+                            Status = selectedWorkInstruction.WorkStatus,
+                            Quantity = selectedWorkInstruction.Quantity // 작업 수량 추가
+                        });
+                    }
                 }
             }
             else
@@ -608,6 +620,20 @@ namespace WorkManagementSystem
                             LoadTodayWorkList();
                             lblWorkStatus.Text = "현재 작업이 대기중입니다\r\n\r\n      ※확인해주세요※";
                             MessageBox.Show("작업이 완료되었습니다.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            // 작업 완료 후 차트 업데이트
+                            FormWorkPerformance formWorkPerformance = Application.OpenForms.OfType<FormWorkPerformance>().FirstOrDefault();
+                            if (formWorkPerformance != null)
+                            {
+                                formWorkPerformance.AddWorkPerformance(new WorkPerformance
+                                {
+                                    TaskName = workInstruction.CodeName,
+                                    Date = workInstruction.Date,
+                                    Worker = workInstruction.Worker,
+                                    Status = workInstruction.WorkStatus,
+                                    Quantity = workInstruction.Quantity // 작업 수량 추가
+                                });
+                            }
                         }));
                     }
                 }

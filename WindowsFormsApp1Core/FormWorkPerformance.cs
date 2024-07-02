@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace WorkManagementSystem
 {
@@ -16,6 +17,8 @@ namespace WorkManagementSystem
             InitializeComponent();
             workPerformances = new BindingList<WorkPerformance>();
             LoadWorkPerformances();
+            InitializeCharts();
+            ShowDefaultCharts(); // 기본 차트를 표시합니다.
         }
 
         private void LoadWorkPerformances()
@@ -23,6 +26,75 @@ namespace WorkManagementSystem
             dataGridWorkPerformances.DefaultCellStyle.ForeColor = Color.Black;
             dataGridWorkPerformances.DataSource = null;
             dataGridWorkPerformances.DataSource = workPerformances;
+        }
+
+        private void InitializeCharts()
+        {
+            InitializeChart(chartWorkPerformance, "금속 작업 실적");
+            InitializeChart(chartNonMetalWorkPerformance, "비금속 작업 실적");
+            InitializeChart(chartMetalNonMetalWorkPerformance, "금속+비금속 작업 실적");
+        }
+
+        private void InitializeChart(Chart chart, string title)
+        {
+            chart.Series.Clear();
+            chart.Titles.Clear();
+
+            chart.Titles.Add(title);
+            Series series = new Series("작업 실적")
+            {
+                ChartType = SeriesChartType.Column,
+                XValueType = ChartValueType.String
+            };
+            series.Color = Color.FromArgb(46, 59, 78);
+            chart.Series.Add(series);
+
+            chart.ChartAreas[0].AxisY.Minimum = 0;
+            chart.ChartAreas[0].AxisY.Maximum = 5;
+        }
+
+        private void ShowDefaultCharts()
+        {
+            ShowDefaultChart(chartWorkPerformance, "FR02-A0");
+            ShowDefaultChart(chartNonMetalWorkPerformance, "FR02-A1");
+            ShowDefaultChart(chartMetalNonMetalWorkPerformance, "FR02-A2");
+        }
+
+        private void ShowDefaultChart(Chart chart, string taskName)
+        {
+            if (chart.Series.Count == 0) return;
+
+            var series = chart.Series[0];
+            series.Points.Clear();
+            series.Points.AddXY(taskName, 0); // 기본 차트 표시
+        }
+
+        private void UpdateCharts()
+        {
+            UpdateChart(chartWorkPerformance, "FR02-A0");
+            UpdateChart(chartNonMetalWorkPerformance, "FR02-A1");
+            UpdateChart(chartMetalNonMetalWorkPerformance, "FR02-A2");
+        }
+
+        private void UpdateChart(Chart chart, string taskName)
+        {
+            if (chart.Series.Count == 0) return;
+
+            var series = chart.Series[0];
+            series.Points.Clear();
+
+            var completedTasks = workPerformances.Where(wp => wp.Status == "완료" && wp.TaskName == taskName);
+            foreach (var taskGroup in completedTasks.GroupBy(wp => wp.TaskName))
+            {
+                series.Points.AddXY(taskGroup.Key, taskGroup.Sum(wp => wp.Quantity));
+            }
+        }
+
+        public void AddWorkPerformance(WorkPerformance workPerformance)
+        {
+            workPerformances.Add(workPerformance);
+            LoadWorkPerformances();
+            UpdateCharts();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -34,12 +106,14 @@ namespace WorkManagementSystem
                     TaskName = txtTaskName.Text,
                     Date = datePicker.Value,
                     Worker = txtWorker.Text,
-                    Status = comboBoxStatus.SelectedItem.ToString()
+                    Status = comboBoxStatus.SelectedItem.ToString(),
+                    Quantity = int.Parse(comboBoxQuantity.SelectedItem.ToString()) // Add Quantity here
                 };
 
                 workPerformances.Add(performance);
                 LoadWorkPerformances();
                 ClearInputs();
+                UpdateCharts();
                 MessageBox.Show("작업 실적이 저장되었습니다.");
             }
         }
@@ -54,9 +128,11 @@ namespace WorkManagementSystem
                     selectedWorkPerformance.Date = datePicker.Value;
                     selectedWorkPerformance.Worker = txtWorker.Text;
                     selectedWorkPerformance.Status = comboBoxStatus.SelectedItem.ToString();
+                    selectedWorkPerformance.Quantity = int.Parse(comboBoxQuantity.SelectedItem.ToString()); // Add Quantity here
 
                     LoadWorkPerformances();
                     ClearInputs();
+                    UpdateCharts();
                     MessageBox.Show("작업 실적이 수정되었습니다.");
                 }
             }
@@ -73,6 +149,7 @@ namespace WorkManagementSystem
                 workPerformances.Remove(selectedWorkPerformance);
                 LoadWorkPerformances();
                 ClearInputs();
+                UpdateCharts();
                 MessageBox.Show("작업 실적이 삭제되었습니다.");
             }
             else
@@ -101,6 +178,12 @@ namespace WorkManagementSystem
                 return false;
             }
 
+            if (comboBoxQuantity.SelectedItem == null)
+            {
+                MessageBox.Show("수량을 선택하세요.");
+                return false;
+            }
+
             return true;
         }
 
@@ -110,6 +193,7 @@ namespace WorkManagementSystem
             datePicker.Value = DateTime.Now;
             txtWorker.Text = string.Empty;
             comboBoxStatus.SelectedItem = null;
+            comboBoxQuantity.SelectedItem = null;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -132,22 +216,18 @@ namespace WorkManagementSystem
 
         private void lblStatus_Click(object sender, EventArgs e)
         {
-
         }
 
         private void datePicker_ValueChanged(object sender, EventArgs e)
         {
-
         }
 
         private void lblTaskName_Click(object sender, EventArgs e)
         {
-
         }
 
         private void lblSearch_Click(object sender, EventArgs e)
         {
-
         }
     }
 
@@ -157,6 +237,7 @@ namespace WorkManagementSystem
         public DateTime Date { get; set; }
         public string Worker { get; set; }
         public string Status { get; set; }
+        public int Quantity { get; set; }
 
         public override string ToString()
         {

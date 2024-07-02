@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace WorkManagementSystem
 {
@@ -12,6 +13,7 @@ namespace WorkManagementSystem
         private DateTimePicker datePicker;
         private TextBox txtWorker;
         private ComboBox comboBoxStatus;
+        private ComboBox comboBoxQuantity;
         private Button btnSave;
         private Button btnUpdate;
         private Button btnDelete;
@@ -24,6 +26,9 @@ namespace WorkManagementSystem
         private Label lblWorker;
         private Label lblStatus;
         private Label lblSearch;
+        private Chart chartWorkPerformance;
+        private Chart chartNonMetalWorkPerformance;
+        private Chart chartMetalNonMetalWorkPerformance;
 
         protected override void Dispose(bool disposing)
         {
@@ -39,10 +44,14 @@ namespace WorkManagementSystem
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            ChartArea chartArea1 = new ChartArea();
+            ChartArea chartArea2 = new ChartArea();
+            ChartArea chartArea3 = new ChartArea();
             txtTaskName = new TextBox();
             datePicker = new DateTimePicker();
             txtWorker = new TextBox();
             comboBoxStatus = new ComboBox();
+            comboBoxQuantity = new ComboBox();
             btnSave = new Button();
             btnUpdate = new Button();
             btnDelete = new Button();
@@ -55,7 +64,14 @@ namespace WorkManagementSystem
             lblWorker = new Label();
             lblStatus = new Label();
             lblSearch = new Label();
+            chartWorkPerformance = new Chart();
+            chartNonMetalWorkPerformance = new Chart();
+            chartMetalNonMetalWorkPerformance = new Chart();
+            label1 = new Label();
             ((ISupportInitialize)dataGridWorkPerformances).BeginInit();
+            ((ISupportInitialize)chartWorkPerformance).BeginInit();
+            ((ISupportInitialize)chartNonMetalWorkPerformance).BeginInit();
+            ((ISupportInitialize)chartMetalNonMetalWorkPerformance).BeginInit();
             SuspendLayout();
             // 
             // txtTaskName
@@ -97,6 +113,16 @@ namespace WorkManagementSystem
             comboBoxStatus.Size = new Size(200, 37);
             comboBoxStatus.TabIndex = 3;
             // 
+            // comboBoxQuantity
+            // 
+            comboBoxQuantity.Font = new Font("Microsoft Sans Serif", 18F);
+            comboBoxQuantity.Items.AddRange(new object[] { "1", "2", "3", "4", "5" });
+            comboBoxQuantity.Location = new Point(191, 307);
+            comboBoxQuantity.Margin = new Padding(3, 4, 3, 4);
+            comboBoxQuantity.Name = "comboBoxQuantity";
+            comboBoxQuantity.Size = new Size(200, 37);
+            comboBoxQuantity.TabIndex = 4;
+            // 
             // btnSave
             // 
             btnSave.BackColor = Color.FromArgb(224, 224, 224);
@@ -108,7 +134,7 @@ namespace WorkManagementSystem
             btnSave.Margin = new Padding(3, 4, 3, 4);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(120, 40);
-            btnSave.TabIndex = 4;
+            btnSave.TabIndex = 5;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnSave_Click;
@@ -126,7 +152,7 @@ namespace WorkManagementSystem
             btnUpdate.Margin = new Padding(3, 4, 3, 4);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(120, 40);
-            btnUpdate.TabIndex = 5;
+            btnUpdate.TabIndex = 6;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = false;
             btnUpdate.Click += btnUpdate_Click;
@@ -144,7 +170,7 @@ namespace WorkManagementSystem
             btnDelete.Margin = new Padding(3, 4, 3, 4);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(120, 40);
-            btnDelete.TabIndex = 6;
+            btnDelete.TabIndex = 7;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += btnDelete_Click;
@@ -154,11 +180,11 @@ namespace WorkManagementSystem
             // txtSearch
             // 
             txtSearch.Font = new Font("Microsoft Sans Serif", 18F);
-            txtSearch.Location = new Point(191, 316);
+            txtSearch.Location = new Point(191, 376);
             txtSearch.Margin = new Padding(3, 4, 3, 4);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(200, 35);
-            txtSearch.TabIndex = 7;
+            txtSearch.TabIndex = 8;
             // 
             // btnSearch
             // 
@@ -167,11 +193,11 @@ namespace WorkManagementSystem
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Microsoft Sans Serif", 18F);
             btnSearch.ForeColor = Color.FromArgb(17, 17, 17);
-            btnSearch.Location = new Point(430, 313);
+            btnSearch.Location = new Point(430, 373);
             btnSearch.Margin = new Padding(3, 4, 3, 4);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(120, 40);
-            btnSearch.TabIndex = 8;
+            btnSearch.TabIndex = 9;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = false;
             btnSearch.Click += btnSearch_Click;
@@ -189,7 +215,7 @@ namespace WorkManagementSystem
             btnExportToExcel.Margin = new Padding(3, 4, 3, 4);
             btnExportToExcel.Name = "btnExportToExcel";
             btnExportToExcel.Size = new Size(120, 40);
-            btnExportToExcel.TabIndex = 9;
+            btnExportToExcel.TabIndex = 10;
             btnExportToExcel.Text = "Excel";
             btnExportToExcel.UseVisualStyleBackColor = false;
             btnExportToExcel.Click += btnExportToExcel_Click;
@@ -220,7 +246,7 @@ namespace WorkManagementSystem
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridWorkPerformances.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridWorkPerformances.GridColor = Color.White;
-            dataGridWorkPerformances.Location = new Point(30, 450);
+            dataGridWorkPerformances.Location = new Point(30, 460);
             dataGridWorkPerformances.Margin = new Padding(3, 4, 3, 4);
             dataGridWorkPerformances.Name = "dataGridWorkPerformances";
             dataGridWorkPerformances.ReadOnly = true;
@@ -235,7 +261,7 @@ namespace WorkManagementSystem
             dataGridWorkPerformances.RowHeadersWidth = 51;
             dataGridWorkPerformances.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridWorkPerformances.Size = new Size(1840, 400);
-            dataGridWorkPerformances.TabIndex = 10;
+            dataGridWorkPerformances.TabIndex = 11;
             // 
             // lblTaskName
             // 
@@ -245,7 +271,7 @@ namespace WorkManagementSystem
             lblTaskName.Location = new Point(30, 30);
             lblTaskName.Name = "lblTaskName";
             lblTaskName.Size = new Size(132, 29);
-            lblTaskName.TabIndex = 11;
+            lblTaskName.TabIndex = 12;
             lblTaskName.Text = "Task name";
             lblTaskName.Click += lblTaskName_Click;
             // 
@@ -257,7 +283,7 @@ namespace WorkManagementSystem
             lblDate.Location = new Point(30, 100);
             lblDate.Name = "lblDate";
             lblDate.Size = new Size(135, 29);
-            lblDate.TabIndex = 12;
+            lblDate.TabIndex = 13;
             lblDate.Text = "Description";
             // 
             // lblWorker
@@ -268,7 +294,7 @@ namespace WorkManagementSystem
             lblWorker.Location = new Point(30, 170);
             lblWorker.Name = "lblWorker";
             lblWorker.Size = new Size(91, 29);
-            lblWorker.TabIndex = 13;
+            lblWorker.TabIndex = 14;
             lblWorker.Text = "Worker";
             // 
             // lblStatus
@@ -279,7 +305,7 @@ namespace WorkManagementSystem
             lblStatus.Location = new Point(30, 240);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(79, 29);
-            lblStatus.TabIndex = 14;
+            lblStatus.TabIndex = 15;
             lblStatus.Text = "Status";
             lblStatus.Click += lblStatus_Click;
             // 
@@ -288,23 +314,66 @@ namespace WorkManagementSystem
             lblSearch.AutoSize = true;
             lblSearch.Font = new Font("Microsoft Sans Serif", 18F);
             lblSearch.ForeColor = Color.White;
-            lblSearch.Location = new Point(30, 310);
+            lblSearch.Location = new Point(30, 380);
             lblSearch.Name = "lblSearch";
             lblSearch.Size = new Size(89, 29);
-            lblSearch.TabIndex = 15;
+            lblSearch.TabIndex = 16;
             lblSearch.Text = "Search";
             lblSearch.Click += lblSearch_Click;
+            // 
+            // chartWorkPerformance
+            // 
+            chartArea1.BackColor = Color.White;
+            chartArea1.Name = "ChartArea1";
+            chartWorkPerformance.ChartAreas.Add(chartArea1);
+            chartWorkPerformance.Location = new Point(600, 24);
+            chartWorkPerformance.Name = "chartWorkPerformance";
+            chartWorkPerformance.Size = new Size(350, 389);
+            chartWorkPerformance.TabIndex = 17;
+            // 
+            // chartNonMetalWorkPerformance
+            // 
+            chartArea2.BackColor = Color.White;
+            chartArea2.Name = "ChartArea2";
+            chartNonMetalWorkPerformance.ChartAreas.Add(chartArea2);
+            chartNonMetalWorkPerformance.Location = new Point(917, 24);
+            chartNonMetalWorkPerformance.Name = "chartNonMetalWorkPerformance";
+            chartNonMetalWorkPerformance.Size = new Size(350, 389);
+            chartNonMetalWorkPerformance.TabIndex = 18;
+            // 
+            // chartMetalNonMetalWorkPerformance
+            // 
+            chartArea3.BackColor = Color.White;
+            chartArea3.Name = "ChartArea3";
+            chartMetalNonMetalWorkPerformance.ChartAreas.Add(chartArea3);
+            chartMetalNonMetalWorkPerformance.Location = new Point(1234, 24);
+            chartMetalNonMetalWorkPerformance.Name = "chartMetalNonMetalWorkPerformance";
+            chartMetalNonMetalWorkPerformance.Size = new Size(350, 389);
+            chartMetalNonMetalWorkPerformance.TabIndex = 19;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Microsoft Sans Serif", 18F);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(30, 310);
+            label1.Name = "label1";
+            label1.Size = new Size(100, 29);
+            label1.TabIndex = 20;
+            label1.Text = "Quantity";
             // 
             // FormWorkPerformance
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(46, 59, 78);
-            ClientSize = new Size(1904, 1041);
+            ClientSize = new Size(1904, 1061);
+            Controls.Add(label1);
             Controls.Add(txtTaskName);
             Controls.Add(datePicker);
             Controls.Add(txtWorker);
             Controls.Add(comboBoxStatus);
+            Controls.Add(comboBoxQuantity);
             Controls.Add(btnSave);
             Controls.Add(btnUpdate);
             Controls.Add(btnDelete);
@@ -317,10 +386,16 @@ namespace WorkManagementSystem
             Controls.Add(lblWorker);
             Controls.Add(lblStatus);
             Controls.Add(lblSearch);
+            Controls.Add(chartWorkPerformance);
+            Controls.Add(chartNonMetalWorkPerformance);
+            Controls.Add(chartMetalNonMetalWorkPerformance);
             Margin = new Padding(3, 4, 3, 4);
             Name = "FormWorkPerformance";
             Text = "작업 실적";
             ((ISupportInitialize)dataGridWorkPerformances).EndInit();
+            ((ISupportInitialize)chartWorkPerformance).EndInit();
+            ((ISupportInitialize)chartNonMetalWorkPerformance).EndInit();
+            ((ISupportInitialize)chartMetalNonMetalWorkPerformance).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -334,6 +409,8 @@ namespace WorkManagementSystem
         {
             ((Button)sender).BackColor = Color.White;
         }
+
+        private Label label1;
 
         // 이벤트 핸들러 메서드들 구현은 여기에 추가합니다.
     }
