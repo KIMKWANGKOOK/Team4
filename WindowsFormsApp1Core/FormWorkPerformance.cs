@@ -8,19 +8,23 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace WorkManagementSystem
 {
+    // FormWorkPerformance 클래스는 작업 실적을 관리하는 폼을 정의합니다.
     public partial class FormWorkPerformance : Form
     {
+        // 작업 실적 데이터를 저장하는 바인딩 리스트
         private BindingList<WorkPerformance> workPerformances;
 
+        // 생성자
         public FormWorkPerformance()
         {
-            InitializeComponent();
-            workPerformances = new BindingList<WorkPerformance>();
-            LoadWorkPerformances();
-            InitializeCharts();
+            InitializeComponent(); // 폼의 구성 요소를 초기화합니다.
+            workPerformances = new BindingList<WorkPerformance>(); // 작업 실적 리스트 초기화
+            LoadWorkPerformances(); // 작업 실적 데이터를 로드합니다.
+            InitializeCharts(); // 차트를 초기화합니다.
             ShowDefaultCharts(); // 기본 차트를 표시합니다.
         }
 
+        // 작업 실적 데이터를 로드하는 메서드
         private void LoadWorkPerformances()
         {
             dataGridWorkPerformances.DefaultCellStyle.ForeColor = Color.Black;
@@ -28,6 +32,7 @@ namespace WorkManagementSystem
             dataGridWorkPerformances.DataSource = workPerformances;
         }
 
+        // 차트를 초기화하는 메서드
         private void InitializeCharts()
         {
             InitializeChart(chartWorkPerformance, "금속 작업 실적");
@@ -35,6 +40,7 @@ namespace WorkManagementSystem
             InitializeChart(chartMetalNonMetalWorkPerformance, "금속+비금속 작업 실적");
         }
 
+        // 개별 차트를 초기화하는 메서드
         private void InitializeChart(Chart chart, string title)
         {
             chart.Series.Clear();
@@ -53,6 +59,7 @@ namespace WorkManagementSystem
             chart.ChartAreas[0].AxisY.Maximum = 5;
         }
 
+        // 기본 차트를 표시하는 메서드
         private void ShowDefaultCharts()
         {
             ShowDefaultChart(chartWorkPerformance, "FR02-A0");
@@ -60,6 +67,7 @@ namespace WorkManagementSystem
             ShowDefaultChart(chartMetalNonMetalWorkPerformance, "FR02-A2");
         }
 
+        // 개별 기본 차트를 표시하는 메서드
         private void ShowDefaultChart(Chart chart, string taskName)
         {
             if (chart.Series.Count == 0) return;
@@ -69,6 +77,7 @@ namespace WorkManagementSystem
             series.Points.AddXY(taskName, 0); // 기본 차트 표시
         }
 
+        // 차트를 업데이트하는 메서드
         private void UpdateCharts()
         {
             UpdateChart(chartWorkPerformance, "FR02-A0");
@@ -76,6 +85,7 @@ namespace WorkManagementSystem
             UpdateChart(chartMetalNonMetalWorkPerformance, "FR02-A2");
         }
 
+        // 개별 차트를 업데이트하는 메서드
         private void UpdateChart(Chart chart, string taskName)
         {
             if (chart.Series.Count == 0) return;
@@ -90,6 +100,7 @@ namespace WorkManagementSystem
             }
         }
 
+        // 작업 실적을 추가하는 메서드
         public void AddWorkPerformance(WorkPerformance workPerformance)
         {
             workPerformances.Add(workPerformance);
@@ -97,6 +108,7 @@ namespace WorkManagementSystem
             UpdateCharts();
         }
 
+        // 저장 버튼 클릭 시 호출되는 메서드
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (ValidateInputs())
@@ -107,7 +119,7 @@ namespace WorkManagementSystem
                     Date = datePicker.Value,
                     Worker = txtWorker.Text,
                     Status = comboBoxStatus.SelectedItem.ToString(),
-                    Quantity = int.Parse(comboBoxQuantity.SelectedItem.ToString()) // Add Quantity here
+                    Quantity = int.Parse(comboBoxQuantity.SelectedItem.ToString()) // 작업 수량 추가
                 };
 
                 workPerformances.Add(performance);
@@ -118,6 +130,7 @@ namespace WorkManagementSystem
             }
         }
 
+        // 수정 버튼 클릭 시 호출되는 메서드
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (dataGridWorkPerformances.CurrentRow?.DataBoundItem is WorkPerformance selectedWorkPerformance)
@@ -128,7 +141,7 @@ namespace WorkManagementSystem
                     selectedWorkPerformance.Date = datePicker.Value;
                     selectedWorkPerformance.Worker = txtWorker.Text;
                     selectedWorkPerformance.Status = comboBoxStatus.SelectedItem.ToString();
-                    selectedWorkPerformance.Quantity = int.Parse(comboBoxQuantity.SelectedItem.ToString()); // Add Quantity here
+                    selectedWorkPerformance.Quantity = int.Parse(comboBoxQuantity.SelectedItem.ToString()); // 작업 수량 추가
 
                     LoadWorkPerformances();
                     ClearInputs();
@@ -142,6 +155,7 @@ namespace WorkManagementSystem
             }
         }
 
+        // 삭제 버튼 클릭 시 호출되는 메서드
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (dataGridWorkPerformances.CurrentRow?.DataBoundItem is WorkPerformance selectedWorkPerformance)
@@ -158,6 +172,7 @@ namespace WorkManagementSystem
             }
         }
 
+        // 입력을 검증하는 메서드
         private bool ValidateInputs()
         {
             if (string.IsNullOrWhiteSpace(txtTaskName.Text))
@@ -187,6 +202,7 @@ namespace WorkManagementSystem
             return true;
         }
 
+        // 입력 필드를 초기화하는 메서드
         private void ClearInputs()
         {
             txtTaskName.Text = string.Empty;
@@ -196,6 +212,7 @@ namespace WorkManagementSystem
             comboBoxQuantity.SelectedItem = null;
         }
 
+        // 검색 버튼 클릭 시 호출되는 메서드
         private void btnSearch_Click(object sender, EventArgs e)
         {
             var keyword = txtSearch.Text.ToLower();
@@ -208,29 +225,35 @@ namespace WorkManagementSystem
             dataGridWorkPerformances.DataSource = filteredPerformances;
         }
 
+        // 엑셀로 내보내기 버튼 클릭 시 호출되는 메서드
         private void btnExportToExcel_Click(object sender, EventArgs e)
         {
             // 엑셀로 내보내기 구현
             // 필요한 패키지 참조 추가 필요 (예: EPPlus)
         }
 
+        // 이벤트 핸들러 (현재 비어 있음)
         private void lblStatus_Click(object sender, EventArgs e)
         {
         }
 
+        // 이벤트 핸들러 (현재 비어 있음)
         private void datePicker_ValueChanged(object sender, EventArgs e)
         {
         }
 
+        // 이벤트 핸들러 (현재 비어 있음)
         private void lblTaskName_Click(object sender, EventArgs e)
         {
         }
 
+        // 이벤트 핸들러 (현재 비어 있음)
         private void lblSearch_Click(object sender, EventArgs e)
         {
         }
     }
 
+    // 작업 실적 클래스를 정의합니다.
     public class WorkPerformance
     {
         public string TaskName { get; set; }
@@ -239,6 +262,7 @@ namespace WorkManagementSystem
         public string Status { get; set; }
         public int Quantity { get; set; }
 
+        // 작업 실적을 문자열로 표현합니다.
         public override string ToString()
         {
             return $"{TaskName} - {Date.ToShortDateString()} - {Worker} - {Status}";
