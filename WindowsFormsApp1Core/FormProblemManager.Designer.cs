@@ -35,6 +35,9 @@ namespace WorkManagementSystem
 
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             txtProblemName = new TextBox();
             txtDescription = new TextBox();
             datePickerReported = new DateTimePicker();
@@ -56,50 +59,55 @@ namespace WorkManagementSystem
             // 
             // txtProblemName
             // 
-            txtProblemName.Location = new Point(140, 34);
+            txtProblemName.Font = new Font("맑은 고딕", 18F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            txtProblemName.Location = new Point(220, 20);
             txtProblemName.Margin = new Padding(3, 4, 3, 4);
             txtProblemName.Name = "txtProblemName";
-            txtProblemName.Size = new Size(233, 23);
+            txtProblemName.Size = new Size(200, 39);
             txtProblemName.TabIndex = 0;
             // 
             // txtDescription
             // 
-            txtDescription.Location = new Point(140, 81);
+            txtDescription.Font = new Font("맑은 고딕", 18F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            txtDescription.Location = new Point(220, 90);
             txtDescription.Margin = new Padding(3, 4, 3, 4);
             txtDescription.Name = "txtDescription";
-            txtDescription.Size = new Size(233, 23);
+            txtDescription.Size = new Size(200, 39);
             txtDescription.TabIndex = 1;
             // 
             // datePickerReported
             // 
-            datePickerReported.Location = new Point(140, 127);
+            datePickerReported.Font = new Font("맑은 고딕", 18F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            datePickerReported.Location = new Point(220, 160);
             datePickerReported.Margin = new Padding(3, 4, 3, 4);
             datePickerReported.Name = "datePickerReported";
-            datePickerReported.Size = new Size(233, 23);
+            datePickerReported.Size = new Size(200, 39);
             datePickerReported.TabIndex = 2;
             // 
             // comboBoxStatus
             // 
+            comboBoxStatus.Font = new Font("맑은 고딕", 18F, FontStyle.Regular, GraphicsUnit.Point, 129);
             comboBoxStatus.FormattingEnabled = true;
             comboBoxStatus.Items.AddRange(new object[] { "열림", "닫힘", "보류" });
-            comboBoxStatus.Location = new Point(140, 173);
+            comboBoxStatus.Location = new Point(220, 234);
             comboBoxStatus.Margin = new Padding(3, 4, 3, 4);
             comboBoxStatus.Name = "comboBoxStatus";
-            comboBoxStatus.Size = new Size(233, 23);
+            comboBoxStatus.Size = new Size(200, 40);
             comboBoxStatus.TabIndex = 3;
             // 
             // btnSaveProblem
             // 
-            btnSaveProblem.BackColor = Color.White;
+            btnSaveProblem.BackColor = Color.FromArgb(224, 224, 224);
             btnSaveProblem.FlatAppearance.BorderColor = Color.White;
             btnSaveProblem.FlatStyle = FlatStyle.Flat;
-            btnSaveProblem.ForeColor = Color.Black;
-            btnSaveProblem.Location = new Point(397, 34);
+            btnSaveProblem.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSaveProblem.ForeColor = Color.FromArgb(17, 17, 17);
+            btnSaveProblem.Location = new Point(450, 20);
             btnSaveProblem.Margin = new Padding(3, 4, 3, 4);
             btnSaveProblem.Name = "btnSaveProblem";
-            btnSaveProblem.Size = new Size(117, 26);
+            btnSaveProblem.Size = new Size(120, 40);
             btnSaveProblem.TabIndex = 4;
-            btnSaveProblem.Text = "저장";
+            btnSaveProblem.Text = "Save";
             btnSaveProblem.UseVisualStyleBackColor = false;
             btnSaveProblem.Click += btnSave_Click;
             btnSaveProblem.MouseEnter += Button_MouseEnter;
@@ -107,16 +115,17 @@ namespace WorkManagementSystem
             // 
             // btnUpdateProblem
             // 
-            btnUpdateProblem.BackColor = Color.White;
+            btnUpdateProblem.BackColor = Color.FromArgb(224, 224, 224);
             btnUpdateProblem.FlatAppearance.BorderColor = Color.White;
             btnUpdateProblem.FlatStyle = FlatStyle.Flat;
-            btnUpdateProblem.ForeColor = Color.Black;
-            btnUpdateProblem.Location = new Point(397, 81);
+            btnUpdateProblem.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnUpdateProblem.ForeColor = Color.FromArgb(17, 17, 17);
+            btnUpdateProblem.Location = new Point(450, 90);
             btnUpdateProblem.Margin = new Padding(3, 4, 3, 4);
             btnUpdateProblem.Name = "btnUpdateProblem";
-            btnUpdateProblem.Size = new Size(117, 26);
+            btnUpdateProblem.Size = new Size(120, 40);
             btnUpdateProblem.TabIndex = 5;
-            btnUpdateProblem.Text = "수정";
+            btnUpdateProblem.Text = "Revise";
             btnUpdateProblem.UseVisualStyleBackColor = false;
             btnUpdateProblem.Click += btnUpdate_Click;
             btnUpdateProblem.MouseEnter += Button_MouseEnter;
@@ -124,16 +133,17 @@ namespace WorkManagementSystem
             // 
             // btnDeleteProblem
             // 
-            btnDeleteProblem.BackColor = Color.White;
+            btnDeleteProblem.BackColor = Color.FromArgb(224, 224, 224);
             btnDeleteProblem.FlatAppearance.BorderColor = Color.White;
             btnDeleteProblem.FlatStyle = FlatStyle.Flat;
-            btnDeleteProblem.ForeColor = Color.Black;
-            btnDeleteProblem.Location = new Point(397, 127);
+            btnDeleteProblem.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDeleteProblem.ForeColor = Color.FromArgb(17, 17, 17);
+            btnDeleteProblem.Location = new Point(450, 159);
             btnDeleteProblem.Margin = new Padding(3, 4, 3, 4);
             btnDeleteProblem.Name = "btnDeleteProblem";
-            btnDeleteProblem.Size = new Size(117, 26);
+            btnDeleteProblem.Size = new Size(120, 40);
             btnDeleteProblem.TabIndex = 6;
-            btnDeleteProblem.Text = "삭제";
+            btnDeleteProblem.Text = "Delete";
             btnDeleteProblem.UseVisualStyleBackColor = false;
             btnDeleteProblem.Click += btnUpdate_Click;
             btnDeleteProblem.MouseEnter += Button_MouseEnter;
@@ -144,77 +154,107 @@ namespace WorkManagementSystem
             dataGridProblems.AllowUserToAddRows = false;
             dataGridProblems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridProblems.BackgroundColor = Color.FromArgb(46, 59, 78);
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(46, 59, 78);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridProblems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridProblems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(45, 59, 78);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridProblems.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridProblems.GridColor = Color.White;
-            dataGridProblems.Location = new Point(23, 266);
+            dataGridProblems.Location = new Point(30, 450);
             dataGridProblems.Margin = new Padding(3, 4, 3, 4);
             dataGridProblems.Name = "dataGridProblems";
             dataGridProblems.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(46, 59, 78);
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridProblems.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridProblems.RowHeadersWidth = 51;
             dataGridProblems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridProblems.Size = new Size(992, 353);
+            dataGridProblems.Size = new Size(1840, 400);
             dataGridProblems.TabIndex = 14;
             // 
             // lblProblemName
             // 
             lblProblemName.AutoSize = true;
+            lblProblemName.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblProblemName.ForeColor = Color.White;
-            lblProblemName.Location = new Point(23, 40);
+            lblProblemName.Location = new Point(30, 30);
             lblProblemName.Name = "lblProblemName";
-            lblProblemName.Size = new Size(43, 15);
+            lblProblemName.Size = new Size(176, 29);
             lblProblemName.TabIndex = 7;
-            lblProblemName.Text = "문제명";
+            lblProblemName.Text = "Problem Name";
             // 
             // lblDescription
             // 
             lblDescription.AutoSize = true;
+            lblDescription.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblDescription.ForeColor = Color.White;
-            lblDescription.Location = new Point(23, 86);
+            lblDescription.Location = new Point(30, 100);
             lblDescription.Name = "lblDescription";
-            lblDescription.Size = new Size(31, 15);
+            lblDescription.Size = new Size(135, 29);
             lblDescription.TabIndex = 8;
-            lblDescription.Text = "설명";
+            lblDescription.Text = "Description";
             // 
             // lblReportedDate
             // 
             lblReportedDate.AutoSize = true;
+            lblReportedDate.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblReportedDate.ForeColor = Color.White;
-            lblReportedDate.Location = new Point(23, 133);
+            lblReportedDate.Location = new Point(30, 170);
             lblReportedDate.Name = "lblReportedDate";
-            lblReportedDate.Size = new Size(43, 15);
+            lblReportedDate.Size = new Size(164, 29);
             lblReportedDate.TabIndex = 9;
-            lblReportedDate.Text = "보고일";
+            lblReportedDate.Text = "ReportedDate";
             // 
             // lblStatus
             // 
             lblStatus.AutoSize = true;
+            lblStatus.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblStatus.ForeColor = Color.White;
-            lblStatus.Location = new Point(23, 178);
+            lblStatus.Location = new Point(30, 240);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(31, 15);
+            lblStatus.Size = new Size(79, 29);
             lblStatus.TabIndex = 10;
-            lblStatus.Text = "상태";
+            lblStatus.Text = "Status";
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(140, 219);
+            txtSearch.Font = new Font("맑은 고딕", 18F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            txtSearch.Location = new Point(220, 310);
             txtSearch.Margin = new Padding(3, 4, 3, 4);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(233, 23);
+            txtSearch.Size = new Size(200, 39);
             txtSearch.TabIndex = 11;
             // 
             // btnSearch
             // 
-            btnSearch.BackColor = Color.White;
+            btnSearch.BackColor = Color.FromArgb(224, 224, 224);
             btnSearch.FlatAppearance.BorderColor = Color.White;
             btnSearch.FlatStyle = FlatStyle.Flat;
-            btnSearch.ForeColor = Color.Black;
-            btnSearch.Location = new Point(397, 219);
+            btnSearch.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSearch.ForeColor = Color.FromArgb(17, 17, 17);
+            btnSearch.Location = new Point(450, 234);
             btnSearch.Margin = new Padding(3, 4, 3, 4);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(117, 26);
+            btnSearch.Size = new Size(120, 40);
             btnSearch.TabIndex = 13;
-            btnSearch.Text = "검색";
+            btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = false;
             btnSearch.Click += btnSearch_Click;
             btnSearch.MouseEnter += Button_MouseEnter;
@@ -223,25 +263,27 @@ namespace WorkManagementSystem
             // lblSearch
             // 
             lblSearch.AutoSize = true;
+            lblSearch.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblSearch.ForeColor = Color.White;
-            lblSearch.Location = new Point(23, 225);
+            lblSearch.Location = new Point(30, 310);
             lblSearch.Name = "lblSearch";
-            lblSearch.Size = new Size(31, 15);
+            lblSearch.Size = new Size(89, 29);
             lblSearch.TabIndex = 12;
-            lblSearch.Text = "검색";
+            lblSearch.Text = "Search";
             // 
             // bt_exportExel
             // 
-            bt_exportExel.BackColor = Color.White;
+            bt_exportExel.BackColor = Color.FromArgb(224, 224, 224);
             bt_exportExel.FlatAppearance.BorderColor = Color.White;
             bt_exportExel.FlatStyle = FlatStyle.Flat;
-            bt_exportExel.ForeColor = Color.Black;
-            bt_exportExel.Location = new Point(446, 640);
+            bt_exportExel.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            bt_exportExel.ForeColor = Color.FromArgb(17, 17, 17);
+            bt_exportExel.Location = new Point(450, 313);
             bt_exportExel.Margin = new Padding(3, 4, 3, 4);
             bt_exportExel.Name = "bt_exportExel";
-            bt_exportExel.Size = new Size(117, 26);
+            bt_exportExel.Size = new Size(120, 40);
             bt_exportExel.TabIndex = 15;
-            bt_exportExel.Text = "엑셀로 다운";
+            bt_exportExel.Text = "Excel";
             bt_exportExel.UseVisualStyleBackColor = false;
             bt_exportExel.Click += btnExport_Click;
             // 

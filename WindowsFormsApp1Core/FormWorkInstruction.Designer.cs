@@ -104,67 +104,68 @@ namespace WorkManagementSystem
             // comboBoxTaskName
             // 
             comboBoxTaskName.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxTaskName.Font = new Font("맑은 고딕", 18F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            comboBoxTaskName.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             comboBoxTaskName.FormattingEnabled = true;
             comboBoxTaskName.Location = new Point(200, 20);
             comboBoxTaskName.Margin = new Padding(4);
             comboBoxTaskName.Name = "comboBoxTaskName";
-            comboBoxTaskName.Size = new Size(200, 40);
+            comboBoxTaskName.Size = new Size(200, 37);
             comboBoxTaskName.TabIndex = 0;
             comboBoxTaskName.SelectedIndexChanged += ComboBoxTaskName_SelectedIndexChanged;
             // 
             // txtContent
             // 
-            txtContent.Font = new Font("맑은 고딕", 18F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            txtContent.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtContent.Location = new Point(200, 90);
             txtContent.Margin = new Padding(4);
             txtContent.Name = "txtContent";
-            txtContent.Size = new Size(200, 39);
+            txtContent.Size = new Size(200, 35);
             txtContent.TabIndex = 1;
             // 
             // datePicker
             // 
-            datePicker.CalendarFont = new Font("맑은 고딕", 18F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            datePicker.Location = new Point(200, 170);
+            datePicker.CalendarFont = new Font("Microsoft Sans Serif", 18F);
+            datePicker.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            datePicker.Location = new Point(200, 162);
             datePicker.Margin = new Padding(4);
             datePicker.Name = "datePicker";
-            datePicker.Size = new Size(200, 23);
+            datePicker.Size = new Size(200, 35);
             datePicker.TabIndex = 2;
             // 
             // txtWriter
             // 
-            txtWriter.Font = new Font("맑은 고딕", 18F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            txtWriter.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtWriter.Location = new Point(200, 240);
             txtWriter.Margin = new Padding(4);
             txtWriter.Name = "txtWriter";
-            txtWriter.Size = new Size(200, 39);
+            txtWriter.Size = new Size(200, 35);
             txtWriter.TabIndex = 3;
             // 
             // txtWorker
             // 
-            txtWorker.Font = new Font("맑은 고딕", 18F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            txtWorker.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtWorker.Location = new Point(200, 310);
             txtWorker.Margin = new Padding(4);
             txtWorker.Name = "txtWorker";
-            txtWorker.Size = new Size(200, 39);
+            txtWorker.Size = new Size(200, 35);
             txtWorker.TabIndex = 8;
             // 
             // comboBoxPriority
             // 
-            comboBoxPriority.Font = new Font("맑은 고딕", 18F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            comboBoxPriority.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             comboBoxPriority.Location = new Point(688, 90);
             comboBoxPriority.Margin = new Padding(4);
             comboBoxPriority.Name = "comboBoxPriority";
-            comboBoxPriority.Size = new Size(200, 40);
+            comboBoxPriority.Size = new Size(200, 37);
             comboBoxPriority.TabIndex = 4;
             // 
             // comboBoxQuantity
             // 
-            comboBoxQuantity.Font = new Font("맑은 고딕", 18F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            comboBoxQuantity.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             comboBoxQuantity.Location = new Point(688, 21);
             comboBoxQuantity.Margin = new Padding(4);
             comboBoxQuantity.Name = "comboBoxQuantity";
-            comboBoxQuantity.Size = new Size(200, 40);
+            comboBoxQuantity.Size = new Size(200, 37);
             comboBoxQuantity.TabIndex = 20;
             // 
             // btnSave
@@ -328,7 +329,7 @@ namespace WorkManagementSystem
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.ForeColor = Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(46, 59, 78);
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
@@ -370,7 +371,7 @@ namespace WorkManagementSystem
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = SystemColors.Window;
             dataGridViewCellStyle5.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle5.ForeColor = Color.Black;
             dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(46, 59, 78);
             dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
@@ -411,7 +412,7 @@ namespace WorkManagementSystem
             dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = SystemColors.Window;
             dataGridViewCellStyle8.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle8.ForeColor = Color.Black;
             dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(46, 59, 78);
             dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
@@ -625,22 +626,22 @@ namespace WorkManagementSystem
             // lb_state
             // 
             lb_state.AutoSize = true;
-            lb_state.Font = new Font("맑은 고딕", 18F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            lb_state.Font = new Font("Microsoft Sans Serif", 18F);
             lb_state.ForeColor = Color.White;
             lb_state.Location = new Point(750, 240);
             lb_state.Margin = new Padding(4, 0, 4, 0);
             lb_state.Name = "lb_state";
-            lb_state.Size = new Size(24, 32);
+            lb_state.Size = new Size(21, 29);
             lb_state.TabIndex = 32;
             lb_state.Text = "-";
             // 
             // combo_plcNum
             // 
-            combo_plcNum.Font = new Font("맑은 고딕", 18F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            combo_plcNum.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             combo_plcNum.Location = new Point(688, 164);
             combo_plcNum.Margin = new Padding(4);
             combo_plcNum.Name = "combo_plcNum";
-            combo_plcNum.Size = new Size(200, 39);
+            combo_plcNum.Size = new Size(200, 35);
             combo_plcNum.TabIndex = 8;
             // 
             // FormWorkInstruction

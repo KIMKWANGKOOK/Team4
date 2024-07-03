@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace WorkManagementSystem
 {
@@ -12,6 +13,7 @@ namespace WorkManagementSystem
         private DateTimePicker datePicker;
         private TextBox txtWorker;
         private ComboBox comboBoxStatus;
+        private ComboBox comboBoxQuantity;
         private Button btnSave;
         private Button btnUpdate;
         private Button btnDelete;
@@ -24,6 +26,9 @@ namespace WorkManagementSystem
         private Label lblWorker;
         private Label lblStatus;
         private Label lblSearch;
+        private Chart chartWorkPerformance;
+        private Chart chartNonMetalWorkPerformance;
+        private Chart chartMetalNonMetalWorkPerformance;
 
         protected override void Dispose(bool disposing)
         {
@@ -36,10 +41,17 @@ namespace WorkManagementSystem
 
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            ChartArea chartArea1 = new ChartArea();
+            ChartArea chartArea2 = new ChartArea();
+            ChartArea chartArea3 = new ChartArea();
             txtTaskName = new TextBox();
             datePicker = new DateTimePicker();
             txtWorker = new TextBox();
             comboBoxStatus = new ComboBox();
+            comboBoxQuantity = new ComboBox();
             btnSave = new Button();
             btnUpdate = new Button();
             btnDelete = new Button();
@@ -52,55 +64,77 @@ namespace WorkManagementSystem
             lblWorker = new Label();
             lblStatus = new Label();
             lblSearch = new Label();
+            chartWorkPerformance = new Chart();
+            chartNonMetalWorkPerformance = new Chart();
+            chartMetalNonMetalWorkPerformance = new Chart();
+            label1 = new Label();
             ((ISupportInitialize)dataGridWorkPerformances).BeginInit();
+            ((ISupportInitialize)chartWorkPerformance).BeginInit();
+            ((ISupportInitialize)chartNonMetalWorkPerformance).BeginInit();
+            ((ISupportInitialize)chartMetalNonMetalWorkPerformance).BeginInit();
             SuspendLayout();
             // 
             // txtTaskName
             // 
-            txtTaskName.Location = new Point(180, 46);
-            txtTaskName.Margin = new Padding(4, 5, 4, 5);
+            txtTaskName.Font = new Font("Microsoft Sans Serif", 18F);
+            txtTaskName.Location = new Point(191, 27);
+            txtTaskName.Margin = new Padding(3, 4, 3, 4);
             txtTaskName.Name = "txtTaskName";
-            txtTaskName.Size = new Size(298, 27);
+            txtTaskName.Size = new Size(200, 35);
             txtTaskName.TabIndex = 0;
             // 
             // datePicker
             // 
-            datePicker.Location = new Point(180, 108);
-            datePicker.Margin = new Padding(4, 5, 4, 5);
+            datePicker.Font = new Font("Microsoft Sans Serif", 18F);
+            datePicker.Location = new Point(191, 95);
+            datePicker.Margin = new Padding(3, 4, 3, 4);
             datePicker.Name = "datePicker";
-            datePicker.Size = new Size(298, 27);
+            datePicker.Size = new Size(200, 35);
             datePicker.TabIndex = 1;
             datePicker.Value = new DateTime(2024, 6, 25, 0, 0, 0, 0);
             datePicker.ValueChanged += datePicker_ValueChanged;
             // 
             // txtWorker
             // 
-            txtWorker.Location = new Point(180, 169);
-            txtWorker.Margin = new Padding(4, 5, 4, 5);
+            txtWorker.Font = new Font("Microsoft Sans Serif", 18F);
+            txtWorker.Location = new Point(191, 167);
+            txtWorker.Margin = new Padding(3, 4, 3, 4);
             txtWorker.Name = "txtWorker";
-            txtWorker.Size = new Size(298, 27);
+            txtWorker.Size = new Size(200, 35);
             txtWorker.TabIndex = 2;
             // 
             // comboBoxStatus
             // 
+            comboBoxStatus.Font = new Font("Microsoft Sans Serif", 18F);
             comboBoxStatus.Items.AddRange(new object[] { "완료", "진행 중", "대기" });
-            comboBoxStatus.Location = new Point(180, 231);
-            comboBoxStatus.Margin = new Padding(4, 5, 4, 5);
+            comboBoxStatus.Location = new Point(191, 237);
+            comboBoxStatus.Margin = new Padding(3, 4, 3, 4);
             comboBoxStatus.Name = "comboBoxStatus";
-            comboBoxStatus.Size = new Size(298, 28);
+            comboBoxStatus.Size = new Size(200, 37);
             comboBoxStatus.TabIndex = 3;
+            // 
+            // comboBoxQuantity
+            // 
+            comboBoxQuantity.Font = new Font("Microsoft Sans Serif", 18F);
+            comboBoxQuantity.Items.AddRange(new object[] { "1", "2", "3", "4", "5" });
+            comboBoxQuantity.Location = new Point(191, 307);
+            comboBoxQuantity.Margin = new Padding(3, 4, 3, 4);
+            comboBoxQuantity.Name = "comboBoxQuantity";
+            comboBoxQuantity.Size = new Size(200, 37);
+            comboBoxQuantity.TabIndex = 4;
             // 
             // btnSave
             // 
             btnSave.BackColor = Color.FromArgb(224, 224, 224);
             btnSave.FlatAppearance.BorderColor = Color.White;
             btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.Font = new Font("Microsoft Sans Serif", 18F);
             btnSave.ForeColor = Color.FromArgb(17, 17, 17);
-            btnSave.Location = new Point(510, 46);
-            btnSave.Margin = new Padding(4, 5, 4, 5);
+            btnSave.Location = new Point(430, 24);
+            btnSave.Margin = new Padding(3, 4, 3, 4);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(82, 32);
-            btnSave.TabIndex = 4;
+            btnSave.Size = new Size(120, 40);
+            btnSave.TabIndex = 5;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnSave_Click;
@@ -112,13 +146,13 @@ namespace WorkManagementSystem
             btnUpdate.BackColor = Color.FromArgb(224, 224, 224);
             btnUpdate.FlatAppearance.BorderColor = Color.White;
             btnUpdate.FlatStyle = FlatStyle.Flat;
-            btnUpdate.Font = new Font("맑은 고딕", 9F, FontStyle.Regular, GraphicsUnit.Point, 129);
+            btnUpdate.Font = new Font("Microsoft Sans Serif", 18F);
             btnUpdate.ForeColor = Color.FromArgb(17, 17, 17);
-            btnUpdate.Location = new Point(510, 106);
-            btnUpdate.Margin = new Padding(4, 5, 4, 5);
+            btnUpdate.Location = new Point(430, 94);
+            btnUpdate.Margin = new Padding(3, 4, 3, 4);
             btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(80, 32);
-            btnUpdate.TabIndex = 5;
+            btnUpdate.Size = new Size(120, 40);
+            btnUpdate.TabIndex = 6;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = false;
             btnUpdate.Click += btnUpdate_Click;
@@ -130,12 +164,13 @@ namespace WorkManagementSystem
             btnDelete.BackColor = Color.FromArgb(224, 224, 224);
             btnDelete.FlatAppearance.BorderColor = Color.White;
             btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.Font = new Font("Microsoft Sans Serif", 18F);
             btnDelete.ForeColor = Color.FromArgb(17, 17, 17);
-            btnDelete.Location = new Point(510, 170);
-            btnDelete.Margin = new Padding(4, 5, 4, 5);
+            btnDelete.Location = new Point(430, 164);
+            btnDelete.Margin = new Padding(3, 4, 3, 4);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(80, 32);
-            btnDelete.TabIndex = 6;
+            btnDelete.Size = new Size(120, 40);
+            btnDelete.TabIndex = 7;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += btnDelete_Click;
@@ -144,23 +179,25 @@ namespace WorkManagementSystem
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(180, 295);
-            txtSearch.Margin = new Padding(4, 5, 4, 5);
+            txtSearch.Font = new Font("Microsoft Sans Serif", 18F);
+            txtSearch.Location = new Point(191, 376);
+            txtSearch.Margin = new Padding(3, 4, 3, 4);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(298, 27);
-            txtSearch.TabIndex = 7;
+            txtSearch.Size = new Size(200, 35);
+            txtSearch.TabIndex = 8;
             // 
             // btnSearch
             // 
             btnSearch.BackColor = Color.FromArgb(224, 224, 224);
             btnSearch.FlatAppearance.BorderColor = Color.White;
             btnSearch.FlatStyle = FlatStyle.Flat;
+            btnSearch.Font = new Font("Microsoft Sans Serif", 18F);
             btnSearch.ForeColor = Color.FromArgb(17, 17, 17);
-            btnSearch.Location = new Point(510, 295);
-            btnSearch.Margin = new Padding(4, 5, 4, 5);
+            btnSearch.Location = new Point(430, 373);
+            btnSearch.Margin = new Padding(3, 4, 3, 4);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(80, 32);
-            btnSearch.TabIndex = 8;
+            btnSearch.Size = new Size(120, 40);
+            btnSearch.TabIndex = 9;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = false;
             btnSearch.Click += btnSearch_Click;
@@ -172,13 +209,14 @@ namespace WorkManagementSystem
             btnExportToExcel.BackColor = Color.FromArgb(224, 224, 224);
             btnExportToExcel.FlatAppearance.BorderColor = Color.White;
             btnExportToExcel.FlatStyle = FlatStyle.Flat;
+            btnExportToExcel.Font = new Font("Microsoft Sans Serif", 18F);
             btnExportToExcel.ForeColor = Color.FromArgb(17, 17, 17);
-            btnExportToExcel.Location = new Point(284, 753);
-            btnExportToExcel.Margin = new Padding(4, 5, 4, 5);
+            btnExportToExcel.Location = new Point(430, 234);
+            btnExportToExcel.Margin = new Padding(3, 4, 3, 4);
             btnExportToExcel.Name = "btnExportToExcel";
-            btnExportToExcel.Size = new Size(150, 35);
-            btnExportToExcel.TabIndex = 9;
-            btnExportToExcel.Text = "Export to Excel";
+            btnExportToExcel.Size = new Size(120, 40);
+            btnExportToExcel.TabIndex = 10;
+            btnExportToExcel.Text = "Excel";
             btnExportToExcel.UseVisualStyleBackColor = false;
             btnExportToExcel.Click += btnExportToExcel_Click;
             btnExportToExcel.MouseEnter += Button_MouseEnter;
@@ -190,90 +228,152 @@ namespace WorkManagementSystem
             dataGridWorkPerformances.AllowUserToDeleteRows = false;
             dataGridWorkPerformances.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridWorkPerformances.BackgroundColor = Color.FromArgb(46, 59, 78);
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(46, 59, 78);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridWorkPerformances.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridWorkPerformances.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 16F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(46, 59, 78);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridWorkPerformances.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridWorkPerformances.GridColor = Color.White;
-            dataGridWorkPerformances.Location = new Point(13, 349);
-            dataGridWorkPerformances.Margin = new Padding(4, 5, 4, 5);
+            dataGridWorkPerformances.Location = new Point(30, 460);
+            dataGridWorkPerformances.Margin = new Padding(3, 4, 3, 4);
             dataGridWorkPerformances.Name = "dataGridWorkPerformances";
             dataGridWorkPerformances.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 18F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(46, 59, 78);
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridWorkPerformances.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridWorkPerformances.RowHeadersWidth = 51;
             dataGridWorkPerformances.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridWorkPerformances.Size = new Size(736, 381);
-            dataGridWorkPerformances.TabIndex = 10;
+            dataGridWorkPerformances.Size = new Size(1840, 400);
+            dataGridWorkPerformances.TabIndex = 11;
             // 
             // lblTaskName
             // 
             lblTaskName.AutoSize = true;
-            lblTaskName.Font = new Font("Microsoft Sans Serif", 12F);
+            lblTaskName.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblTaskName.ForeColor = Color.White;
-            lblTaskName.Location = new Point(30, 54);
-            lblTaskName.Margin = new Padding(4, 0, 4, 0);
+            lblTaskName.Location = new Point(30, 30);
             lblTaskName.Name = "lblTaskName";
-            lblTaskName.Size = new Size(110, 25);
-            lblTaskName.TabIndex = 11;
+            lblTaskName.Size = new Size(132, 29);
+            lblTaskName.TabIndex = 12;
             lblTaskName.Text = "Task name";
             lblTaskName.Click += lblTaskName_Click;
             // 
             // lblDate
             // 
             lblDate.AutoSize = true;
-            lblDate.Font = new Font("Microsoft Sans Serif", 12F);
+            lblDate.Font = new Font("Microsoft Sans Serif", 18F);
             lblDate.ForeColor = Color.White;
-            lblDate.Location = new Point(30, 115);
-            lblDate.Margin = new Padding(4, 0, 4, 0);
+            lblDate.Location = new Point(30, 100);
             lblDate.Name = "lblDate";
-            lblDate.Size = new Size(109, 25);
-            lblDate.TabIndex = 12;
+            lblDate.Size = new Size(135, 29);
+            lblDate.TabIndex = 13;
             lblDate.Text = "Description";
             // 
             // lblWorker
             // 
             lblWorker.AutoSize = true;
-            lblWorker.Font = new Font("Microsoft Sans Serif", 12F);
+            lblWorker.Font = new Font("Microsoft Sans Serif", 18F);
             lblWorker.ForeColor = Color.White;
-            lblWorker.Location = new Point(30, 177);
-            lblWorker.Margin = new Padding(4, 0, 4, 0);
+            lblWorker.Location = new Point(30, 170);
             lblWorker.Name = "lblWorker";
-            lblWorker.Size = new Size(70, 25);
-            lblWorker.TabIndex = 13;
-            lblWorker.Text = "worker";
+            lblWorker.Size = new Size(91, 29);
+            lblWorker.TabIndex = 14;
+            lblWorker.Text = "Worker";
             // 
             // lblStatus
             // 
             lblStatus.AutoSize = true;
-            lblStatus.Font = new Font("Microsoft Sans Serif", 12F);
+            lblStatus.Font = new Font("Microsoft Sans Serif", 18F);
             lblStatus.ForeColor = Color.White;
-            lblStatus.Location = new Point(30, 238);
-            lblStatus.Margin = new Padding(4, 0, 4, 0);
+            lblStatus.Location = new Point(30, 240);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(68, 25);
-            lblStatus.TabIndex = 14;
+            lblStatus.Size = new Size(79, 29);
+            lblStatus.TabIndex = 15;
             lblStatus.Text = "Status";
             lblStatus.Click += lblStatus_Click;
             // 
             // lblSearch
             // 
             lblSearch.AutoSize = true;
-            lblSearch.Font = new Font("Microsoft Sans Serif", 12F);
+            lblSearch.Font = new Font("Microsoft Sans Serif", 18F);
             lblSearch.ForeColor = Color.White;
-            lblSearch.Location = new Point(30, 294);
-            lblSearch.Margin = new Padding(4, 0, 4, 0);
+            lblSearch.Location = new Point(30, 380);
             lblSearch.Name = "lblSearch";
-            lblSearch.Size = new Size(75, 25);
-            lblSearch.TabIndex = 15;
+            lblSearch.Size = new Size(89, 29);
+            lblSearch.TabIndex = 16;
             lblSearch.Text = "Search";
             lblSearch.Click += lblSearch_Click;
             // 
+            // chartWorkPerformance
+            // 
+            chartArea1.BackColor = Color.White;
+            chartArea1.Name = "ChartArea1";
+            chartWorkPerformance.ChartAreas.Add(chartArea1);
+            chartWorkPerformance.Location = new Point(600, 24);
+            chartWorkPerformance.Name = "chartWorkPerformance";
+            chartWorkPerformance.Size = new Size(350, 389);
+            chartWorkPerformance.TabIndex = 17;
+            // 
+            // chartNonMetalWorkPerformance
+            // 
+            chartArea2.BackColor = Color.White;
+            chartArea2.Name = "ChartArea2";
+            chartNonMetalWorkPerformance.ChartAreas.Add(chartArea2);
+            chartNonMetalWorkPerformance.Location = new Point(917, 24);
+            chartNonMetalWorkPerformance.Name = "chartNonMetalWorkPerformance";
+            chartNonMetalWorkPerformance.Size = new Size(350, 389);
+            chartNonMetalWorkPerformance.TabIndex = 18;
+            // 
+            // chartMetalNonMetalWorkPerformance
+            // 
+            chartArea3.BackColor = Color.White;
+            chartArea3.Name = "ChartArea3";
+            chartMetalNonMetalWorkPerformance.ChartAreas.Add(chartArea3);
+            chartMetalNonMetalWorkPerformance.Location = new Point(1234, 24);
+            chartMetalNonMetalWorkPerformance.Name = "chartMetalNonMetalWorkPerformance";
+            chartMetalNonMetalWorkPerformance.Size = new Size(350, 389);
+            chartMetalNonMetalWorkPerformance.TabIndex = 19;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Microsoft Sans Serif", 18F);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(30, 310);
+            label1.Name = "label1";
+            label1.Size = new Size(100, 29);
+            label1.TabIndex = 20;
+            label1.Text = "Quantity";
+            // 
             // FormWorkPerformance
             // 
-            AutoScaleDimensions = new SizeF(9F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(46, 59, 78);
-            ClientSize = new Size(1350, 1055);
+            ClientSize = new Size(1904, 1061);
+            Controls.Add(label1);
             Controls.Add(txtTaskName);
             Controls.Add(datePicker);
             Controls.Add(txtWorker);
             Controls.Add(comboBoxStatus);
+            Controls.Add(comboBoxQuantity);
             Controls.Add(btnSave);
             Controls.Add(btnUpdate);
             Controls.Add(btnDelete);
@@ -286,10 +386,16 @@ namespace WorkManagementSystem
             Controls.Add(lblWorker);
             Controls.Add(lblStatus);
             Controls.Add(lblSearch);
-            Margin = new Padding(4, 5, 4, 5);
+            Controls.Add(chartWorkPerformance);
+            Controls.Add(chartNonMetalWorkPerformance);
+            Controls.Add(chartMetalNonMetalWorkPerformance);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormWorkPerformance";
             Text = "작업 실적";
             ((ISupportInitialize)dataGridWorkPerformances).EndInit();
+            ((ISupportInitialize)chartWorkPerformance).EndInit();
+            ((ISupportInitialize)chartNonMetalWorkPerformance).EndInit();
+            ((ISupportInitialize)chartMetalNonMetalWorkPerformance).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -303,6 +409,8 @@ namespace WorkManagementSystem
         {
             ((Button)sender).BackColor = Color.White;
         }
+
+        private Label label1;
 
         // 이벤트 핸들러 메서드들 구현은 여기에 추가합니다.
     }
