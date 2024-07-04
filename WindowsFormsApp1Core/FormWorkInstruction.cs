@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using ActUtlTypeLib;
+using ClosedXML.Excel;
 
 namespace WorkManagementSystem
 {
@@ -355,7 +356,75 @@ namespace WorkManagementSystem
 
         private void btnExportToExcel_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("엑셀로 내보내기 기능은 아직 구현되지 않았습니다.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // SaveFileDialog를 사용하여 파일 저장 경로와 이름을 설정
+            using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "Excel Workbook|*.xlsx" })
+            {
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    // ClosedXML을 사용하여 DataGridView의 데이터를 엑셀 파일로 저장
+                    using (var workbook = new XLWorkbook())
+                    {
+                        var worksheet1 = workbook.Worksheets.Add("Work Table");
+
+                        // DataGridView 헤더를 추가
+                        for (int i = 0; i < dataGridWorkInstructions.Columns.Count; i++)
+                        {
+                            worksheet1.Cell(1, i + 1).Value = dataGridWorkInstructions.Columns[i].HeaderText;
+                        }
+
+                        // DataGridView 데이터를 추가
+                        for (int i = 0; i < dataGridWorkInstructions.Rows.Count; i++)
+                        {
+                            for (int j = 0; j < dataGridWorkInstructions.Columns.Count; j++)
+                            {
+                                worksheet1.Cell(i + 2, j + 1).Value = dataGridWorkInstructions.Rows[i].Cells[j].Value?.ToString();
+                            }
+                        }
+
+
+
+                        var worksheet2 = workbook.Worksheets.Add("List of tasks");
+
+                        // DataGridView 헤더를 추가
+                        for (int i = 0; i < dataGridTodayWorkList.Columns.Count; i++)
+                        {
+                            worksheet2.Cell(1, i + 1).Value = dataGridTodayWorkList.Columns[i].HeaderText;
+                        }
+
+                        // DataGridView 데이터를 추가
+                        for (int i = 0; i < dataGridTodayWorkList.Rows.Count; i++)
+                        {
+                            for (int j = 0; j < dataGridTodayWorkList.Columns.Count; j++)
+                            {
+                                worksheet2.Cell(i + 2, j + 1).Value = dataGridTodayWorkList.Rows[i].Cells[j].Value?.ToString();
+                            }
+                        }
+
+
+
+                        var worksheet3 = workbook.Worksheets.Add("Today's Work List");
+
+                        // DataGridView 헤더를 추가
+                        for (int i = 0; i < dataGridWorkForToday.Columns.Count; i++)
+                        {
+                            worksheet3.Cell(1, i + 1).Value = dataGridWorkForToday.Columns[i].HeaderText;
+                        }
+
+                        // DataGridView 데이터를 추가
+                        for (int i = 0; i < dataGridWorkForToday.Rows.Count; i++)
+                        {
+                            for (int j = 0; j < dataGridWorkForToday.Columns.Count; j++)
+                            {
+                                worksheet3.Cell(i + 2, j + 1).Value = dataGridWorkForToday.Rows[i].Cells[j].Value?.ToString();
+                            }
+                        }
+
+                        workbook.SaveAs(sfd.FileName);
+                    }
+
+                    MessageBox.Show("다운로드 되었습니다.", "Info");
+                }
+            }
         }
 
         private void btnViewDetails_Click(object sender, EventArgs e)

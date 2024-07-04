@@ -196,7 +196,7 @@ namespace WorkManagementSystem
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(224, 224, 224);
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(46, 59, 78);
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
@@ -215,7 +215,7 @@ namespace WorkManagementSystem
             dataGridMonthAttend.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridMonthAttend.RowHeadersWidth = 51;
             dataGridMonthAttend.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridMonthAttend.Size = new Size(1840, 400);
+            dataGridMonthAttend.Size = new Size(517, 400);
             dataGridMonthAttend.TabIndex = 13;
             dataGridMonthAttend.CellContentClick += dataGridMonthAttend_CellContentClick;
             // 

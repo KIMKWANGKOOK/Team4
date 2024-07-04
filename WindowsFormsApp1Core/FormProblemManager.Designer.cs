@@ -186,7 +186,7 @@ namespace WorkManagementSystem
             dataGridProblems.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridProblems.RowHeadersWidth = 51;
             dataGridProblems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridProblems.Size = new Size(1840, 400);
+            dataGridProblems.Size = new Size(540, 400);
             dataGridProblems.TabIndex = 14;
             // 
             // lblProblemName

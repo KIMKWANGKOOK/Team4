@@ -260,7 +260,7 @@ namespace WorkManagementSystem
             dataGridWorkPerformances.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridWorkPerformances.RowHeadersWidth = 51;
             dataGridWorkPerformances.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridWorkPerformances.Size = new Size(1840, 400);
+            dataGridWorkPerformances.Size = new Size(1554, 400);
             dataGridWorkPerformances.TabIndex = 11;
             // 
             // lblTaskName

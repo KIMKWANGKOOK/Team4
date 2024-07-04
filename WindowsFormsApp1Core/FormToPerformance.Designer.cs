@@ -222,7 +222,7 @@ namespace WorkManagementSystem
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dataGridPerformancePlans.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridPerformancePlans.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridPerformancePlans.Size = new Size(1840, 400);
+            dataGridPerformancePlans.Size = new Size(509, 400);
             dataGridPerformancePlans.TabIndex = 15;
             // 
             // btnExportToExcel
