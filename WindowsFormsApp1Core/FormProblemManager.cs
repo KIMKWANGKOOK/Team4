@@ -1,4 +1,4 @@
-﻿using ClosedXML.Excel;
+﻿using ClosedXML.Excel; // 엑셀 파일 생성을 위해 ClosedXML 라이브러리를 사용합니다.
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +16,7 @@ namespace WorkManagementSystem
     [SupportedOSPlatform("windows10.0.177630")] // 경고제거
     public partial class FormProblemManager : Form
     {
-        private BindingList<Problem> problems;
+        private BindingList<Problem> problems; // 문제 목록을 관리하는 바인딩 리스트
 
         private MySqlConnection conn;
 
@@ -58,12 +58,13 @@ namespace WorkManagementSystem
             // 여기에 필요한 경우 초기 데이터를 추가할 수 있습니다.
 
             dataGridProblems.DefaultCellStyle.ForeColor = Color.Black;
-            UpdateDataGrid();
+            UpdateDataGrid(); // 데이터 그리드 업데이트
         }
 
+        // 저장 버튼 클릭 이벤트 핸들러
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (!ValidateInputs())
+            if (!ValidateInputs()) // 입력 값 검증
                 return;
 
             try
@@ -105,6 +106,7 @@ namespace WorkManagementSystem
             MessageBox.Show("문제가 저장되었습니다.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        // 업데이트 버튼 클릭 이벤트 핸들러
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (dataGridProblems.SelectedRows.Count > 0)
@@ -156,6 +158,7 @@ namespace WorkManagementSystem
             }
         }
 
+        // 삭제 버튼 클릭 이벤트 핸들러
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (dataGridProblems.SelectedRows.Count > 0)
@@ -163,9 +166,9 @@ namespace WorkManagementSystem
                 var selectedRow = dataGridProblems.SelectedRows[0];
                 var problem = (Problem)selectedRow.DataBoundItem;
 
-                problems.Remove(problem);
-                UpdateDataGrid();
-                ClearForm();
+                problems.Remove(problem); // 문제 목록에서 제거
+                UpdateDataGrid(); // 데이터 그리드 업데이트
+                ClearForm(); // 입력 폼 초기화
                 MessageBox.Show("문제가 삭제되었습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -174,6 +177,7 @@ namespace WorkManagementSystem
             }
         }
 
+        // 검색 버튼 클릭 이벤트 핸들러
         private void btnSearch_Click(object sender, EventArgs e)
         {
             var query = txtSearch.Text.ToLower();
@@ -193,6 +197,7 @@ namespace WorkManagementSystem
             dataGridProblems.DataSource = problems;
         }
 
+        // 입력 폼을 초기화하는 메서드
         private void ClearForm()
         {
             txtProblemName.Clear();
@@ -201,6 +206,7 @@ namespace WorkManagementSystem
             comboBoxStatus.SelectedIndex = -1;
         }
 
+        // 입력 값 검증 메서드
         private bool ValidateInputs()
         {
             if (string.IsNullOrWhiteSpace(txtProblemName.Text))
@@ -224,6 +230,7 @@ namespace WorkManagementSystem
             return true;
         }
 
+        // 데이터 그리드 선택 변경 이벤트 핸들러
         private void dataGridProblems_SelectionChanged(object sender, EventArgs e)
         {
             if (dataGridProblems.SelectedRows.Count > 0)
@@ -275,11 +282,12 @@ namespace WorkManagementSystem
 
     }
 
+    // 문제 클래스 정의
     public class Problem
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public DateTime ReportedDate { get; set; }
-        public string Status { get; set; }
+        public string Name { get; set; } // 문제명
+        public string Description { get; set; } // 문제 설명
+        public DateTime ReportedDate { get; set; } // 보고 날짜
+        public string Status { get; set; } // 문제 상태
     }
 }

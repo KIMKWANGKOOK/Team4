@@ -11,11 +11,11 @@ namespace WorkManagementSystem
 {
     public partial class FormWorkInstruction : Form
     {
-        private ActUtlType plc01 = new ActUtlType();
-        private BindingList<WorkInstruction> workInstructions;
-        private BindingList<WorkInstruction> todayWorkList;
-        private BindingList<WorkInstruction> workForToday;
-        private Timer checkCompletionTimer;
+        private ActUtlType plc01 = new ActUtlType(); // PLC 통신 객체
+        private BindingList<WorkInstruction> workInstructions; // 전체 작업 지시 목록
+        private BindingList<WorkInstruction> todayWorkList; // 오늘의 작업 목록
+        private BindingList<WorkInstruction> workForToday; // 오늘의 작업 목록 (중복 방지)
+        private Timer checkCompletionTimer; // 작업 완료 확인 타이머
 
         public FormWorkInstruction()
         {
@@ -23,15 +23,16 @@ namespace WorkManagementSystem
             workInstructions = new BindingList<WorkInstruction>();
             todayWorkList = new BindingList<WorkInstruction>();
             workForToday = new BindingList<WorkInstruction>();
-            LoadWorkInstructions();
-            InitializeComboBoxTaskName();
-            InitializeComboBoxPriority();
-            InitializeComboBoxQuantity();
-            LoadTodayWorkList();
-            LoadWorkForToday();
-            InitializeDataGrids();
+            LoadWorkInstructions(); // 작업 지시 목록 로드
+            InitializeComboBoxTaskName(); // 작업 이름 콤보박스 초기화
+            InitializeComboBoxPriority(); // 우선순위 콤보박스 초기화
+            InitializeComboBoxQuantity(); // 수량 콤보박스 초기화
+            LoadTodayWorkList(); // 오늘의 작업 목록 로드
+            LoadWorkForToday(); // 오늘의 작업 목록 로드 (중복 방지)
+            InitializeDataGrids(); // 데이터 그리드 초기화
         }
 
+        // 데이터 그리드 초기화
         private void InitializeDataGrids()
         {
             dataGridWorkInstructions.CellFormatting += DataGridWorkInstructions_CellFormatting;
@@ -39,21 +40,25 @@ namespace WorkManagementSystem
             dataGridWorkForToday.CellFormatting += DataGridWorkForToday_CellFormatting;
         }
 
+        // 작업 지시 데이터 그리드 셀 포맷팅 이벤트 핸들러
         private void DataGridWorkInstructions_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             FormatQuantityColumn(e, dataGridWorkInstructions);
         }
 
+        // 오늘의 작업 목록 데이터 그리드 셀 포맷팅 이벤트 핸들러
         private void DataGridTodayWorkList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             FormatQuantityColumn(e, dataGridTodayWorkList);
         }
 
+        // 오늘의 작업 목록 (중복 방지) 데이터 그리드 셀 포맷팅 이벤트 핸들러
         private void DataGridWorkForToday_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             FormatQuantityColumn(e, dataGridWorkForToday);
         }
 
+        // 수량 컬럼 포맷팅
         private void FormatQuantityColumn(DataGridViewCellFormattingEventArgs e, DataGridView grid)
         {
             if (e.ColumnIndex == grid.Columns["Quantity"].Index && e.Value != null)
@@ -63,6 +68,7 @@ namespace WorkManagementSystem
             }
         }
 
+        // 작업 지시 목록 로드
         private void LoadWorkInstructions()
         {
             dataGridWorkInstructions.DataSource = null;
@@ -77,6 +83,7 @@ namespace WorkManagementSystem
             }
         }
 
+        // 오늘의 작업 목록 로드
         private void LoadTodayWorkList()
         {
             dataGridTodayWorkList.DataSource = null;
@@ -115,6 +122,7 @@ namespace WorkManagementSystem
             }
         }
 
+        // 오늘의 작업 목록 로드 (중복 방지)
         private void LoadWorkForToday()
         {
             dataGridWorkForToday.DataSource = null;
@@ -153,6 +161,7 @@ namespace WorkManagementSystem
             }
         }
 
+        // 작업 이름 콤보박스 초기화
         private void InitializeComboBoxTaskName()
         {
             comboBoxTaskName.Items.AddRange(new object[]
@@ -164,6 +173,7 @@ namespace WorkManagementSystem
             comboBoxTaskName.SelectedIndexChanged += ComboBoxTaskName_SelectedIndexChanged;
         }
 
+        // 우선순위 콤보박스 초기화
         private void InitializeComboBoxPriority()
         {
             comboBoxPriority.Items.AddRange(new object[]
@@ -174,6 +184,7 @@ namespace WorkManagementSystem
             });
         }
 
+        // 수량 콤보박스 초기화
         private void InitializeComboBoxQuantity()
         {
             comboBoxQuantity.Items.AddRange(new object[]
@@ -186,6 +197,7 @@ namespace WorkManagementSystem
             });
         }
 
+        // 작업 이름 콤보박스 선택 변경 이벤트 핸들러
         private void ComboBoxTaskName_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxTaskName.SelectedItem != null)
@@ -213,6 +225,7 @@ namespace WorkManagementSystem
             }
         }
 
+        // 저장 버튼 클릭 이벤트 핸들러
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (ValidateInputs())
@@ -235,6 +248,7 @@ namespace WorkManagementSystem
             }
         }
 
+        // 수정 버튼 클릭 이벤트 핸들러
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (dataGridWorkInstructions.SelectedRows.Count > 0)
@@ -264,6 +278,7 @@ namespace WorkManagementSystem
             }
         }
 
+        // 삭제 버튼 클릭 이벤트 핸들러
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (dataGridWorkInstructions.SelectedRows.Count > 0)
@@ -282,6 +297,7 @@ namespace WorkManagementSystem
             }
         }
 
+        // 작업 지시 데이터 그리드 선택 변경 이벤트 핸들러
         private void dataGridWorkInstructions_SelectionChanged(object sender, EventArgs e)
         {
             if (dataGridWorkInstructions.SelectedRows.Count > 0)
@@ -302,6 +318,7 @@ namespace WorkManagementSystem
             }
         }
 
+        // 입력 값 검증
         private bool ValidateInputs()
         {
             if (string.IsNullOrWhiteSpace(comboBoxTaskName.Text))
@@ -343,6 +360,7 @@ namespace WorkManagementSystem
             return true;
         }
 
+        // 입력 값 초기화
         private void ClearInputs()
         {
             comboBoxTaskName.Text = string.Empty;
@@ -354,6 +372,7 @@ namespace WorkManagementSystem
             comboBoxQuantity.SelectedItem = null;
         }
 
+        // 엑셀로 내보내기 버튼 클릭 이벤트 핸들러
         private void btnExportToExcel_Click(object sender, EventArgs e)
         {
             // SaveFileDialog를 사용하여 파일 저장 경로와 이름을 설정
@@ -427,6 +446,7 @@ namespace WorkManagementSystem
             }
         }
 
+        // 작업 상세 보기 버튼 클릭 이벤트 핸들러
         private void btnViewDetails_Click(object sender, EventArgs e)
         {
             if (dataGridWorkInstructions.SelectedRows.Count > 0)
@@ -442,6 +462,7 @@ namespace WorkManagementSystem
             }
         }
 
+        // 작업 시작 버튼 클릭 이벤트 핸들러
         private void btnStartWork_Click(object sender, EventArgs e)
         {
             if (dataGridWorkInstructions.SelectedRows.Count > 0)
@@ -469,6 +490,7 @@ namespace WorkManagementSystem
             }
         }
 
+        // 작업 중지 버튼 클릭 이벤트 핸들러
         private void btnStopWork_Click(object sender, EventArgs e)
         {
             if (dataGridWorkInstructions.SelectedRows.Count > 0)
@@ -508,6 +530,7 @@ namespace WorkManagementSystem
             }
         }
 
+        // 오늘의 작업 목록 업데이트 버튼 클릭 이벤트 핸들러
         private void btnUpdateTodayWorkList_Click(object sender, EventArgs e)
         {
             int quantity = 20;
@@ -550,7 +573,8 @@ namespace WorkManagementSystem
             LoadWorkForToday();
         }
 
-        private void bt_OpenPLC_Click(object sender, EventArgs e) // PLC 연결
+        // PLC 연결 버튼 클릭 이벤트 핸들러
+        private void bt_OpenPLC_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(combo_plcNum.Text))
             {
@@ -577,13 +601,15 @@ namespace WorkManagementSystem
             }
         }
 
-        private void bt_ClosePLC_Click(object sender, EventArgs e) // PLC 닫기
+        // PLC 연결 종료 버튼 클릭 이벤트 핸들러
+        private void bt_ClosePLC_Click(object sender, EventArgs e)
         {
             lb_state.ForeColor = Color.Red;
             lb_state.Text = "연결닫힘";
             plc01.Close();
         }
 
+        // PLC 공정 시작
         private void StartPLCProcess(WorkInstruction workInstruction)
         {
             try
@@ -622,6 +648,7 @@ namespace WorkManagementSystem
             }
         }
 
+        // PLC 공정 중지
         private void StopPLCProcess(string device)
         {
             try
@@ -634,6 +661,7 @@ namespace WorkManagementSystem
             }
         }
 
+        // 작업 완료 확인
         private void CheckProcessCompletion(WorkInstruction workInstruction)
         {
             checkCompletionTimer = new Timer();

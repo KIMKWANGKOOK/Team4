@@ -53,7 +53,7 @@ namespace WorkManagementSystem
             txtSearch = new TextBox();
             btnSearch = new Button();
             lblSearch = new Label();
-            bt_exportExel = new Button();
+            bt_Exel = new Button();
             ((ISupportInitialize)dataGridProblems).BeginInit();
             SuspendLayout();
             // 
@@ -271,21 +271,20 @@ namespace WorkManagementSystem
             lblSearch.TabIndex = 12;
             lblSearch.Text = "Search";
             // 
-            // bt_exportExel
+            // bt_Exel
             // 
-            bt_exportExel.BackColor = Color.FromArgb(224, 224, 224);
-            bt_exportExel.FlatAppearance.BorderColor = Color.White;
-            bt_exportExel.FlatStyle = FlatStyle.Flat;
-            bt_exportExel.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            bt_exportExel.ForeColor = Color.FromArgb(17, 17, 17);
-            bt_exportExel.Location = new Point(450, 313);
-            bt_exportExel.Margin = new Padding(3, 4, 3, 4);
-            bt_exportExel.Name = "bt_exportExel";
-            bt_exportExel.Size = new Size(120, 40);
-            bt_exportExel.TabIndex = 15;
-            bt_exportExel.Text = "Excel";
-            bt_exportExel.UseVisualStyleBackColor = false;
-            bt_exportExel.Click += btnExport_Click;
+            bt_Exel.BackColor = Color.FromArgb(224, 224, 224);
+            bt_Exel.FlatAppearance.BorderColor = Color.White;
+            bt_Exel.FlatStyle = FlatStyle.Flat;
+            bt_Exel.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            bt_Exel.ForeColor = Color.FromArgb(17, 17, 17);
+            bt_Exel.Location = new Point(450, 313);
+            bt_Exel.Margin = new Padding(3, 4, 3, 4);
+            bt_Exel.Name = "bt_Exel";
+            bt_Exel.Size = new Size(120, 40);
+            bt_Exel.TabIndex = 15;
+            bt_Exel.Text = "Excel";
+            bt_Exel.UseVisualStyleBackColor = false;
             // 
             // FormProblemManager
             // 
@@ -293,7 +292,7 @@ namespace WorkManagementSystem
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(46, 59, 78);
             ClientSize = new Size(1904, 1041);
-            Controls.Add(bt_exportExel);
+            Controls.Add(bt_Exel);
             Controls.Add(txtProblemName);
             Controls.Add(txtDescription);
             Controls.Add(datePickerReported);
@@ -336,6 +335,6 @@ namespace WorkManagementSystem
             }
         }
 
-        private Button bt_exportExel;
+        private Button bt_Exel;
     }
 }
