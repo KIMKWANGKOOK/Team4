@@ -1,4 +1,4 @@
-﻿using ClosedXML.Excel;
+﻿using ClosedXML.Excel; // 엑셀 파일 생성을 위해 ClosedXML 라이브러리를 사용합니다.
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,29 +12,31 @@ namespace WorkManagementSystem
     [SupportedOSPlatform("windows10.0.177630")]
     public partial class FormProblemManager : Form
     {
-        private BindingList<Problem> problems;
+        private BindingList<Problem> problems; // 문제 목록을 관리하는 바인딩 리스트
 
         public FormProblemManager()
         {
             InitializeComponent();
-            problems = new BindingList<Problem>();
-            LoadProblems();
-            // asdf
+            problems = new BindingList<Problem>(); // 문제 목록 초기화
+            LoadProblems(); // 문제 목록 로드
         }
 
+        // 문제 목록을 로드하는 메서드
         private void LoadProblems()
         {
             // 초기 데이터를 로드하거나 빈 리스트로 시작할 수 있습니다.
             // 여기에 필요한 경우 초기 데이터를 추가할 수 있습니다.
             dataGridProblems.DefaultCellStyle.ForeColor = Color.Black;
-            UpdateDataGrid();
+            UpdateDataGrid(); // 데이터 그리드 업데이트
         }
 
+        // 저장 버튼 클릭 이벤트 핸들러
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (!ValidateInputs())
+            if (!ValidateInputs()) // 입력 값 검증
                 return;
 
+            // 문제 객체 생성 및 값 설정
             var problem = new Problem
             {
                 Name = txtProblemName.Text,
@@ -43,12 +45,13 @@ namespace WorkManagementSystem
                 Status = comboBoxStatus.SelectedItem.ToString()
             };
 
-            problems.Add(problem);
-            UpdateDataGrid();
-            ClearForm();
+            problems.Add(problem); // 문제 목록에 추가
+            UpdateDataGrid(); // 데이터 그리드 업데이트
+            ClearForm(); // 입력 폼 초기화
             MessageBox.Show("문제가 저장되었습니다.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        // 업데이트 버튼 클릭 이벤트 핸들러
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (dataGridProblems.SelectedRows.Count > 0)
@@ -56,16 +59,17 @@ namespace WorkManagementSystem
                 var selectedRow = dataGridProblems.SelectedRows[0];
                 var problem = (Problem)selectedRow.DataBoundItem;
 
-                if (!ValidateInputs())
+                if (!ValidateInputs()) // 입력 값 검증
                     return;
 
+                // 선택한 문제 객체 값 업데이트
                 problem.Name = txtProblemName.Text;
                 problem.Description = txtDescription.Text;
                 problem.ReportedDate = datePickerReported.Value;
                 problem.Status = comboBoxStatus.SelectedItem.ToString();
 
-                UpdateDataGrid();
-                ClearForm();
+                UpdateDataGrid(); // 데이터 그리드 업데이트
+                ClearForm(); // 입력 폼 초기화
                 MessageBox.Show("문제가 수정되었습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -74,6 +78,7 @@ namespace WorkManagementSystem
             }
         }
 
+        // 삭제 버튼 클릭 이벤트 핸들러
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (dataGridProblems.SelectedRows.Count > 0)
@@ -81,9 +86,9 @@ namespace WorkManagementSystem
                 var selectedRow = dataGridProblems.SelectedRows[0];
                 var problem = (Problem)selectedRow.DataBoundItem;
 
-                problems.Remove(problem);
-                UpdateDataGrid();
-                ClearForm();
+                problems.Remove(problem); // 문제 목록에서 제거
+                UpdateDataGrid(); // 데이터 그리드 업데이트
+                ClearForm(); // 입력 폼 초기화
                 MessageBox.Show("문제가 삭제되었습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -92,6 +97,7 @@ namespace WorkManagementSystem
             }
         }
 
+        // 검색 버튼 클릭 이벤트 핸들러
         private void btnSearch_Click(object sender, EventArgs e)
         {
             var query = txtSearch.Text.ToLower();
@@ -105,64 +111,8 @@ namespace WorkManagementSystem
             MessageBox.Show($"{searchResult.Count}개의 문제가 검색되었습니다.", "검색 결과", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        // 엑셀로 내보내기 버튼 클릭 이벤트 핸들러
         private void btnExportToExcel_Click(object sender, EventArgs e)
-        {
-            // Export logic to be implemented
-            MessageBox.Show("엑셀로 내보내기 기능은 아직 구현되지 않았습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void UpdateDataGrid()
-        {
-            dataGridProblems.DataSource = null;
-            dataGridProblems.DataSource = problems;
-        }
-
-        private void ClearForm()
-        {
-            txtProblemName.Clear();
-            txtDescription.Clear();
-            datePickerReported.Value = DateTime.Now;
-            comboBoxStatus.SelectedIndex = -1;
-        }
-
-        private bool ValidateInputs()
-        {
-            if (string.IsNullOrWhiteSpace(txtProblemName.Text))
-            {
-                MessageBox.Show("문제명을 입력하세요.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtDescription.Text))
-            {
-                MessageBox.Show("설명을 입력하세요.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            if (comboBoxStatus.SelectedItem == null)
-            {
-                MessageBox.Show("상태를 선택하세요.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            return true;
-        }
-
-        private void dataGridProblems_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dataGridProblems.SelectedRows.Count > 0)
-            {
-                var selectedRow = dataGridProblems.SelectedRows[0];
-                var problem = (Problem)selectedRow.DataBoundItem;
-
-                txtProblemName.Text = problem.Name;
-                txtDescription.Text = problem.Description;
-                datePickerReported.Value = problem.ReportedDate;
-                comboBoxStatus.SelectedItem = problem.Status;
-            }
-        }
-
-        private void btnExport_Click(object sender, EventArgs e)
         {
             // SaveFileDialog를 사용하여 파일 저장 경로와 이름을 설정
             using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "Excel Workbook|*.xlsx" })
@@ -189,7 +139,7 @@ namespace WorkManagementSystem
                             }
                         }
 
-                        workbook.SaveAs(sfd.FileName);
+                        workbook.SaveAs(sfd.FileName); // 파일 저장
                     }
 
                     MessageBox.Show("Export Successful", "Info");
@@ -197,13 +147,68 @@ namespace WorkManagementSystem
             }
         }
 
+        // 데이터 그리드를 업데이트하는 메서드
+        private void UpdateDataGrid()
+        {
+            dataGridProblems.DataSource = null;
+            dataGridProblems.DataSource = problems;
+        }
+
+        // 입력 폼을 초기화하는 메서드
+        private void ClearForm()
+        {
+            txtProblemName.Clear();
+            txtDescription.Clear();
+            datePickerReported.Value = DateTime.Now;
+            comboBoxStatus.SelectedIndex = -1;
+        }
+
+        // 입력 값 검증 메서드
+        private bool ValidateInputs()
+        {
+            if (string.IsNullOrWhiteSpace(txtProblemName.Text))
+            {
+                MessageBox.Show("문제명을 입력하세요.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtDescription.Text))
+            {
+                MessageBox.Show("설명을 입력하세요.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (comboBoxStatus.SelectedItem == null)
+            {
+                MessageBox.Show("상태를 선택하세요.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            return true;
+        }
+
+        // 데이터 그리드 선택 변경 이벤트 핸들러
+        private void dataGridProblems_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridProblems.SelectedRows.Count > 0)
+            {
+                var selectedRow = dataGridProblems.SelectedRows[0];
+                var problem = (Problem)selectedRow.DataBoundItem;
+
+                txtProblemName.Text = problem.Name;
+                txtDescription.Text = problem.Description;
+                datePickerReported.Value = problem.ReportedDate;
+                comboBoxStatus.SelectedItem = problem.Status;
+            }
+        }
     }
 
+    // 문제 클래스 정의
     public class Problem
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public DateTime ReportedDate { get; set; }
-        public string Status { get; set; }
+        public string Name { get; set; } // 문제명
+        public string Description { get; set; } // 문제 설명
+        public DateTime ReportedDate { get; set; } // 보고 날짜
+        public string Status { get; set; } // 문제 상태
     }
 }

@@ -5,15 +5,23 @@ namespace WorkManagementSystem
 {
     static class Program
     {
-        /// <summary>
-        /// 애플리케이션의 메인 진입점입니다.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
+            Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
+
+            FormLogin loginForm = new FormLogin();
+            Application.Run(loginForm);
+
+            if (loginForm.IsAuthenticated)
+            {
+                Application.Run(new FormMain());
+            }
+            else
+            {
+                MessageBox.Show("로그인이 필요합니다.");
+            }
         }
     }
 }
